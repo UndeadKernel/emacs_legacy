@@ -1,7 +1,3 @@
-;;----------------------- H00ks --------------------------------
-
-
-
 ;;--------------------- File associations ----------------------
 (setq auto-mode-alist
       (append '(("\\.C$"    . c++-mode)
@@ -24,6 +20,7 @@
 		("\\.py$"   . python-mode)
 		("\\.jade$" . jade-mode)
 		("\\.styl$" . sws-mode)
+                ("\\.org$" . org-mode)
 		)
 	      
 	      auto-mode-alist))

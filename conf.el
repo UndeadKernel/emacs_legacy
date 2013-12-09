@@ -1,7 +1,10 @@
 ;;--------------------- General Conf -----------------------
 
 (setq inhibit-startup-message t)
+(setq inhibit-splash-screen t) ;Disable splash screen
 (put 'erase-buffer 'disabled nil)
+(global-visual-line-mode 1) ;Proper line wrapping
+(show-paren-mode 1) ;Matches parentheses
 
 
 
