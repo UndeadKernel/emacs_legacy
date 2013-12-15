@@ -2,8 +2,8 @@
 # name: err
 # key: err
 # --
-if(${1:error}){
-  callback($1);
+if(${1:err}) {
+  callback(err, $1);
   return;
 }
 $2

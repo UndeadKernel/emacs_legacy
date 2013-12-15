@@ -1,8 +1,14 @@
 ;;------------- Use Windows Line Endings ---------------
 ;(setq default-buffer-file-coding-system 'dos)
-  
-  
+
+
 ;;---------------- Programming Styles ------------------
+
+;; spaces, no tabs
+(setq-default indent-tabs-mode nil)
+;; nuke trailing whitespaces when writing to a file
+(add-hook 'write-file-hooks 'delete-trailing-whitespace)
+
 
 ;; Javascript customizations ---------------------------
 (add-hook 'js-mode-hook

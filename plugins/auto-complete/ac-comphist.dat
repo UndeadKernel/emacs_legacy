@@ -1,364 +1,442 @@
-((("delete" .
-   [1 0 0 0 0 0])
-  ("map_id" .
-   [1 0 0 0 0 0])
-  ("world" .
-   [3 0 0 0 0])
-  ("map" .
-   [3 0 0])
-  ("bots" .
-   [3 0 0 0])
-  ("_fetchMap" .
-   [0 0 0 0 0 0 0 0 1])
-  ("battlehandler" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("return" .
-   [15 0 0 0 0 0])
-  ("clearInterval" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("break" .
-   [3 0 0 0 0])
-  ("processing_battles" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("removeCurrent" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("_onBattleProcessed" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("playground" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("ready" .
-   [3 0 0 1 0])
-  ("next" .
-   [4 0 0 0])
-  ("pending_battles" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("processing_interval_id" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1])
-  ("processing" .
-   [2 0 0 0 0 0 0 0 0 0])
-  ("battle_list" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("setInterval" .
-   [1 0 0 0 0 0 0 0 0 0 1])
-  ("has" .
-   [1 0 0])
-  ("_processBattle" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("processBattle" .
-   [3 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("EventEmitter" .
-   [1 0 0 0 0 0 0 0 0 0 0 1])
-  ("events" .
-   [3 0 0 0 0 0])
-  ("emitter" .
-   [6 0 0 0 0 0 0])
-  ("data" .
-   [7 0 0 0])
-  ("client_list" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("uuid" .
-   [1 0 0 0])
-  ("Address" .
+((("exports" .
    [0 0 0 0 0 0 1])
-  ("socket" .
-   [23 0 0 0 0 2])
-  ("clients" .
-   [3 0 0 0 0 0 0])
-  ("client" .
+  ("module" .
    [1 0 0 0 0 0])
-  ("sandbox" .
-   [6 0 0 0 0 0 10])
-  ("on" .
-   [18 0])
-  ("false" .
-   [7 0 0 0 0])
-  ("true" .
-   [8 0 0 0])
-  ("db" .
-   [3 0])
-  ("onCreationFinished" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("onListenFinished" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 3])
-  ("battleHandler" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("else" .
-   [6 0 0 0])
-  ("_createStream" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 2])
-  ("_connect" .
-   [0 0 0 0 0 0 0 1])
-  ("db_open" .
-   [0 0 1 0 0 0 3])
-  ("exit" .
-   [3 0 2 0])
-  ("process" .
-   [7 0 0 0 0 0 0])
-  ("undefined" .
-   [2 0 0 0 0 0 0 0 1])
-  ("battle_handler" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("connect" .
+  ("Exports" .
+   [0 0 0 0 0 0 1])
+  ("Internal" .
+   [0 0 0 0 0 0 1 0])
+  ("Modules" .
+   [0 0 0 0 0 0 2])
+  ("uploads" .
    [2 0 0 0 0 0 0])
-  ("battle" .
-   [25 0 0 0 0 1])
-  ("if" .
-   [47 0])
-  ("var" .
-   [43 0 0])
-  ("require" .
-   [9 0 0 0 0 0 0])
-  ("callback" .
-   [29 0 0 0 0 0 0 2])
-  ("null" .
-   [38 0 0 0])
-  ("arbiter" .
-   [2 0 0 0 0 0 0])
-  ("onNewBattle" .
-   [1 0 0 0 0 0 0 0 0 0 5])
-  ("Monitor" .
-   [5 0 0 0 0 0 1])
-  ("prototype" .
-   [1 0 0 1 0 0 0 0 23])
-  ("function" .
-   [52 0 0 0 0 0 0 2])
-  ("cursor" .
-   [7 0 0 0 0 1])
-  ("this" .
-   [74 0 0 0])
-  ("c" .
-   [1])
-  ("_connectToDb" .
-   [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("onConnectFinished" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("async" .
-   [4 0 0 0 0])
-  ("series" .
-   [2 0 0 1 0 0])
-  ("self" .
-   [69 0 0 0])
-  ("_createCursor" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("err" .
-   [39 0 0])
-  ("results" .
-   [1 0 0 0 0 0 0])
-  ("settings" .
-   [15 0 0 0 0 0 0 3])
-  ("debugging" .
-   [0 0 0 0 0 0 0 0 9])
-  ("log" .
-   [64 0 0])
-  ("a" .
-   [1])
-  ("onInitCompleted" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("pause" .
-   [1 0 0 0 0])
-  ("colletion" .
-   [0 0 0 0 0 1 0 0 0])
-  ("stats" .
+  ("upload" .
+   [1 0 0 0 0 0])
+  ("_execGame" .
+   [0 0 0 0 0 0 0 0 1])
+  ("json" .
+   [2 0 0 0])
+  ("fs" .
+   [2 0])
+  ("files" .
    [5 0 0 0 0])
-  ("logs" .
-   [0 0 0 1])
-  ("findOne" .
-   [1 0 0 0 0 0 0])
-  ("doc" .
-   [3 0 0])
-  ("_id" .
-   [1 0 0])
-  ("_reconnect" .
-   [0 0 0 0 0 0 0 0 0 1])
-  ("server" .
-   [10 0 0 0 0 0])
-  ("net" .
-   [1 0 0])
-  ("Create" .
+  ("stream" .
    [1 0 0 0 0 0])
-  ("waterfall" .
-   [1 0 0 0 0 0 0 0 0])
-  ("Playground" .
-   [3 0 0 0 0 0 0 0 0 6])
-  ("_onListening" .
-   [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("_onConnect" .
-   [0 0 0 0 0 0 0 0 0 2])
-  ("_onServerError" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("listen" .
-   [1 0 0 0 0 0])
-  ("port" .
-   [1 0 0 0])
-  ("new" .
-   [6 0 0])
-  ("LinkedList" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("clients_list" .
-   [0 0 1 0 0 0 1 0 0 0 0 3])
-  ("push" .
-   [3 0 0 0])
-  ("client_socket" .
-   [0 0 1 0 0 0 0 0 0 0 0 0 3])
-  ("length" .
-   [3 0 0 0 0 2])
-  ("get" .
-   [5 0 0])
-  ("Poll" .
-   [0 0 0 1])
-  ("pollSandboxesStatus" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("sandbox_status_polling_id" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("_onDisconnect" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("error" .
-   [1 0 0 0 0])
-  ("console" .
-   [2 0 0 0 0 0 0])
-  ("collection" .
-   [2 0 0 0 0 0 0 0 0 0])
-  ("string" .
+  ("contents" .
+   [1 0 0 0 0 0 0 0])
+  ("Buffer" .
    [2 0 0 0 0 0])
-  ("Arbiter" .
-   [2 0 0 0 0 0 1])
-  ("init" .
-   [2 0 0 0])
-  ("External" .
-   [1 0 0 0 0 0 0 0])
-  ("libraries" .
-   [1 0 0 0 0 0 0 0 0])
-  ("cmd" .
-   [15 0 0])
-  ("cmds" .
-   [3 0 0 1])
-  ("onFinished" .
-   [3 0 0 0 0 0 0 0 0 3])
-  ("onCommand" .
-   [4 0 0 0 0 0 0 0 0])
-  ("method" .
+  ("filename" .
+   [3 0 0 0 0 0 0 0])
+  ("launcher_file" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 1])
+  ("launcher" .
+   [1 0 0 0 0 0 0 1])
+  ("game_file" .
+   [1 0 0 0 0 0 0 0 1])
+  ("downloadFile" .
+   [0 0 0 0 1 0 0 0 0 0 0 0])
+  ("s3" .
+   [1 0])
+  ("downloader" .
+   [1 0 0 0 1 1 0 0 0 0])
+  ("download" .
+   [0 0 0 0 0 0 0 1])
+  ("game" .
+   [1 0 0 0])
+  ("./game.py" .
+   [0 0 1 0 0 0 0 0 0])
+  ("game.tar.gz" .
+   [0 0 0 0 1 0 0 0 0 0 0])
+  ("load_impact" .
+   [1 0 0 0 0 0 0 0 0 0 1])
+  ("mem_impact" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("load" .
+   [1 0 0 0])
+  ("impact" .
    [1 0 0 0 0 0])
-  ("processCommand" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 3])
-  ("commander" .
-   [2 0 0 0 0 0 0 0 0])
-  ("commandProcessed" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("onCommandProcessed" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("answer" .
-   [1 0 1 0 0 1])
-  ("send" .
+  ("_impactResources" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("cpu" .
+   [3 0 0])
+  ("resour" .
+   [0 0 0 0 0 1])
+  ("resource_metric" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("onBattleProcessed" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("_selectBestSandbox" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("resource" .
+   [3 0 0 0 0 0 0 0])
+  ("getLoadMetric" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("load_metric" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("best_sandbox" .
+   [0 0 0 0 0 0 0 0 0 0 0 4])
+  ("list" .
    [3 0 0 0])
-  ("Connector" .
+  ("available" .
    [1 0 0 0 0 0 0 0 0])
-  ("write" .
-   [2 0 0 0 0])
-  ("msg" .
-   [2 0 0])
-  ("connector" .
-   [2 0 0 0 0 0 0 0 0])
-  ("_onData" .
-   [4 0 0 0 0 0 1])
-  ("buffer" .
-   [3 0 0 0 0 0])
-  ("info" .
-   [2 0 0 0])
-  ("s" .
-   [2])
-  ("concat" .
+  ("resources" .
+   [1 0 0 0 0 0 0 0 0])
+  ("with" .
+   [1 0 0 0])
+  ("enough_cpu_time" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 4])
+  ("idle" .
+   [5 0 0 0])
+  ("enough_memory" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("enough" .
    [1 0 0 0 0 0])
-  ("toString" .
-   [1 0 0 0 0 0 0 0])
-  ("split" .
+  ("mem" .
+   [4 0 0])
+  ("getStatus" .
+   [1 0 0 0 0 0 0 0 1])
+  ("resetCursor" .
+   [0 0 0 0 0 0 0 0 0 0 3])
+  ("sandboxes_list" .
+   [0 0 0 0 0 0 0 3 0 1 0 0 0 0])
+  ("_calculateLoadMetric" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("stringify" .
+   [4 0 0 0 0 0 0 0 0])
+  ("JSON" .
+   [6 0 0 0])
+  ("name" .
+   [1 0 0 0])
+  ("event" .
+   [2 0 0 0 0])
+  ("status" .
+   [26 0 0 0 0 0])
+  ("command" .
+   [1 0 0 0 0 1 0])
+  ("emit" .
+   [2 0 0 0])
+  ("requestStatus" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("had_error" .
+   [4 0 0 0 0 0 0 0 0])
+  ("getId" .
+   [3 0 0 0 0])
+  ("setti" .
+   [0 0 0 0 1])
+  ("Sandbox" .
+   [0 0 0 0 0 0 12])
+  ("_onClose" .
+   [3 0 0 0 0 0 0 0])
+  ("_prepareSocket" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("id" .
+   [7 0])
+  ("_onCommand" .
+   [1 0 0 0 0 0 0 0 0 3])
+  ("shift" .
    [1 0 0 0 0])
   ("while" .
    [4 0 0 0 0])
-  ("shift" .
+  ("split" .
    [1 0 0 0 0])
-  ("_onCommand" .
-   [1 0 0 0 0 0 0 0 0 3])
-  ("id" .
-   [7 0])
-  ("_prepareSocket" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("_onClose" .
-   [3 0 0 0 0 0 0 0])
-  ("Sandbox" .
-   [0 0 0 0 0 0 11])
-  ("setti" .
-   [0 0 0 0 1])
-  ("getId" .
-   [3 0 0 0 0])
-  ("had_error" .
-   [4 0 0 0 0 0 0 0 0])
-  ("requestStatus" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("emit" .
+  ("toString" .
+   [1 0 0 0 0 0 0 0])
+  ("concat" .
+   [2 0 0 0 0 0])
+  ("s" .
+   [2])
+  ("info" .
    [2 0 0 0])
-  ("command" .
-   [1 0 0 0 0 1 0])
-  ("status" .
-   [26 0 0 0 0 0])
-  ("event" .
-   [2 0 0 0 0])
-  ("name" .
-   [1 0 0 0])
-  ("JSON" .
-   [4 0 0 0])
-  ("stringify" .
-   [3 0 0 0 0 0 0 0 0])
-  ("_calculateLoadMetric" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("sandboxes_list" .
-   [0 0 0 0 0 0 0 3 0 1 0 0 0 0])
-  ("resetCursor" .
-   [0 0 0 0 0 0 0 0 0 0 3])
-  ("getStatus" .
-   [1 0 0 0 0 0 0 0 1])
-  ("mem" .
-   [4 0 0])
-  ("enough" .
-   [1 0 0 0 0 0])
-  ("enough_memory" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("idle" .
-   [5 0 0 0])
-  ("enough_cpu_time" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 4])
-  ("with" .
-   [1 0 0 0])
-  ("resources" .
+  ("buffer" .
+   [5 0 0 0 0 0])
+  ("_onData" .
+   [4 0 0 0 0 0 1])
+  ("connector" .
+   [2 0 0 0 0 0 0 0 0])
+  ("msg" .
+   [2 0 0])
+  ("write" .
+   [3 0 0 0 0])
+  ("Connector" .
    [1 0 0 0 0 0 0 0 0])
-  ("available" .
-   [1 0 0 0 0 0 0 0 0])
-  ("list" .
+  ("send" .
    [3 0 0 0])
-  ("best_sandbox" .
-   [0 0 0 0 0 0 0 0 0 0 0 4])
-  ("load_metric" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("getLoadMetric" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("resource" .
-   [3 0 0 0 0 0 0 0])
-  ("_selectBestSandbox" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("onBattleProcessed" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("resource_metric" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
-  ("resour" .
-   [0 0 0 0 0 1])
-  ("cpu" .
-   [3 0 0])
-  ("_impactResources" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("impact" .
+  ("answer" .
+   [1 0 1 0 0 1])
+  ("onCommandProcessed" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("commandProcessed" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("commander" .
+   [2 0 0 0 0 0 0 0 0])
+  ("processCommand" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 3])
+  ("method" .
    [1 0 0 0 0 0])
-  ("load" .
+  ("onCommand" .
+   [4 0 0 0 0 0 0 0 0])
+  ("onFinished" .
+   [3 0 0 0 0 0 0 0 0 7])
+  ("cmds" .
+   [3 0 0 1])
+  ("cmd" .
+   [15 0 0])
+  ("libraries" .
+   [1 0 0 0 0 0 0 0 0])
+  ("External" .
+   [1 0 0 0 0 0 0 1])
+  ("init" .
+   [2 0 0 0])
+  ("Arbiter" .
+   [2 0 0 0 0 0 1])
+  ("string" .
+   [2 0 0 0 0 0])
+  ("collection" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("console" .
+   [2 0 0 0 0 0 0])
+  ("error" .
+   [11 0 0 0 0])
+  ("_onDisconnect" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("sandbox_status_polling_id" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("pollSandboxesStatus" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("Poll" .
+   [0 0 0 1])
+  ("get" .
+   [9 0 0])
+  ("length" .
+   [4 0 0 0 0 2])
+  ("client_socket" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 3])
+  ("push" .
+   [3 0 0 0])
+  ("clients_list" .
+   [0 0 1 0 0 0 1 0 0 0 0 3])
+  ("LinkedList" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("new" .
+   [9 0 0])
+  ("port" .
    [1 0 0 0])
-  ("mem_impact" .
+  ("listen" .
+   [1 0 0 0 0 0])
+  ("_onServerError" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("_onConnect" .
+   [0 0 0 0 0 0 0 0 0 2])
+  ("_onListening" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("Playground" .
+   [3 0 0 0 0 0 0 0 0 6])
+  ("waterfall" .
+   [1 0 0 0 0 0 0 0 0])
+  ("Create" .
+   [1 0 0 0 0 0])
+  ("net" .
+   [1 0 0])
+  ("server" .
+   [10 0 0 0 0 0])
+  ("_reconnect" .
    [0 0 0 0 0 0 0 0 0 1])
-  ("load_impact" .
-   [1 0 0 0 0 0 0 0 0 0 1])))
+  ("_id" .
+   [1 0 0])
+  ("doc" .
+   [3 0 0])
+  ("findOne" .
+   [1 0 0 0 0 0 0])
+  ("logs" .
+   [0 0 0 1])
+  ("stats" .
+   [5 0 0 0 0])
+  ("colletion" .
+   [0 0 0 0 0 1 0 0 0])
+  ("pause" .
+   [1 0 0 0 0])
+  ("onInitCompleted" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("a" .
+   [1])
+  ("log" .
+   [82 0 0])
+  ("debugging" .
+   [0 0 0 0 0 0 0 0 9])
+  ("settings" .
+   [19 0 0 0 0 0 0 4])
+  ("results" .
+   [4 0 0 0 0 0 0])
+  ("err" .
+   [59 0 0])
+  ("_createCursor" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("self" .
+   [71 0 0 0])
+  ("series" .
+   [2 0 0 1 0 0])
+  ("async" .
+   [6 0 0 0 0])
+  ("onConnectFinished" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("_connectToDb" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("c" .
+   [1])
+  ("this" .
+   [77 0 0 0])
+  ("cursor" .
+   [7 0 0 0 0 1])
+  ("function" .
+   [65 0 0 0 0 0 0 2])
+  ("prototype" .
+   [1 0 0 1 0 0 0 0 25])
+  ("Monitor" .
+   [5 0 0 0 0 0 1])
+  ("onNewBattle" .
+   [1 0 0 0 0 0 0 0 0 0 5])
+  ("arbiter" .
+   [2 0 0 0 0 0 0])
+  ("null" .
+   [46 0 0 0])
+  ("callback" .
+   [34 0 0 0 0 0 0 2])
+  ("require" .
+   [13 0 0 0 0 0 0])
+  ("var" .
+   [61 0 0])
+  ("if" .
+   [53 0])
+  ("battle" .
+   [27 0 0 0 0 1])
+  ("connect" .
+   [2 0 0 0 0 0 0])
+  ("battle_handler" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("undefined" .
+   [2 0 0 0 0 0 0 0 1])
+  ("process" .
+   [11 0 0 0 0 0 0])
+  ("exit" .
+   [5 0 4 0])
+  ("db_open" .
+   [0 0 1 0 0 0 3])
+  ("_connect" .
+   [0 0 0 0 0 0 0 1])
+  ("_createStream" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 2])
+  ("else" .
+   [9 0 0 0])
+  ("battleHandler" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("onListenFinished" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 3])
+  ("onCreationFinished" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("db" .
+   [3 0])
+  ("true" .
+   [11 0 0 0])
+  ("false" .
+   [7 0 0 0 0])
+  ("on" .
+   [20 0])
+  ("sandbox" .
+   [6 0 0 0 0 0 10])
+  ("client" .
+   [1 0 0 0 0 0])
+  ("clients" .
+   [3 0 0 0 0 0 0])
+  ("socket" .
+   [24 0 0 0 0 2])
+  ("Address" .
+   [0 0 0 0 0 0 1])
+  ("uuid" .
+   [1 0 0 0])
+  ("client_list" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("data" .
+   [14 0 0 0])
+  ("emitter" .
+   [6 0 0 0 0 0 0])
+  ("events" .
+   [3 0 0 0 0 0])
+  ("EventEmitter" .
+   [1 0 0 0 0 0 0 0 0 0 0 1])
+  ("processBattle" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("_processBattle" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("has" .
+   [1 0 0])
+  ("setInterval" .
+   [1 0 0 0 0 0 0 0 0 0 1])
+  ("battle_list" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("processing" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("processing_interval_id" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1])
+  ("pending_battles" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("next" .
+   [4 0 0 0])
+  ("ready" .
+   [3 0 0 1 0])
+  ("playground" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("_onBattleProcessed" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("removeCurrent" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("processing_battles" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("break" .
+   [3 0 0 0 0])
+  ("clearInterval" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("return" .
+   [18 0 0 0 0 0])
+  ("battlehandler" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("_fetchMap" .
+   [0 0 0 0 0 0 0 0 1])
+  ("bots" .
+   [6 0 0 0])
+  ("map" .
+   [4 0 0])
+  ("world" .
+   [3 0 0 0 0])
+  ("map_id" .
+   [1 0 0 0 0 0])
+  ("delete" .
+   [1 0 0 0 0 0])
+  ("request" .
+   [2 0 0 0 0 0 0])
+  ("address" .
+   [1 0 0 0 0 0 0])
+  ("addr" .
+   [6 0 0 0])
+  ("resp" .
+   [3 0 0 0])
+  ("statusCode" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("form" .
+   [6 0 0 0])
+  ("req" .
+   [2 0 0])
+  ("Gamefiles" .
+   [0 0 0 0 0 0 0 0 1])
+  ("gamefiles" .
+   [2 0 0 0 0 0 0 1 0])
+  ("getFiles" .
+   [1 0 0 0 0 0 0 0])
+  ("append" .
+   [1 0 0 0 0 1])
+  ("for" .
+   [1 0 0])
+  ("body" .
+   [3 0 0 0])
+  ("Error" .
+   [1 0 0 0 0])))

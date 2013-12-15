@@ -1,4 +1,27 @@
 
+;;----------------------- Whitespace Mode ----------------------
+
+;; display only tails of lines longer than 80 columns, tabs and
+;; trailing white spaces
+(setq whitespace-line-column 120)
+(whitespace-style '(tabs trailing lines-tail))
+
+;; face for long lines' tails
+(set-face-attribute 'whitespace-line nil
+                    :background "red1"
+                    :foreground "yellow"
+                    :weight 'bold)
+
+;; face for Tabs
+(set-face-attribute 'whitespace-tab nil
+                    :background "red1"
+                    :foreground "yellow"
+                    :weight 'bold)
+
+;; activate minor whitespace mode when in different modes.
+(add-hook 'js-mode-hook 'whitespace-mode)
+
+
 ;;-------------------------- PHP Mode --------------------------
 
 (require 'php-mode)
