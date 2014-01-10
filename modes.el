@@ -3,8 +3,9 @@
 
 ;; display only tails of lines longer than 80 columns, tabs and
 ;; trailing white spaces
+(require 'whitespace)
 (setq whitespace-line-column 120)
-(whitespace-style '(tabs trailing lines-tail))
+(setq-default whitespace-style '(face tabs trailing lines-tail))
 
 ;; face for long lines' tails
 (set-face-attribute 'whitespace-line nil
