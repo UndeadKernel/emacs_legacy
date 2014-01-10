@@ -8,7 +8,7 @@
 ;(defun w32-maximize-frame ()
 ;  "Maximize the current frame"
 ;  (interactive)
-;  (w32-send-sys-command 61488)) 
+;  (w32-send-sys-command 61488))
 ;(add-hook 'window-setup-hook 'w32-maximize-frame t)
 
 ; For linux
@@ -22,11 +22,10 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-reload-all)
-; Interact with auto-complete
-;(setq ac-source-yasnippet nil)
+(yas-global-mode 1)
 ; Display a popup for the available options.
-(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
-(require 'popup) 
+(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/lib/popup")
+(require 'popup)
 ; add some shotcuts in popup menu mode
 (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
 (define-key popup-menu-keymap (kbd "TAB") 'popup-next)
@@ -49,24 +48,23 @@
      :isearch t
      )))
 (setq yas-prompt-functions '(yas-popup-isearch-prompt yas-no-prompt))
-(add-hook 'js-mode-hook
-              '(lambda ()
-                 (yas-minor-mode)))
+;; (add-hook 'js-mode-hook
+;;               '(lambda ()
+;;                  (yas-minor-mode)))
 
 
 ;;--------------------- Auto Complete----------------------
 
-; Add the popup plugin to the path (required for auto-complete)
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
-(require 'auto-complete-config) 
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/dict") 
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/dict")
 (setq ac-comphist-file  "~/.emacs.d/plugins/auto-complete/ac-comphist.dat")
 (ac-config-default)
 ; set the trigger key so that it can work together with yasnippet on tab key,
 ; if the word exists in yasnippet, pressing tab will cause yasnippet to
 ; activate, otherwise, auto-complete will
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
+;(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "<tab>")
 
 
 ;;-------------------- Smooth Scroll ----------------------
