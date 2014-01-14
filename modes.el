@@ -1,5 +1,5 @@
 
-;;----------------------- Whitespace Mode ----------------------
+;;----------------------- White space Mode ----------------------
 
 ;; display only tails of lines longer than 80 columns, tabs and
 ;; trailing white spaces
@@ -37,29 +37,57 @@
 
 ;;------------------------- AUCTex Mode ------------------------
 
-;; Customary Customization, p. 1 and 16 in the manual, and http://www.emacswiki.org/emacs/AUCTeX#toc2
 (setq TeX-parse-self t); Enable parse on load.
 (setq TeX-auto-save t); Enable parse on save.
 (setq-default TeX-master nil)
 
-(setq TeX-PDF-mode t); PDF mode (rather than DVI-mode)
+; PDF mode (rather than DVI-mode)
+(setq TeX-PDF-mode t)
 
-(add-hook 'TeX-mode-hook 'flyspell-mode); Enable Flyspell mode for TeX modes such as AUCTeX. Highlights all misspelled words.
-(add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode); Enable Flyspell program mode for emacs lisp mode, which highlights all misspelled words in comments and strings.
-(setq ispell-dictionary "english"); Default dictionary. To change do M-x ispell-change-dictionary RET.
+; Enable Flyspell mode for TeX modes such as AUCTeX. Highlights all misspelled words.
+(add-hook 'TeX-mode-hook 'flyspell-mode)
+; Enable Flyspell program mode for emacs lisp mode, which highlights all misspelled words in comments and strings.
+(add-hook 'emacs-lisp-mode-hook 'flyspell-prog-mode)
+; Default dictionary. To change do M-x ispell-change-dictionary RET.
+(setq ispell-dictionary "english")
+
+; Set Okular as viewer.
+(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list '(("PDF Viewer" "okular --unique %o#src:%n%(dir)./%b")))
+; Sync with Okular
+(setq TeX-source-correlate-method 'synctex)
+(setq TeX-source-correlate-start-server t)
+(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+
 (add-hook 'TeX-mode-hook
-          (lambda () (TeX-fold-mode 1))); Automatically activate TeX-fold-mode.
-(setq LaTeX-babel-hyphen nil); Disable language-specific hyphen insertion.
+          (lambda ()
+	    ; Correct sync definition for Okular.
+	    (add-to-list 'TeX-expand-list '("%(dir)" (lambda() default-directory)))
+            ; Automatically activate TeX-fold-mode.
+            (TeX-fold-mode 1)
+            ; Use Latexmk instead of normal LaTeX.
+            (push
+             '("Latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+               :help "Run Latexmk on file")
+             TeX-command-list)
+            ; Soft wrap lines.
+            (set-fill-column 90)
+            (longlines-mode)
+            (turn-on-auto-fill)
+          )
+)
+; Disable language-specific hyphen insertion.
+(setq LaTeX-babel-hyphen nil)
 
-;; " expands into csquotes macros (for this to work babel must be loaded after csquotes).
+; " expands into csquotes macros (for this to work babel must be loaded after csquotes).
 (setq LaTeX-csquotes-close-quote "}"
       LaTeX-csquotes-open-quote "\\enquote{")
 
-;; LaTeX-math-mode http://www.gnu.org/s/auctex/manual/auctex/Mathematics.html
+; LaTeX-math-mode http://www.gnu.org/s/auctex/manual/auctex/Mathematics.html
 (add-hook 'TeX-mode-hook 'LaTeX-math-mode)
 
-;;; RefTeX
-;; Turn on RefTeX for AUCTeX http://www.gnu.org/s/auctex/manual/reftex/reftex_5.html
+;; RefTeX
+; Turn on RefTeX for AUCTeX http://www.gnu.org/s/auctex/manual/reftex/reftex_5.html
 (add-hook 'TeX-mode-hook 'turn-on-reftex)
 
 (eval-after-load 'reftex-vars; Is this construct really needed?
