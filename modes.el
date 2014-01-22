@@ -41,6 +41,9 @@
 (setq TeX-auto-save t); Enable parse on save.
 (setq-default TeX-master nil)
 
+; Fonts for section, subsection, etc
+(setq font-latex-fontify-sectioning 1.15)
+
 ; PDF mode (rather than DVI-mode)
 (setq TeX-PDF-mode t)
 
@@ -72,7 +75,9 @@
              TeX-command-list)
             ; Soft wrap lines.
             (set-fill-column 90)
-            (longlines-mode)
+            ;; This next mode inserts soft line breaks instead of hard ones after
+            ;; ... a line goes beyond fill-column
+            ;(longlines-mode)
             (turn-on-auto-fill)
           )
 )
