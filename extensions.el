@@ -21,6 +21,9 @@
 		("\\.jade$" . jade-mode)
 		("\\.styl$" . sws-mode)
                 ("\\.org$" . org-mode)
+                ("\\.notes$" . org-mode)
+                ("\\.json$" . js-mode)
+                ("\\.js$" . js-mode)
 		)
-	      
+
 	      auto-mode-alist))

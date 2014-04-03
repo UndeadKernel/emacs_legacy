@@ -49,6 +49,8 @@
         (c-set-offset 'arglist-intro '+)
         (c-set-offset 'statement-case-intro '*)
         (c-set-offset 'brace-list-open 0)
+        ;; Switch to .h and .cpp files easily.
+        (local-set-key  (kbd "C-c o") 'ff-find-other-file)
         )
     )
 )

@@ -23,6 +23,15 @@
 (add-hook 'js-mode-hook 'whitespace-mode)
 
 
+;;-------------------------- C++ Mode --------------------------
+
+(add-hook 'c++-mode-hook
+    (function (lambda ()
+        (require 'member-functions)
+        (local-set-key (kbd "C-c e") 'expand-member-functions)
+    ))
+)
+
 ;;-------------------------- PHP Mode --------------------------
 
 (require 'php-mode)
@@ -40,6 +49,9 @@
 (setq TeX-parse-self t); Enable parse on load.
 (setq TeX-auto-save t); Enable parse on save.
 (setq-default TeX-master nil)
+
+; Item indentation.
+(setq LaTeX-item-indent 0)
 
 ; Fonts for section, subsection, etc
 (setq font-latex-fontify-sectioning 1.15)
@@ -191,3 +203,14 @@
         ("renewlist" "{")
         ("setlistdepth" "{")
         ("restartlist" "{")))
+
+
+;;-------------------------- Org Mode -------------------------
+
+; Export with no more than 4 levels.
+(setq org-export-with-toc 4)
+(setq org-export-headline-levels 4)
+; Start org mode showing everything (not folded).
+(setq org-startup-folded "showall")
+; Not sure about this one...
+(setq org-startup-align-all-tables "align")
