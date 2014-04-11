@@ -18,6 +18,25 @@
   )
 (global-set-key "\M-p" 'scrolleaArriba)
 
+; Work with macros
+(defun toggle-kbd-macro-recording-on ()
+  "One-key keyboard macros: turn recording on."
+  (interactive)
+  (define-key global-map (this-command-keys)
+    'toggle-kbd-macro-recording-off)
+  (start-kbd-macro nil))
+
+(defun toggle-kbd-macro-recording-off ()
+  "One-key keyboard macros: turn recording off."
+  (interactive)
+  (define-key global-map (this-command-keys)
+    'toggle-kbd-macro-recording-on)
+  (end-kbd-macro))
+
+; Macro bindings
+(global-set-key '[(f1)]       'call-last-kbd-macro)
+(global-set-key '[(shift f1)] 'toggle-kbd-macro-recording-on)
+
 ; Execute shell
 (global-set-key [S-f5] 'eshell)
 
@@ -34,7 +53,7 @@
 (global-set-key [f5] 'goto-line)
 
 ; Make the buffer small
-(global-set-key (quote [M-down]) 'enlarge-window) 
+(global-set-key (quote [M-down]) 'enlarge-window)
 
 ; Make buffer bigger
 (global-set-key (quote [M-up]) 'shrink-window)
@@ -50,9 +69,9 @@
 (global-set-key [kp-delete] 'delete-char)
 
 ; Do not overwrite with insert
-(global-set-key [insert] 
-		(function 
-		 (lambda () (interactive) 
+(global-set-key [insert]
+		(function
+		 (lambda () (interactive)
 		   (message "Sorry, overwrite mode has been disabled forever."))))
 
 		   ;Undo

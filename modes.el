@@ -214,3 +214,30 @@
 (setq org-startup-folded "showall")
 ; Not sure about this one...
 (setq org-startup-align-all-tables "align")
+; Hide leading stars
+(setq org-hide-leading-stars t)
+(if ( or (eq window-system 'w32) (eq window-system 'x))
+    ; then ---
+    (custom-set-faces
+     '(org-hide ((((background light)) (:foreground "DarkSlateGray"))
+                 (((background dark)) (:foreground "DarkSlateGray"))))
+     )
+    ; else ---
+    (custom-set-faces
+     '(org-hide ((((background light)) (:foreground "black"))
+                 (((background dark)) (:foreground "black"))))
+     )
+)
+; Hide markers for bold, italics, etc
+(setq org-hide-emphasis-markers t)
+; HOOK
+(add-hook 'org-mode-hook (lambda()
+    ; Turn on automatic indentation
+    (turn-on-auto-fill)
+    ; Set the indentation column
+    (set-fill-column 100)
+    ; Indent the headers automatically.
+    (org-indent-mode t)
+    ; Turn on the spellchecker
+    (flyspell-mode)
+))
