@@ -1,5 +1,6 @@
 ;;---------------------- Formato -----------------------
-;Tamaño de letra, tipografia, posición de X con Y, etc..
+
+; Font size, type, position, etc...
 (setq default-frame-alist
       '(
 	(font . "-*-lucidatypewriter-*-*-*-*-14-140-*-*-*-*-*")
@@ -7,25 +8,19 @@
 	))
 
 ;;------------------ Emacs Colors ----------------------
+
 ; Background color for X.
 (if ( or (eq window-system 'w32) (eq window-system 'x))
     (set-background-color "DarkSlateGray"))
 
-(set-foreground-color "white") ;Color de la letra
-(set-mouse-color      "black") ;Color del mouse
-(set-cursor-color     "blue") ;Color del cursor
+(set-foreground-color "white") ; Font color
+(set-mouse-color      "black") ; Mouse color
+(set-cursor-color     "blue") ; Cursor color
 
-;Permitir que cualquier archivo que soporte 'highlight' use colores:
+; Use color highlighting if supported
 (global-font-lock-mode t)
-;Que se cierren los parentesis
+; Let parentheses be closed
 (show-paren-mode 1)
-;;Colores en especial:
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-)
 
 ; Constants
 '(font-lock-constant-face ((((class color) (background light)) (:foreground "#6446ad"))))

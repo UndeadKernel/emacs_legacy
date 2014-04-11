@@ -26,7 +26,7 @@
 ; Display a popup for the available options.
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/lib/popup")
 (require 'popup)
-; add some shotcuts in popup menu mode
+; Add some shotcuts in popup menu mode
 (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
 (define-key popup-menu-keymap (kbd "TAB") 'popup-next)
 (define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
@@ -72,7 +72,7 @@
 (require 'smooth-scrolling)
 
 
-;;--------------- IDO Cambiar Buffers mejor ---------------
+;;-------------- IDO Mode for changing buffers ------------
 
 (require 'ido)
 (ido-mode t)

@@ -1,6 +1,7 @@
 ;;--------------------- File associations ----------------------
 (setq auto-mode-alist
-      (append '(("\\.C$"    . c++-mode)
+      (append '(
+        ("\\.C$"    . c++-mode)
 		("\\.cc$"   . c++-mode)
 		("\\.cpp$"  . c++-mode)
 		("\\.cxx$"  . c++-mode)
@@ -20,10 +21,10 @@
 		("\\.py$"   . python-mode)
 		("\\.jade$" . jade-mode)
 		("\\.styl$" . sws-mode)
-                ("\\.org$" . org-mode)
-                ("\\.notes$" . org-mode)
-                ("\\.json$" . js-mode)
-                ("\\.js$" . js-mode)
+        ("\\.org$" . org-mode)
+        ("\\.notes$" . org-mode)
+        ("\\.json$" . js-mode)
+        ("\\.js$" . js-mode)
 		)
 
-	      auto-mode-alist))
+	    auto-mode-alist))
