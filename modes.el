@@ -61,7 +61,7 @@
 ; Sync with Okular
 (setq TeX-source-correlate-method 'synctex)
 (setq TeX-source-correlate-start-server t)
-(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+'(TeX-source-correlate-mode t)
 
 (add-hook 'TeX-mode-hook
           (lambda ()
@@ -224,7 +224,7 @@
     ; Turn on automatic indentation
     (turn-on-auto-fill)
     ; Set the indentation column
-    (set-fill-column 100)
+    (set-fill-column 90)
     ; Indent the headers automatically.
     (org-indent-mode t)
     ; Turn on the spellchecker

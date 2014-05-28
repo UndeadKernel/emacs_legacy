@@ -74,9 +74,6 @@
 		 (lambda () (interactive)
 		   (message "Sorry, overwrite mode has been disabled forever."))))
 
-		   ;Undo
-(global-set-key "\C-z" 'undo)
-
 ;Compile
 (global-set-key [f8] 'compile)
 

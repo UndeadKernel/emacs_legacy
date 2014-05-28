@@ -27,3 +27,12 @@
 
 ;;--------------------- Local Customizations ------------------------
 (load "local")
+
+;;--------------------- Custom Emacs Config -------------------------
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+)
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+)
