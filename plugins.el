@@ -1,28 +1,38 @@
-
 ;;---------------------- PATH ---------------------------
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 
+;;-------------------- Workgroups ------------------------
+(require 'workgroups2)
+;; Prefix key
+(setq wg-prefix-key (kbd "C-c w"))
+(setq wg-session-file "~/.emacs.d/.workgroups")
+;; Keyboard shortcuts - load, save, switch
+(global-set-key (kbd "<pause>")     'wg-reload-session)
+(global-set-key (kbd "C-<pause>")   'wg-save-session)
+(global-set-key (kbd "s-z")         'wg-switch-to-workgroup)
+(global-set-key (kbd "s-/")         'wg-switch-to-previous-workgroup)
+
+(workgroups-mode 1)
+
+;;--------------------- linnum+ -------------------------
+;; Smart line numbers
+(require 'linum+)
+
+;;----------------------- IDO ---------------------------
+(require 'ido)
+(ido-mode)
+;; Display ido results vertically, rather than horizontally.
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
+;; Use ido completion in projectile.
+(setq projectile-completion-system 'ido)
 
 ;;------------------ Maximize Window --------------------
-; For windows.
-;(defun w32-maximize-frame ()
-;  "Maximize the current frame"
-;  (interactive)
-;  (w32-send-sys-command 61488))
-;(add-hook 'window-setup-hook 'w32-maximize-frame t)
-
-; For linux
 (require 'maxframe)
 (setq mf-max-width 1920)
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-
-;;---------------- Maic Latex Buffer --------------------
-;(require 'magic-latex-buffer)
-
-
 ;;-------------------- Yasnippet ------------------------
-
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas-reload-all)
@@ -56,9 +66,7 @@
 ;;               '(lambda ()
 ;;                  (yas-minor-mode)))
 
-
 ;;--------------------- Auto Complete----------------------
-
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/dict")
@@ -72,15 +80,7 @@
 
 
 ;;-------------------- Smooth Scroll ----------------------
-
 (require 'smooth-scrolling)
-
-
-;;-------------- IDO Mode for changing buffers ------------
-
-(require 'ido)
-(ido-mode t)
-
 
 ;;----------------------- Tabbar --------------------------
 

@@ -2,6 +2,9 @@
 ; .emacs by Carlos García                                           ;
 ;--------------------------------------------------------------------
 
+;;--------------------- Global Config -------------------------------
+; Set the 'gui-window-system' to 't' or 'nil'.
+(setq gui-window-system (if window-system t 'nil))
 
 
 ;;------------------------- PATH ------------------------------------
@@ -17,7 +20,8 @@
 (load "extensions")
 
 ;;-------------------------- How Emacs Looks ------------------------
-(load "looks")
+;(load "looks")
+(load "appearance")
 
 ;;---------------------------- Plugins ------------------------------
 (load "plugins")

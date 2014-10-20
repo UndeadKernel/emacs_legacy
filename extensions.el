@@ -1,10 +1,10 @@
 ;;--------------------- File associations ----------------------
 (setq auto-mode-alist
       (append '(
-        ("\\.C$"    . c++-mode)
-	("\\.cc$"   . c++-mode)
 	("\\.cpp$"  . c++-mode)
 	("\\.cxx$"  . c++-mode)
+        ("\\.C$"    . c++-mode)
+	("\\.cc$"   . c++-mode)
 	("\\.hxx$"  . c++-mode)
 	("\\.hpp$"  . c++-mode)
 	("\\.h$"    . c++-mode)

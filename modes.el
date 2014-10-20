@@ -1,10 +1,9 @@
-
 ;;----------------------- White space Mode ----------------------
 
 ;; display only tails of lines longer than 80 columns, tabs and
 ;; trailing white spaces
 (require 'whitespace)
-(setq whitespace-line-column 120)
+(setq whitespace-line-column 110)
 (setq-default whitespace-style '(face tabs trailing lines-tail))
 
 ;; face for long lines' tails
@@ -19,9 +18,24 @@
                     :foreground "yellow"
                     :weight 'bold)
 
-;; activate minor whitespace mode when in different modes.
-(add-hook 'js-mode-hook 'whitespace-mode)
+;; Customize Whitespace Characters
+;;  - Newline: \u00AC = ¬
+;;  - Tab:     \u2192 = →
+;;             \u00BB = »
+;;             \u25B6 = ▶
+(setq whitespace-display-mappings
+      (quote ((newline-mark ?\n [?\u00AC ?\n] [?$ ?\n])
+              (tab-mark     ?\t [?\u2192 ?\t] [?\u00BB ?\t] [?\\ ?\t]))))
 
+(setq whitespace-style
+      (quote (face tabs trailing space-before-tab newline
+                   indentation space-after-tab tab-mark newline-mark
+                   empty)))
+
+;; activate minor whitespace mode for all files.
+(global-whitespace-mode t)
+
+;(add-hook 'js-mode-hook 'whitespace-mode)
 
 ;;-------------------------- C++ Mode --------------------------
 

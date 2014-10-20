@@ -51,6 +51,8 @@
         (c-set-offset 'brace-list-open 0)
         ;; Switch to .h and .cpp files easily.
         (local-set-key  (kbd "C-c o") 'ff-find-other-file)
+        ;; Show line numbers
+        (linum-mode t)
         )
     )
 )
