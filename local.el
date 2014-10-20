@@ -13,7 +13,8 @@
 ;; Javascript customizations ---------------------------
 (add-hook 'js-mode-hook
     (function (lambda ()
-        (setq js-indent-level 2))))
+        (setq js-indent-level 2)
+        (linum-mode))))
 
 ; Python customization ---------------------------------
 (add-hook 'python-mode-hook
