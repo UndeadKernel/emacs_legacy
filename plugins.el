@@ -1,6 +1,10 @@
 ;;---------------------- PATH ---------------------------
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 
+;;------------------- Switch Window ----------------------
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
+
 ;;-------------------- Workgroups ------------------------
 (require 'workgroups2)
 ;; Prefix key
