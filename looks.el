@@ -1,11 +1,12 @@
 ;;---------------------- Formato -----------------------
 
 ; Font size, type, position, etc...
-(setq default-frame-alist
-      '(
-	(font . "-*-lucidatypewriter-*-*-*-*-14-140-*-*-*-*-*")
-	(frame-title-format '("%b"))
-	))
+;; (setq default-frame-alist
+;;       '(
+;; 	(font . "-*-lucidatypewriter-*-*-*-*-14-140-*-*-*-*-*")
+;; 	(frame-title-format '("%b"))
+;; 	))
+(set-default-font "Inconsolata-11")
 
 ;;------------------ Emacs Colors ----------------------
 

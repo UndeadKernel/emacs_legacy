@@ -5,7 +5,8 @@
 (put 'erase-buffer 'disabled nil)
 (global-visual-line-mode 1) ;Proper line wrapping
 (show-paren-mode 1) ; Parentheses Matching
-
+; Sentences are finished with dot and ONE space.
+(setq sentence-end-double-space nil)
 
 
 ;;--------------- Cycling of Buffers -----------------------

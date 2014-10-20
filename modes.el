@@ -35,6 +35,10 @@
 
 ;;------------------------- AUCTex Mode ------------------------
 
+; Try to load auctex, if we fail, do not report anything.
+(load "auctex.el" t t t)
+(load "preview-latex.el" t t t)
+
 (setq TeX-parse-self t); Enable parse on load.
 (setq TeX-auto-save t); Enable parse on save.
 (setq-default TeX-master nil)
@@ -56,16 +60,18 @@
 (setq ispell-dictionary "english")
 
 ; Set Okular as viewer.
-(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
-(setq TeX-view-program-list '(("PDF Viewer" "okular --unique %o#src:%n%(dir)./%b")))
+;(setq TeX-view-program-list '(("Okular" "okular -unique %o#src:%n%(dir)./%b")))
+(setq TeX-view-program-list '(("Okular" "okular --unique '%o#src:%n%(masterdir)./%b'")))
+(setq TeX-view-program-selection '((output-pdf "Okular")))
 ; Sync with Okular
+(setq TeX-source-correlate-mode t)
 (setq TeX-source-correlate-method 'synctex)
 (setq TeX-source-correlate-start-server t)
-'(TeX-source-correlate-mode t)
 
 (add-hook 'TeX-mode-hook
           (lambda ()
 	    ; Correct sync definition for Okular.
+	    (add-to-list 'TeX-expand-list '("%(masterdir)" (lambda nil (file-truename (TeX-master-directory)))))
 	    (add-to-list 'TeX-expand-list '("%(dir)" (lambda() default-directory)))
             ; Automatically activate TeX-fold-mode.
             (TeX-fold-mode 1)

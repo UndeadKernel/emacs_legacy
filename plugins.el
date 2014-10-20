@@ -17,6 +17,10 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 
+;;---------------- Maic Latex Buffer --------------------
+;(require 'magic-latex-buffer)
+
+
 ;;-------------------- Yasnippet ------------------------
 
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
@@ -80,11 +84,11 @@
 
 ;;----------------------- Tabbar --------------------------
 
-(cond (window-system
-       (require 'tabbar)
-       (tabbar-mode 1)
-       (global-set-key [(control shift up)] 'tabbar-backward-group)
-       (global-set-key [(control shift down)] 'tabbar-forward-group)
-       (global-set-key [(control shift left)] 'tabbar-backward)
-       (global-set-key [(control shift right)] 'tabbar-forward)
-))
+;; (cond (window-system
+;;        (require 'tabbar)
+;;        (tabbar-mode 1)
+;;        (global-set-key [(control shift up)] 'tabbar-backward-group)
+;;        (global-set-key [(control shift down)] 'tabbar-forward-group)
+;;        (global-set-key [(control shift left)] 'tabbar-backward)
+;;        (global-set-key [(control shift right)] 'tabbar-forward)
+;; ))

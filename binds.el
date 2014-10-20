@@ -50,7 +50,7 @@
 (global-set-key [f4] 'query-replace)
 
 ; Go to line
-(global-set-key [f5] 'goto-line)
+(global-set-key [f5] 'revert-buffer)
 
 ; Make the buffer small
 (global-set-key (quote [M-down]) 'enlarge-window)
