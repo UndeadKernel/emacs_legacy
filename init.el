@@ -7,30 +7,27 @@
 (setq gui-window-system (if window-system t 'nil))
 
 
-;;------------------------- PATH ------------------------------------
-(add-to-list 'load-path "~/.emacs.d/")
-
 ;;------------------ General Configuration Options ------------------
-(load "conf")
+(load-file "~/.emacs.d/conf.el")
 
 ;;--------------------------- Key Bindings --------------------------
-(load "binds")
+(load-file "~/.emacs.d/binds.el")
 
 ;;------------------------- File Extensions -------------------------
-(load "extensions")
+(load-file "~/.emacs.d/extensions.el")
 
 ;;-------------------------- How Emacs Looks ------------------------
 ;(load "looks")
-(load "appearance")
+(load-file "~/.emacs.d/appearance.el")
 
 ;;---------------------------- Plugins ------------------------------
-(load "plugins")
+(load-file "~/.emacs.d/plugins.el")
 
 ;;----------------------- Mode Configuration ------------------------
-(load "modes")
+(load-file "~/.emacs.d/modes.el")
 
 ;;--------------------- Local Customizations ------------------------
-(load "local")
+(load-file "~/.emacs.d/local.el")
 
 ;;--------------------- Custom Emacs Config -------------------------
 (custom-set-variables
