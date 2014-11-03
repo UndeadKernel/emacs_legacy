@@ -11,12 +11,12 @@
 (setq wg-prefix-key (kbd "C-c w"))
 (setq wg-session-file "~/.emacs.d/.workgroups")
 ;; Keyboard shortcuts - load, save, switch
-(global-set-key (kbd "<pause>")     'wg-reload-session)
+(global-set-key (kbd "<pause>")     'workgroups-mode)
 (global-set-key (kbd "C-<pause>")   'wg-save-session)
 (global-set-key (kbd "s-z")         'wg-switch-to-workgroup)
 (global-set-key (kbd "s-/")         'wg-switch-to-previous-workgroup)
-
-(workgroups-mode 1)
+;; Do not start it by default.
+;(workgroups-mode 1)
 
 ;;--------------------- linnum+ -------------------------
 ;; Smart line numbers
