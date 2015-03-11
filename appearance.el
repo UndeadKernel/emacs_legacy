@@ -17,8 +17,9 @@
 
 ;; Load Theme
 (add-to-list 'load-path "~/.emacs.d/themes")
-(if gui-window-system (require 'twilight-anti-bright-theme)
-  (require 'tomorrow-night-paradise-theme))
+(if gui-window-system
+    (require 'twilight-anti-bright-theme)
+    (require 'tomorrow-night-paradise-theme))
 
 ;; Enable menu-bar
 (menu-bar-mode -1)

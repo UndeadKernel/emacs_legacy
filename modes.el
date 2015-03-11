@@ -1,3 +1,6 @@
+;;------------------------- Markdown Mode -----------------------
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+
 ;;----------------------- White space Mode ----------------------
 
 ;; display only tails of lines longer than 80 columns, tabs and

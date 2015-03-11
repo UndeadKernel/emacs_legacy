@@ -25,5 +25,6 @@
         ("\\.notes$" . org-mode)
         ("\\.json$" . js-mode)
         ("\\.js$" . js-mode)
+        ("\\.md$" . markdown-mode)
       )
       auto-mode-alist))
