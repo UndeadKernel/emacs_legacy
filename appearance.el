@@ -25,7 +25,8 @@
 (menu-bar-mode -1)
 
 ;; Disable toolbar
-(tool-bar-mode -1)
+(if gui-window-system
+    (tool-bar-mode -1))
 
 ;; Disable Scrollbar
 (set-scroll-bar-mode 'nil)
