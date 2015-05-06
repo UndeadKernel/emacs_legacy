@@ -8,11 +8,12 @@
 (setq sentence-end-double-space nil)
 
 
-;;--------------- Cycling of Buffers -----------------------
+;;--------------------- Buffers ----------------------------
 
-;Shift + flecha mueve hacia buffer.
+;Shift + arrow = move to another buffer
 (windmove-default-keybindings)
-
+; Better buffer view
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;;------------------ Backups and Saves ---------------------
 
