@@ -22,14 +22,39 @@
 ;; Smart line numbers
 (require 'linum+)
 
+;;---------------------- Helm ---------------------------
+(add-to-list 'load-path "~/.emacs.d/plugins/helm")
+(add-to-list 'load-path "~/.emacs.d/plugins/async")
+(require 'helm-config)
+(require 'helm-files)
+(require 'helm-match-plugin)
+(require 'helm-misc)
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; Ignore some files or buffers when browsing.
+(setq helm-ff-skip-boring-files t)
+(setq helm-boring-file-regexp-list
+      '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "~$"
+	"\\.so$" "\\.a$" "\\.elc$" "\\.fas$" "\\.fasl$" "\\.pyc$" "\\.pyo$"))
+(setq helm-boring-buffer-regexp-list
+  '("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*tramp" "\\*Minibuf" "\\*epc"))
+(helm-mode 1)
+
 ;;----------------------- IDO ---------------------------
-(require 'ido)
-(ido-mode)
-;; Display ido results vertically, rather than horizontally.
-(require 'ido-vertical-mode)
-(ido-vertical-mode 1)
-;; Use ido completion in projectile.
-(setq projectile-completion-system 'ido)
+;; (require 'ido)
+;; (ido-mode)
+;; ;; Display ido results vertically, rather than horizontally.
+;; (require 'ido-vertical-mode)
+;; (ido-vertical-mode 1)
+;; ;; Use ido completion in projectile.
+;; (setq projectile-completion-system 'ido)
 
 ;;------------------ Maximize Window --------------------
 (require 'maxframe)

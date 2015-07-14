@@ -124,12 +124,13 @@
    ;; UI related
    `(link ((t (:foreground ,blue-1 :background ,blue-1bg))))
    `(fringe ((t (:foreground ,comment :background ,gray-1bg))))
+   ; cgc: disable the mode-line customizations.
    ;`(mode-line ((t (:foreground ,blue-1 :background ,blue-2bg))))
    ; cgc: custom config
-   `(mode-line ((t (:foreground ,blue-1 :background ,red-2))))
-   ;`(mode-line-inactive ((t (:foreground ,blue-4 :background ,gray-4))))
+   ;`(mode-line ((t (:foreground ,blue-1 :background ,red-2))))
+   ; original: `(mode-line-inactive ((t (:foreground ,blue-4 :background ,gray-4))))
    ; cgc: custom config
-   `(mode-line-inactive ((t (:foreground ,blue-4 :background ,red-1bg))))
+   ;`(mode-line-inactive ((t (:foreground ,blue-4 :background ,red-1bg))))
    `(vertical-border ((t (:background ,background :foreground ,gray-5))))
 
    ;; Linum
