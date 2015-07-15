@@ -56,6 +56,11 @@
 (load "auctex.el" t t t)
 (load "preview-latex.el" t t t)
 
+; PDF mode (rather than DVI-mode)
+(require 'tex)
+(TeX-global-PDF-mode t)
+(TeX-PDF-mode t)
+
 (setq TeX-parse-self t); Enable parse on load.
 (setq TeX-auto-save t); Enable parse on save.
 (setq-default TeX-master nil)
@@ -65,9 +70,6 @@
 
 ; Fonts for section, subsection, etc
 (setq font-latex-fontify-sectioning 1.15)
-
-; PDF mode (rather than DVI-mode)
-(setq TeX-PDF-mode t)
 
 ; Enable Flyspell mode for TeX modes such as AUCTeX. Highlights all misspelled words.
 (add-hook 'TeX-mode-hook 'flyspell-mode)
@@ -98,11 +100,11 @@
                :help "Run Latexmk on file")
              TeX-command-list)
             ; Soft wrap lines.
-            (set-fill-column 90)
+            (set-fill-column 110)
             ;; This next mode inserts soft line breaks instead of hard ones after
             ;; ... a line goes beyond fill-column
             ;(longlines-mode)
-            (turn-on-auto-fill)
+            ;(turn-on-auto-fill)
           )
 )
 ; Disable language-specific hyphen insertion.
