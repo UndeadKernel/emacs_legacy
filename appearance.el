@@ -24,7 +24,7 @@
 ;; Nyan cat magic
 (add-to-list 'load-path "~/.emacs.d/plugins/nyan")
 (setq nyan-wavy-trail t)
-(setq nyan-bar-length 24)
+(setq nyan-bar-length 16)
 (require 'nyan-mode)
 
 ;; Mode-line beauty
@@ -50,25 +50,23 @@
    ; directory and buffer/file name
    (:propertize (:eval (shorten-directory default-directory 10))
                 face mode-line-folder-face)
-   (:propertize "%b"
+   (:propertize "%b "
                 face mode-line-filename-face)
+   ; nyan-mode uses nyan cat as an alternative to %p
+   (:eval (list (nyan-create)))
    ; narrow [default -- keep?]
-   " %n "
+   ;" %n "
    ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
    ;; (vc-mode vc-mode)
-   "  %["
+   " %["
    (:propertize mode-name
                 face mode-line-mode-face)
-   "%] "
+   "%]"
    (:eval (propertize (format-mode-line minor-mode-alist)
                       'face 'mode-line-minor-mode-face))
    (:propertize mode-line-process
                 face mode-line-process-face)
    (global-mode-string global-mode-string)
-   "  |"
-   ; nyan-mode uses nyan cat as an alternative to %p
-   (:eval (list (nyan-create)))
-      "|"
    ))
 
 ;; Mode-line helper function

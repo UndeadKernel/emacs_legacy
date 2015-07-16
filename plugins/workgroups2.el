@@ -1694,7 +1694,7 @@ Frame defaults to `selected-frame'.  See `wg-buffer-auto-association'."
   "Add Workgroups' mode-line format to `mode-line-format'."
   (unless (assq 'wg-mode-line-display-on mode-line-format)
     (let ((format '(wg-mode-line-display-on (:eval (wg-mode-line-string))))
-          (pos (or (cl-position 'mode-line-position mode-line-format) 10)))
+          (pos (or (cl-position 'mode-line-position mode-line-format) 5)))
       (set-default 'mode-line-format (-insert-at (1+ pos) format mode-line-format))
       (force-mode-line-update))))
 

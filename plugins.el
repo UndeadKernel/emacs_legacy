@@ -15,6 +15,9 @@
 (global-set-key (kbd "C-<pause>")   'wg-save-session)
 (global-set-key (kbd "s-z")         'wg-switch-to-workgroup)
 (global-set-key (kbd "s-/")         'wg-switch-to-previous-workgroup)
+(set-face-attribute 'wg-brace-face nil :inherit font-lock-builtin-face :weight 'normal :height 0.8)
+(set-face-attribute 'wg-divider-face nil :inherit font-lock-builtin-face :weight 'normal :height 0.8)
+(set-face-attribute 'wg-mode-line-face nil :weight 'thin :height 0.8)
 ;; Do not start it by default.
 ;(workgroups-mode 1)
 
