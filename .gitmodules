@@ -1,0 +1,9 @@
+[submodule "plugins/helm"]
+	path = plugins/helm
+	url = https://github.com/emacs-helm/helm.git
+[submodule "plugins/async"]
+	path = plugins/async
+	url = https://github.com/jwiegley/emacs-async.git
+[submodule "plugins/nyan"]
+	path = plugins/nyan
+	url = https://github.com/TeMPOraL/nyan-mode.git

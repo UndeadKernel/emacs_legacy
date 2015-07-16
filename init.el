@@ -37,7 +37,11 @@
  ;; If there is more than one, they won't work right.
  '(wg-mode-line-decor-left-brace "[")
  '(wg-mode-line-decor-right-brace "]")
- '(wg-mode-line-use-faces t))
+ '(wg-mode-line-use-faces t)
+ '(doc-view-ghostscript-options
+   (quote
+    ("-dSAFER" "-dNOPAUSE" "-sDEVICE=png16m" "-dTextAlphaBits=4" "-dBATCH" "-dGraphicsAlphaBits=4" "-dQUIET" "-r460")))
+ '(doc-view-resolution 300))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
