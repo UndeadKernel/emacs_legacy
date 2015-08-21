@@ -10,6 +10,9 @@
 ;;------------------ General Configuration Options ------------------
 (load-file "~/.emacs.d/conf.el")
 
+;;------------------------- My Functions ----------------------------
+(load-file "~/.emacs.d/functions.el")
+
 ;;--------------------------- Key Bindings --------------------------
 (load-file "~/.emacs.d/binds.el")
 
@@ -29,19 +32,20 @@
 ;;--------------------- Local Customizations ------------------------
 (load-file "~/.emacs.d/local.el")
 
+
 ;;--------------------- Custom Emacs Config -------------------------
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(wg-mode-line-decor-left-brace "[")
- '(wg-mode-line-decor-right-brace "]")
- '(wg-mode-line-use-faces t)
  '(doc-view-ghostscript-options
    (quote
     ("-dSAFER" "-dNOPAUSE" "-sDEVICE=png16m" "-dTextAlphaBits=4" "-dBATCH" "-dGraphicsAlphaBits=4" "-dQUIET" "-r460")))
- '(doc-view-resolution 300))
+ '(doc-view-resolution 300)
+ '(wg-mode-line-decor-left-brace "[")
+ '(wg-mode-line-decor-right-brace "]")
+ '(wg-mode-line-use-faces t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

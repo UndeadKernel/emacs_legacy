@@ -22,20 +22,35 @@
         (setq indent-tabs-mode nil
             tab-width 4))))
 
-;; C customization -------------------------------------
-(add-hook 'c-mode-hook
-    (function (lambda ()
-        (setq tab-width 4)
-            (setq c-basic-offset tab-width)
-            (setq c-indent-level tab-width)
-            (setq indent-tabs-mode nil)
-        )
-    )
-)
-
 ;; C++ customization -----------------------------------
 (add-hook 'c++-mode-hook
   (function (lambda ()
+        (setq default-tab-width 4)
+        (setq tab-width 4)
+        (setq c-basic-offset tab-width)
+        (setq c-indent-level tab-width)
+        (setq indent-tabs-mode nil)
+        ;; Indentation Style
+        (c-set-offset 'access-label '/)
+        (c-set-offset 'case-label '*)
+        (c-set-offset 'arglist-intro '++)
+        (c-set-offset 'substatement-open 0)
+        (c-set-offset 'arglist-cont-nonempty '+)
+        (c-set-offset 'arglist-intro '+)
+        (c-set-offset 'statement-case-intro '*)
+        (c-set-offset 'brace-list-open 0)
+        ;; Switch to .h and .cpp files easily.
+        (local-set-key  (kbd "C-c o") 'ff-find-other-file)
+        ;; Show line numbers
+        (linum-mode t)
+        )
+    )
+  )
+
+;; C customization -----------------------------------
+(add-hook 'c-mode-hook
+  (function (lambda ()
+        ;; Tabs and spaces
         (setq default-tab-width 4)
         (setq tab-width 4)
         (setq c-basic-offset tab-width)

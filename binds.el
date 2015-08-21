@@ -1,22 +1,8 @@
 ;;---------------------Binds----------------------
 
-; Smooth scroll down
-(defun scrolleaAbajo ()
-  "Un agradable scroll hacia abajo"
-  (interactive)
-  (forward-line)
-  (recenter)
-  )
-(global-set-key "\M-n" 'scrolleaAbajo)
-
-; Smooth scroll up
-(defun scrolleaArriba ()
-  "Un agradable scroll hacia arriba"
-  (interactive)
-  (previous-line 1 1)
-  (recenter)
-  )
-(global-set-key "\M-p" 'scrolleaArriba)
+; Scroll and recenter the text
+(global-set-key "\M-n" 'my-down-scroll)
+(global-set-key "\M-p" 'my-up-scroll)
 
 ; Work with macros
 (defun toggle-kbd-macro-recording-on ()
@@ -37,9 +23,6 @@
 (global-set-key '[(f1)]       'call-last-kbd-macro)
 (global-set-key '[(shift f1)] 'toggle-kbd-macro-recording-on)
 
-; Execute shell
-(global-set-key [S-f5] 'eshell)
-
 ; Save File
 (global-set-key [f2] 'save-buffer)
 
@@ -51,6 +34,9 @@
 
 ; Go to line
 (global-set-key [f5] 'revert-buffer)
+
+; Execute shell
+(global-set-key [S-f5] 'eshell)
 
 ; Make the buffer small
 (global-set-key (quote [M-down]) 'enlarge-window)
@@ -79,11 +65,3 @@
 
 ;Recompile
 (global-set-key [f9] 'recompile)
-
-; Mouse whell on X
-(cond (window-system
-       (mwheel-install)
-	   (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
-	   (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-	   (setq mouse-wheel-follow-mosue 't) ;; scroll window under mouse
-))

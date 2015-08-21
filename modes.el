@@ -11,13 +11,18 @@
 
 ;; face for long lines' tails
 (set-face-attribute 'whitespace-line nil
-                    :background "red1"
+                    :background "#31191f"
                     :foreground "yellow"
                     :weight 'bold)
 
 ;; face for Tabs
 (set-face-attribute 'whitespace-tab nil
-                    :background "red1"
+                    :background "#31191f"
+                    :foreground "yellow"
+                    :weight 'bold)
+;; face for spaces
+(set-face-attribute 'whitespace-trailing nil
+                    :background "#31191f"
                     :foreground "yellow"
                     :weight 'bold)
 
