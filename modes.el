@@ -45,10 +45,23 @@
 
 ;(add-hook 'js-mode-hook 'whitespace-mode)
 
+
+;;-------------------------- CC Mode ---------------------------
+; Changes that apply to all C-like languages such as java, objective-c and awk.
+(add-hook 'c-mode-common-hook
+    (function (lambda()
+        ; Display the function name at the top
+        ;(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+        ;(semantic-mode 1)
+        ;(require 'stickyfunc-enhance)
+    ))
+)
+
 ;;-------------------------- C++ Mode --------------------------
 
 (add-hook 'c++-mode-hook
     (function (lambda ()
+        ; Expand a declaration of a function in the .cpp file
         (require 'member-functions)
         (local-set-key (kbd "C-c e") 'expand-member-functions)
     ))
