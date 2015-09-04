@@ -114,7 +114,7 @@
             (TeX-fold-mode 1)
             ; Use Latexmk instead of normal LaTeX.
             (push
-             '("Latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+             '("Latexmk" "latexmk -pdflatex='pdflatex -file-line-error -synctex=1' -pdf %s" TeX-run-TeX nil t
                :help "Run Latexmk on file")
              TeX-command-list)
             ; Soft wrap lines.
