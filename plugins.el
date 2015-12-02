@@ -24,6 +24,8 @@
   (add-to-list 'Info-directory-list
 	       "~/.emacs.d/site-lisp/magit/Documentation/"))
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;;--------------------- Key Chords -----------------------
 (require 'key-chord)
 (key-chord-define-global "fg" 'forward-word)
