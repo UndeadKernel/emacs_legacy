@@ -10,6 +10,11 @@
 (global-set-key (kbd "<C-S-left>")  'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
+;;------------------------- EIN --------------------------
+(add-to-list 'load-path "~/.emacs.d/plugins/ein/lisp")
+(require 'ein-loaddefs)
+(require 'ein)
+
 ;;------------------------ Magit -------------------------
 (add-to-list 'load-path "~/.emacs.d/plugins/magit/lisp")
 (autoload 'magit-status "magit" nil t)
