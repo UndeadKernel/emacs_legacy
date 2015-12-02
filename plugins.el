@@ -2,6 +2,14 @@
 (add-to-list 'load-path "~/.emacs.d/plugins")
 
 
+;;------------------- Buffer-Move ------------------------
+; Swap the place of the displayed buffers
+(require 'buffer-move)
+(global-set-key (kbd "<C-S-up>")  'buf-move-up)
+(global-set-key (kbd "<C-S-down>")  'buf-move-down)
+(global-set-key (kbd "<C-S-left>")  'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
 ;;------------------------ Magit -------------------------
 (add-to-list 'load-path "~/.emacs.d/plugins/magit/lisp")
 (autoload 'magit-status "magit" nil t)
