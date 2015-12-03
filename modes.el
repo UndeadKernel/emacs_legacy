@@ -82,6 +82,8 @@
 (setq TeX-parse-self t); Enable parse on load.
 (setq TeX-auto-save t); Enable parse on save.
 (setq-default TeX-master nil)
+(setq TeX-auto-local ".auctex-auto")
+(setq TeX-style-local ".auctex-style")
 
 ; Item indentation.
 (setq LaTeX-item-indent 0)
