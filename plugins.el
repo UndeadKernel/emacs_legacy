@@ -47,7 +47,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/async")
 (require 'helm-config)
 (require 'helm-files)
-(require 'helm-match-plugin)
+;(require 'helm-match-plugin)
 (require 'helm-misc)
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-buffers-fuzzy-matching           t

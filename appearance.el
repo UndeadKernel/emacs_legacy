@@ -17,9 +17,10 @@
 
 ;; Load Theme
 (add-to-list 'load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (if gui-window-system
     (require 'twilight-anti-bright-theme)
-    (require 'tomorrow-night-paradise-theme))
+    (load-theme 'seti t))
 
 ;; Nyan cat magic
 (add-to-list 'load-path "~/.emacs.d/plugins/nyan")
@@ -187,8 +188,9 @@
 
 ;; Customize line numbers - In gui mode the fringe is the spacer between line
 ;; numbers and code, while in console mode we add an extra space for it.
-(if gui-window-system (setq linum+-dynamic-format " %%%dd")
-  (setq linum+-dynamic-format " %%%dd "))
+(if gui-window-system
+    (setq linum+-dynamic-format " %%%dd")
+    (setq linum+-dynamic-format " %%%dd "))
 
 ;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
 ;; use a eval-after-load hook to set it to "dynamic".
