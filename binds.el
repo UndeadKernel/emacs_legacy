@@ -4,6 +4,10 @@
 (global-set-key "\M-n" 'my-down-scroll)
 (global-set-key "\M-p" 'my-up-scroll)
 
+; Delete words without changing the kill-ring
+(global-set-key (kbd "M-d") 'my-delete-word)
+(global-set-key (kbd "<M-backspace>") 'my-backward-delete-word)
+
 ; Work with macros
 (defun toggle-kbd-macro-recording-on ()
   "One-key keyboard macros: turn recording on."
@@ -23,16 +27,10 @@
 (global-set-key '[(f1)]       'call-last-kbd-macro)
 (global-set-key '[(shift f1)] 'toggle-kbd-macro-recording-on)
 
-; Save File
-(global-set-key [f2] 'save-buffer)
-
-; Open file
-(global-set-key [f3] 'find-file)
-
 ; Search and Replace
 (global-set-key [f4] 'query-replace)
 
-; Go to line
+; Refresh a buffer
 (global-set-key [f5] 'revert-buffer)
 
 ; Execute shell
