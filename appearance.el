@@ -13,8 +13,16 @@
 ;; (set-face-attribute 'default nil :family "Menlo" :height 100)
 ;; (set-face-attribute 'default nil :family "Inconsolata" :height 110)
 
-;; Change the appearance in GUI and terminal windows
+;; Change the appearance in GUI and terminal frames
 (add-to-list 'load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(if (display-graphic-p)
+    (progn
+      (require 'twilight-anti-bright-theme)
+      (load-theme 'twilight-anti-bright t))
+  (progn
+    (load-theme 'seti t)))
 
 ;; Failed attempt at having different themes for the terminal and X with daemon emacs.
 ;; (require 'load-theme-buffer-local)
@@ -42,13 +50,6 @@
 ;; (add-hook 'after-make-frame-functions 'inmy-change-theme)
 
 ; Load theme when emacs is started as standalone.
-
-(if (display-graphic-p)
-    (progn
-      (require 'twilight-anti-bright-theme)
-      (load-theme 'twilight-anti-bright t))
-  (progn
-    (require 'tomorrow-night-paradise-theme)))
 
 ;; Nyan cat magic
 (add-to-list 'load-path "~/.emacs.d/plugins/nyan")
@@ -215,8 +216,9 @@
 
 ;; Customize line numbers - In gui mode the fringe is the spacer between line
 ;; numbers and code, while in console mode we add an extra space for it.
-(if gui-window-system (setq linum+-dynamic-format " %%%dd")
-  (setq linum+-dynamic-format " %%%dd "))
+(if gui-window-system
+    (setq linum+-dynamic-format " %%%dd")
+    (setq linum+-dynamic-format " %%%dd "))
 
 ;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
 ;; use a eval-after-load hook to set it to "dynamic".
