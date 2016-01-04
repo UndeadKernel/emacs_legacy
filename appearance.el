@@ -3,23 +3,52 @@
 ;; Disable splash page
 (setq inhibit-startup-message t)
 
-;; Set default font (from a set of fonts to choose).
-(if gui-window-system
-    ;;; Large
-    (set-face-attribute 'default nil :family "Inconsolata" :height 110)
-    ;; (set-face-attribute 'default nil :family "Monaco" :height 110)
-    ;; (set-face-attribute 'default nil :family "Menlo" :height 110)
+;; Set the default font
+;; Large
+(set-face-attribute 'default nil :family "Inconsolata" :height 110)
+;; (set-face-attribute 'default nil :family "Monaco" :height 110)
+;; (set-face-attribute 'default nil :family "Menlo" :height 110)
+;; Small
+;; (set-face-attribute 'default nil :family "Monaco" :height 100)
+;; (set-face-attribute 'default nil :family "Menlo" :height 100)
+;; (set-face-attribute 'default nil :family "Inconsolata" :height 110)
 
-    ;;; Small
-    ;; (set-face-attribute 'default nil :family "Monaco" :height 100)
-    ;; (set-face-attribute 'default nil :family "Menlo" :height 100)
-)
-
-;; Load Theme
+;; Change the appearance in GUI and terminal windows
 (add-to-list 'load-path "~/.emacs.d/themes")
-(if gui-window-system
-    (require 'twilight-anti-bright-theme)
-    (require 'tomorrow-night-paradise-theme))
+
+;; Failed attempt at having different themes for the terminal and X with daemon emacs.
+;; (require 'load-theme-buffer-local)
+;; ; GUI theme
+;; (require 'twilight-anti-bright-theme)
+;; ;(load-theme 'twilight-anti-bright t t)
+;; ; Console theme
+;; (require 'tomorrow-night-paradise-theme)
+;; ;(load-theme 'tomorrow-night-paradise t t)
+
+;; ; Load the theme when using emacs in daemon mode.
+;; (defun inmy-change-theme (frame)
+;;   (select-frame frame)
+;;   (if (display-graphic-p)
+;;       (progn
+;;         ;; (disable-theme 'tomorrow-night-paradise)
+;;         ;; (enable-theme 'twilight-anti-bright)
+;;         (load-theme-buffer-local 'twilight-anti-bright (current-buffer))
+;;         (tool-bar-mode -1))
+;;     (progn
+;;       ;; (disable-theme 'twilight-anti-bright)
+;;       ;; (enable-theme  'tomorrow-night-paradise)
+;;       (load-theme-buffer-local 'tomorrow-night-paradise (current-buffer))
+;;       (tool-bar-mode t))))
+;; (add-hook 'after-make-frame-functions 'inmy-change-theme)
+
+; Load theme when emacs is started as standalone.
+
+(if (display-graphic-p)
+    (progn
+      (require 'twilight-anti-bright-theme)
+      (load-theme 'twilight-anti-bright t))
+  (progn
+    (require 'tomorrow-night-paradise-theme)))
 
 ;; Nyan cat magic
 (add-to-list 'load-path "~/.emacs.d/plugins/nyan")
@@ -169,9 +198,8 @@
 ;; Enable menu-bar
 (menu-bar-mode -1)
 
-;; Disable toolbar
-(if gui-window-system
-    (tool-bar-mode -1))
+;; Disable the toolbar
+(if gui-window-system (tool-bar-mode -1))
 
 ;; Disable Scrollbar
 (set-scroll-bar-mode 'nil)

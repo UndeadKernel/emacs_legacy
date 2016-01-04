@@ -1,6 +1,28 @@
 ;;---------------------- PATH ---------------------------
+; Main plugins path
 (add-to-list 'load-path "~/.emacs.d/plugins")
 
+
+;;---------------------- Popwin --------------------------
+; Automatically manage popup windows that sometimes remain after using them
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+(setq popwin:close-popup-window-timer-interval 0.5)
+;; (push '("^\\*helm.*\\*$" :height 0.5 :regexp t :position bottom) popwin:special-display-config)
+;; (push '("helm" :height 0.5 :regexp t :position bottom) popwin:special-display-config)
+(push '("*Swoop*" :height 0.5 :position bottom) popwin:special-display-config)
+(push '("*Warnings*" :height 0.5) popwin:special-display-config)
+(push '("*Procces List*" :height 0.5) popwin:special-display-config)
+(push '("*Messages*" :height 0.5) popwin:special-display-config)
+(push '("*Backtrace*" :height 0.5) popwin:special-display-config)
+(push '("*Compile-Log*" :height 0.5 :noselect t) popwin:special-display-config)
+(push '("*Remember*" :height 0.5) popwin:special-display-config)
+(push '("*All*" :height 0.5) popwin:special-display-config)
+(push '(flycheck-error-list-mode :height 0.5 :regexp t :position bottom) popwin:special-display-config)
+;; direx
+(push '(direx:direx-mode :position left :width 40 :dedicated t)
+      popwin:special-display-config)
+(provide 'init-popwin)
 
 ;;------------------- Buffer-Move ------------------------
 ; Swap the place of the displayed buffers
@@ -27,31 +49,15 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;--------------------- Key Chords -----------------------
-(require 'key-chord)
-(key-chord-define-global "fg" 'forward-word)
-(key-chord-define-global "df" 'backward-word)
-(key-chord-define-global "hj" 'undo)
-(key-chord-mode 1)
+;; (require 'key-chord)
+;; (key-chord-define-global "fg" 'forward-word)
+;; (key-chord-define-global "df" 'backward-word)
+;; (key-chord-define-global "hj" 'undo)
+;; (key-chord-mode 1)
 
 ;;------------------- Switch Window ----------------------
 (require 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)
-
-;;-------------------- Workgroups ------------------------
-(require 'workgroups2)
-;; Prefix key
-(setq wg-prefix-key (kbd "C-c w"))
-(setq wg-session-file "~/.emacs.d/.workgroups")
-;; Keyboard shortcuts - load, save, switch
-(global-set-key (kbd "<pause>")     'workgroups-mode)
-(global-set-key (kbd "C-<pause>")   'wg-save-session)
-(global-set-key (kbd "s-z")         'wg-switch-to-workgroup)
-(global-set-key (kbd "s-/")         'wg-switch-to-previous-workgroup)
-(set-face-attribute 'wg-brace-face nil :inherit font-lock-builtin-face :weight 'normal :height 0.8)
-(set-face-attribute 'wg-divider-face nil :inherit font-lock-builtin-face :weight 'normal :height 0.8)
-(set-face-attribute 'wg-mode-line-face nil :weight 'thin :height 0.8)
-;; Do not start it by default.
-;(workgroups-mode 1)
 
 ;;--------------------- linnum+ -------------------------
 ;; Smart line numbers
@@ -65,14 +71,14 @@
 (require 'helm-match-plugin)
 (require 'helm-misc)
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-      helm-buffers-fuzzy-matching           t
+      helm-buffers-fuzzy-matching           nil
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+(define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ;; Ignore some files or buffers when browsing.
 (setq helm-ff-skip-boring-files t)
@@ -111,6 +117,24 @@
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
+;;-------------------- Workgroups ------------------------
+(require 'workgroups2)
+;; Prefix key
+(setq wg-prefix-key (kbd "C-c w"))
+(setq wg-session-file "~/.emacs.d/.workgroups")
+;; Keyboard shortcuts - load, save, switch
+(global-set-key (kbd "<pause>")     'workgroups-mode)
+(global-set-key (kbd "C-<pause>")   'wg-save-session)
+(global-set-key (kbd "s-z")         'wg-switch-to-workgroup)
+(global-set-key (kbd "s-/")         'wg-switch-to-previous-workgroup)
+(set-face-attribute 'wg-brace-face nil :inherit font-lock-builtin-face :weight 'normal :height 0.8)
+(set-face-attribute 'wg-divider-face nil :inherit font-lock-builtin-face :weight 'normal :height 0.8)
+(set-face-attribute 'wg-mode-line-face nil :weight 'thin :height 0.8)
+; When using emacs as a daemon, do not load the WGs automatically.
+;(setq wg-use-default-session-file nil)
+;; Do not start it by default.
+;(workgroups-mode 1)
+
 ;;----------------------- IDO ---------------------------
 ;; (require 'ido)
 ;; (ido-mode)
@@ -125,11 +149,12 @@
 ;(setq mf-max-width 1920)
 ;(add-hook 'window-setup-hook 'maximize-frame t)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;-------------------- Yasnippet ------------------------
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
-(yas-reload-all)
+;(yas-reload-all)
 (yas-global-mode 1)
 ; Display a popup for the available options.
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete/lib/popup")
