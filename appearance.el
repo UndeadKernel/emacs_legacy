@@ -1,8 +1,11 @@
-;; Taken from https://github.com/jimeh/.emacs.d and edited by me.
+;;----------------------- Cursor ------------------------
+(setq-default cursor-type 'hollow)
 
+;; Taken from https://github.com/jimeh/.emacs.d and edited by me.
 ;; Disable splash page
 (setq inhibit-startup-message t)
 
+;;----------------------- Fonts ------------------------
 ;; Set the default font
 ;; Large
 (set-face-attribute 'default nil :family "Inconsolata" :height 110)
@@ -13,6 +16,8 @@
 ;; (set-face-attribute 'default nil :family "Menlo" :height 100)
 ;; (set-face-attribute 'default nil :family "Inconsolata" :height 110)
 
+
+;;----------------------- Theme ------------------------
 ;; Change the appearance in GUI and terminal frames
 (add-to-list 'load-path "~/.emacs.d/themes")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -233,6 +238,8 @@
 
 ;; Cursor
 (blink-cursor-mode t)
+; Never stop blinking the cursor. Default: stop after 10 blinks.
+(setq blink-cursor-blinks 0)
 (setq initial-frame-alist
       (cons '(cursor-type . bar) (copy-alist initial-frame-alist)))
 (setq default-frame-alist
@@ -264,3 +271,44 @@
 ;;   (let ((my-linum-current-line-number (line-number-at-pos)))
 ;;     ad-do-it))
 ;; (ad-activate 'linum-update)
+
+;;----------------------- White space Mode ----------------------
+;; display only tails of lines longer than 110 columns, tabs and
+;; trailing white spaces
+(require 'whitespace)
+(setq whitespace-line-column 110)
+(setq-default whitespace-style '(face tabs trailing lines-tail))
+
+;; face for long lines' tails
+(set-face-attribute 'whitespace-line nil
+                    :background "#31191f"
+                    :foreground "yellow"
+                    :weight 'bold)
+
+;; face for Tabs
+(set-face-attribute 'whitespace-tab nil
+                    :background "#31191f"
+                    :foreground "yellow"
+                    :weight 'bold)
+;; face for spaces
+(set-face-attribute 'whitespace-trailing nil
+                    :background "#31191f"
+                    :foreground "yellow"
+                    :weight 'bold)
+
+;; Customize Whitespace Characters
+;;  - Newline: \u00AC = ¬
+;;  - Tab:     \u2192 = →
+;;             \u00BB = »
+;;             \u25B6 = ▶
+(setq whitespace-display-mappings
+      (quote ((newline-mark ?\n [?\u00AC ?\n] [?$ ?\n])
+              (tab-mark     ?\t [?\u2192 ?\t] [?\u00BB ?\t] [?\\ ?\t]))))
+
+(setq whitespace-style
+      (quote (face tabs trailing space-before-tab newline
+                   indentation space-after-tab tab-mark newline-mark
+                   empty)))
+
+;; activate minor whitespace mode for all files.
+(global-whitespace-mode t)

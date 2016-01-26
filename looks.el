@@ -1,11 +1,14 @@
-;;---------------------- Formato -----------------------
+;;----------------------- Cursor ------------------------
+(setq cursor-type "box")
+
+;;----------------------- Fonst ------------------------
 
 ; Font size, type, position, etc...
 ;; (setq default-frame-alist
 ;;       '(
-;; 	(font . "-*-lucidatypewriter-*-*-*-*-14-140-*-*-*-*-*")
-;; 	(frame-title-format '("%b"))
-;; 	))
+;;     (font . "-*-lucidatypewriter-*-*-*-*-14-140-*-*-*-*-*")
+;;     (frame-title-format '("%b"))
+;;     ))
 (set-default-font "Inconsolata-11")
 
 ;;------------------ Emacs Colors ----------------------
@@ -17,6 +20,8 @@
 (set-foreground-color "white") ; Font color
 (set-mouse-color      "black") ; Mouse color
 (set-cursor-color     "blue") ; Cursor color
+
+;;------------------------ Misc Things -----------------------
 
 ; Use color highlighting if supported
 (global-font-lock-mode t)

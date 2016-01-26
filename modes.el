@@ -1,51 +1,6 @@
 ;;------------------------- Markdown Mode -----------------------
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 
-;;----------------------- White space Mode ----------------------
-
-;; display only tails of lines longer than 80 columns, tabs and
-;; trailing white spaces
-(require 'whitespace)
-(setq whitespace-line-column 110)
-(setq-default whitespace-style '(face tabs trailing lines-tail))
-
-;; face for long lines' tails
-(set-face-attribute 'whitespace-line nil
-                    :background "#31191f"
-                    :foreground "yellow"
-                    :weight 'bold)
-
-;; face for Tabs
-(set-face-attribute 'whitespace-tab nil
-                    :background "#31191f"
-                    :foreground "yellow"
-                    :weight 'bold)
-;; face for spaces
-(set-face-attribute 'whitespace-trailing nil
-                    :background "#31191f"
-                    :foreground "yellow"
-                    :weight 'bold)
-
-;; Customize Whitespace Characters
-;;  - Newline: \u00AC = ¬
-;;  - Tab:     \u2192 = →
-;;             \u00BB = »
-;;             \u25B6 = ▶
-(setq whitespace-display-mappings
-      (quote ((newline-mark ?\n [?\u00AC ?\n] [?$ ?\n])
-              (tab-mark     ?\t [?\u2192 ?\t] [?\u00BB ?\t] [?\\ ?\t]))))
-
-(setq whitespace-style
-      (quote (face tabs trailing space-before-tab newline
-                   indentation space-after-tab tab-mark newline-mark
-                   empty)))
-
-;; activate minor whitespace mode for all files.
-(global-whitespace-mode t)
-
-;(add-hook 'js-mode-hook 'whitespace-mode)
-
-
 ;;-------------------------- CC Mode ---------------------------
 ; Changes that apply to all C-like languages such as java, objective-c and awk.
 (add-hook 'c-mode-common-hook

@@ -41,7 +41,7 @@
 ; Allow files to end with a blank line
 (setq require-final-newline t)
 
-;;-----------------------= Mouse ----------------------------
+;;------------------------ Mouse ----------------------------
 
 ; Enable the mouse in a regular terminal
 (cond (window-system

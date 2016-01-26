@@ -44,6 +44,7 @@
 (require 'ein-kernel)
 (require 'ein-kernelinfo)
 (require 'ein-cell)
+(require 'ein-cell-output)
 (require 'ein-worksheet)
 (require 'ein-scratchsheet)
 (require 'ein-notification)
@@ -323,6 +324,7 @@ is newly created or not.  When CALLBACK is specified, buffer is
 **not** brought up by `pop-to-buffer'.  It is caller's
 responsibility to do so.  The current buffer is set to the
 notebook buffer when CALLBACK is called."
+  ;(interactive)
   (unless callback (setq callback #'ein:notebook-pop-to-current-buffer))
   (let ((buffer (ein:notebook-get-opened-buffer url-or-port path)))
     (if (buffer-live-p buffer)
@@ -632,6 +634,7 @@ of NOTEBOOK."
         (push `(nbformat_minor . ,it) data))
     (push `(nbformat . ,(ein:$notebook-nbformat notebook)) data)
     data))
+
 
 (defun ein:write-nbformat3-worksheets (notebook)
   (let ((worksheets (mapcar #'ein:worksheet-to-json
