@@ -44,8 +44,8 @@
     ("461d4bbbf89b292b170d72f7c9da35c39a0c22a7bdf9c20ed6948ad42559b100" "afe63f57e7b8bbc0402093e0812dc98c6a6578764b868b27834a5dacef377238" default)))
  '(doc-view-ghostscript-options
    (quote
-    ("-dSAFER" "-dNOPAUSE" "-sDEVICE=png16m" "-dTextAlphaBits=4" "-dBATCH" "-dGraphicsAlphaBits=4" "-dQUIET" "-r460")) t)
- '(doc-view-resolution 300 t)
+    ("-dSAFER" "-dNOPAUSE" "-sDEVICE=png16m" "-dTextAlphaBits=4" "-dBATCH" "-dGraphicsAlphaBits=4" "-dQUIET" "-r460")))
+ '(doc-view-resolution 300)
  '(wg-mode-line-decor-left-brace "[")
  '(wg-mode-line-decor-right-brace "]")
  '(wg-mode-line-use-faces t))

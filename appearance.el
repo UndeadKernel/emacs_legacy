@@ -1,5 +1,5 @@
 ;;----------------------- Cursor ------------------------
-(setq-default cursor-type 'hollow)
+(setq-default cursor-type 'box)
 
 ;; Taken from https://github.com/jimeh/.emacs.d and edited by me.
 ;; Disable splash page

@@ -563,6 +563,19 @@ everything the log buffer.  You can reset the patch and log level with
 Change Log
 ==========
 
+v0.8.0
+------
+
+* Support for multiple Jupyter kernels. EIN still thinks everything is
+  Python code, but it should be possible to create notebooks that run
+  any language supported by a Jupyter kernel.
+
+v0.7.1
+------
+
+* Fix bug saving images in v4 notebook format.
+* Be more graceful handling errors during content saves.
+  
 v0.7
 ----
 
@@ -579,7 +592,7 @@ v0.6
 v0.5
 ----
 
-* Add support for stdin channel. This mean getpass.getpass() and the ipdb work in no
+* Add support for stdin channel. This mean getpass.getpass() and the ipdb work in notebook buffers.
 
 v0.4
 ----
@@ -591,7 +604,7 @@ v0.4
 * ein-mumamo.el has been moved into its own package, ein-mumamo. This should get rid
   of compilation errors for anyone who does not happen to have nxhtml installed.
 * Restore support for heading level cells with nbformat v4 notebooks.
-* New (buggy) pytools function `ein:pytools-export-buffer` for using nbconvert on a notebook
+* New (buggy) pytools function :el:symbol:`ein:pytools-export-buffer` for using nbconvert on a notebook
   buffer.
 
 v0.3

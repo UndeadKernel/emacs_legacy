@@ -70,16 +70,18 @@
             ; Automatically activate TeX-fold-mode.
             (TeX-fold-mode 1)
             ; Use Latexmk instead of normal LaTeX.
-            (push
-             '("Latexmk" "latexmk -f -pdflatex='pdflatex -file-line-error -synctex=1' -pdf %s" TeX-run-TeX nil t
-               :help "Run Latexmk on file")
-             TeX-command-list)
+            ;; (push
+            ;;  '("Latexmk" "latexmk -f -pdflatex='pdflatex -file-line-error -synctex=1' -pdf %s" TeX-run-TeX nil t
+            ;;    :help "Run Latexmk on file")
+            ;;  TeX-command-list)
             ; Soft wrap lines.
             (set-fill-column 110)
             ;; This next mode inserts soft line breaks instead of hard ones after
             ;; ... a line goes beyond fill-column
             ;(longlines-mode)
             ;(turn-on-auto-fill)
+            ;; (require 'langtool)
+            ;; (setq langtool-language-tool-jar "/usr/share/java/languagetool/languagetool-commandline.jar")
           )
 )
 ; Disable language-specific hyphen insertion.
@@ -230,3 +232,5 @@
     ; Turn on the spellchecker
     (flyspell-mode)
 ))
+; Do not insert a line in between list items
+(setq org-blank-before-new-entry '((heading . auto) (plain-list-item)))

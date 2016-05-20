@@ -6,8 +6,9 @@
 ;;---------------------- Popwin --------------------------
 ; Automatically manage popup windows that sometimes remain after using them
 (require 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
-(setq popwin:close-popup-window-timer-interval 0.5)
+;(setq display-buffer-function 'popwin:display-buffer)
+(setq popwin:close-popup-window-timer-interval 0.1)
+; Buffers to convert to popups
 ;; (push '("^\\*helm.*\\*$" :height 0.5 :regexp t :position bottom) popwin:special-display-config)
 ;; (push '("helm" :height 0.5 :regexp t :position bottom) popwin:special-display-config)
 (push '("*Swoop*" :height 0.5 :position bottom) popwin:special-display-config)
@@ -18,11 +19,10 @@
 (push '("*Compile-Log*" :height 0.5 :noselect t) popwin:special-display-config)
 (push '("*Remember*" :height 0.5) popwin:special-display-config)
 (push '("*All*" :height 0.5) popwin:special-display-config)
+(push '("*Ibuffer*" :height 0.5) popwin:special-display-config)
 (push '(flycheck-error-list-mode :height 0.5 :regexp t :position bottom) popwin:special-display-config)
-;; direx
-(push '(direx:direx-mode :position left :width 40 :dedicated t)
-      popwin:special-display-config)
-(provide 'init-popwin)
+(push '(direx:direx-mode :position left :width 40 :dedicated t) popwin:special-display-config)
+(popwin-mode 1)
 
 ;;------------------- Buffer-Move ------------------------
 ; Swap the place of the displayed buffers
@@ -36,6 +36,11 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/ein/lisp")
 (require 'ein-loaddefs)
 (require 'ein)
+(defun my-ein-load ()
+  (interactive)
+  (ein:notebooklist-open 8888)
+  )
+(global-set-key (kbd "C-c e") 'my-ein-load)
 
 ;;------------------------ Magit -------------------------
 (add-to-list 'load-path "~/.emacs.d/plugins/magit/lisp")
@@ -45,6 +50,9 @@
   (info-initialize)
   (add-to-list 'Info-directory-list
 	       "~/.emacs.d/site-lisp/magit/Documentation/"))
+
+; Highlight words that changed inside a diff.
+(setq  magit-diff-refine-hunk t)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -157,6 +165,26 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/company-mode")
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+; Auto complete keyb
+(global-set-key (kbd "<C-tab>") 'company-complete)
+; Start autocomplete immediately
+(setq company-idle-delay 0)
+; Show numbers in the alternatives
+(setq company-show-numbers t)
+; change the default color to better view in the dark background
+(deftheme jellybeans
+    "Created 2013-11-05.")
+
+(custom-theme-set-faces
+  'jellybeans
+   '(cursor ((t (:background "#b0d0f0"))))
+
+    '(default ((t (:inherit nil :background "#151515" :foreground "#e8e8d3"))))
+
+     ;; company
+     '(company-tooltip ((t (:background "#606060")))))
+
+; This is a comm
 
 ;;--------------------- Auto Complete----------------------
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
