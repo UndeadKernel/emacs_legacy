@@ -96,7 +96,9 @@
 
 ;; RefTeX
 ; Turn on RefTeX for AUCTeX http://www.gnu.org/s/auctex/manual/reftex/reftex_5.html
-(add-hook 'TeX-mode-hook 'turn-on-reftex)
+(require 'reftex)
+;(add-hook 'TeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 
 (eval-after-load 'reftex-vars; Is this construct really needed?
   '(progn
