@@ -56,7 +56,8 @@
   ;; Don't mess with popups
   (advice-add 'balance-windows        :around 'doom*save-popup)
   ;; TODO: deal with this evil command
-  (advice-add 'doom/evil-window-move  :around 'doom*save-popup))
+  ;; (advice-add 'doom/evil-window-move  :around 'doom*save-popup)
+  )
 
 
 ;;

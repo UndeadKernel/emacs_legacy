@@ -9,19 +9,12 @@
 (defvar doom-popup-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map [remap doom/kill-real-buffer] 'doom/popup-close)
+    (define-key map [remap keyboard-quit] 'doom/popup-close-maybe)
     map)
    "Active keymap in popup windows.")
 
-(defvar doom-popup-mode-local-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map [escape] 'doom/popup-close)
-    (define-key map (kbd "ESC") 'doom/popup-close)
-    (define-key map [remap keyboard-quit] 'doom/popup-close)
-    map)
-  "Active keymap in popup windows with ESC or C-g bindings.")
-
 ;; TODO: Decide what to do with this advice
-(advice-add 'doom/evil-window-move :around 'doom*popup-window-move)
+;;(advice-add 'doom/evil-window-move :around 'doom*popup-window-move)
 
 ;;;###autoload
 (defun doom*popup-window-move (orig-fn &rest args)
@@ -88,6 +81,14 @@ window. Returns nil or the popup window."
     (unless dont-redraw (redraw-frame))))
 
 ;;;###autoload
+(defun doom/popup-close-maybe ()
+  "Close the current popup *if* its buffer doesn't have a :noesc rule in
+`doom-popup-rules'."
+  (interactive)
+  (unless (memq :noesc doom-popup-rule)
+    (doom/popup-close)))
+
+;;;###autoload
 (defun doom/popup-close-all (&optional dont-kill dont-redraw)
   "Closes all popups (kill them if DONT-KILL-BUFFERS is non-nil). Then redraw
 the display (unless DONT-REDRAW is non-nil)."
@@ -146,10 +147,7 @@ the display (unless DONT-REDRAW is non-nil)."
                           (cdr it)))
                       doom-popup-rules)))
     (setq doom-last-popup (current-buffer))
-    (setq-local doom-popup-rule rules)
-    (let ((map doom-popup-mode-map))
-      (unless (memq :noesc rules)
-        (use-local-map doom-popup-mode-local-map)))))
+    (setq-local doom-popup-rule rules)))
 
 (provide 'defuns-popups)
 ;;; defuns-popups.el ends here

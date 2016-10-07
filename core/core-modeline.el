@@ -40,7 +40,7 @@ active.")
   "The face used for the left-most bar on the mode-line of an inactive window.")
 
 (defface doom-modeline-count '((t (:inherit mode-line)))
-  "Face for anzu/evil-substitute/evil-search number-of-matches display.")
+  "Face for anzu number-of-matches display.")
 
 (defface doom-modeline-info    '((t (:inherit success)))
   "Face for info-level messages in the modeline. Used by `*vc'.")
@@ -329,29 +329,12 @@ lines are selected, or the NxM dimensions of a block selection."
 (defun *anzu ()
   "Show the current match number and the total number of matches. Requires anzu
 to be enabled."
-  ;; TODO: Make sure this search thing works.
   (when (and active (bound-and-true-p anzu-mode) (bound-and-true-p isearch-mode))
     (propertize
      (format " %s/%d%s "
              anzu--current-position anzu--total-matched
              (if anzu--overflow-p "+" ""))
      'face (if active 'doom-modeline-count 'mode-line-inactive))))
-
-;; TODO: Make this work with visual-regexp or maybe anzu
-;; (defun *evil-substitute ()
-;;   "Show number of :s matches in real time."
-;;   (when (and (evil-ex-p) (evil-ex-hl-active-p 'evil-ex-substitute))
-;;     (propertize
-;;      (let ((range (if evil-ex-range
-;;                       (cons (car evil-ex-range) (cadr evil-ex-range))
-;;                     (cons (line-beginning-position) (line-end-position))))
-;;            (pattern (car-safe (evil-delimited-arguments evil-ex-argument 2))))
-;;        (if pattern
-;;            (format " %s matches "
-;;                    (count-matches pattern (car range) (cdr range))
-;;                    evil-ex-argument)
-;;          " ... "))
-;;      'face (if active 'doom-modeline-count 'mode-line-inactive))))
 
 (defun *iedit ()
   "Show the number of iedit regions matches + what match you're on."
@@ -401,8 +384,6 @@ to be enabled."
                       (*macro-recording)
                       (*selection-info)
                       (*anzu)
-                      ;; TODO: replace this with something nice
-                      ;;(*evil-substitute)
                       (*iedit)
                       ,(if (eq id 'scratch)
                            '(*buffer-project)

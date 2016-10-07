@@ -115,6 +115,37 @@ Kill all buffers so that workgroups2 will wipe its current session.
 
 ;;;***
 
+;;;### (autoloads nil "defuns/defuns-editor" "defuns/defuns-editor.el"
+;;;;;;  (22518 26277 214678 228000))
+;;; Generated autoloads from defuns/defuns-editor.el
+
+(autoload 'doom/mouse-drag-line "defuns/defuns-editor" "\
+
+
+\(fn)" t nil)
+
+(autoload 'doom/mouse-select-line "defuns/defuns-editor" "\
+
+
+\(fn)" t nil)
+
+(autoload 'doom*load-hs-minor-mode "defuns/defuns-editor" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'doom/reselect-paste "defuns/defuns-editor" "\
+
+
+\(fn)" t nil)
+
+(autoload 'doom/delete-forward-word "defuns/defuns-editor" "\
+Delete the word in front of the cursor.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil "defuns/defuns-neotree" "defuns/defuns-neotree.el"
 ;;;;;;  (22514 43697 265247 587000))
 ;;; Generated autoloads from defuns/defuns-neotree.el

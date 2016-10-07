@@ -41,7 +41,7 @@
       core-scratch       ; a perdier scratch buffer
       core-modeline      ; a self-contained mode-line config for masochists
       ;; core-evil          ; come to the dark side, we have cookies
-      ;; core-editor        ; filling the editor-shaped hole in the emacs OS
+      core-editor        ; filling the editor-shaped hole in the emacs OS
       ;; core-docs          ; getting to the documentation
       ;; core-company       ; auto-completion, for the lazy typist
       ;; core-yasnippet     ; snippets, for the lazier typist
@@ -97,5 +97,5 @@
 
       ;; ;;; Personal
       ;; my-commands
-      ;; my-bindings
+      my-bindings
       )
