@@ -42,15 +42,15 @@
       core-modeline      ; a self-contained mode-line config for masochists
       ;; core-evil          ; come to the dark side, we have cookies
       core-editor        ; filling the editor-shaped hole in the emacs OS
-      ;; core-docs          ; getting to the documentation
-      ;; core-company       ; auto-completion, for the lazy typist
-      ;; core-yasnippet     ; snippets, for the lazier typist
-      ;; core-autoinsert    ; file templates, for the laziest typist
-      ;; core-flycheck      ; get tazed for every semicolon you forget
-      ;; core-vcs           ; remember remember, that commit in November
+      core-docs          ; getting to the documentation
+      core-company       ; auto-completion, for the lazy typist
+      core-yasnippet     ; snippets, for the lazier typist
+      core-autoinsert    ; file templates, for the laziest typist
+      core-flycheck      ; get tazed for every semicolon you forget
+      core-vcs           ; remember remember, that commit in November
       ;; core-ivy           ; a search engine for life and love
       ;; core-workgroups    ; cure Emacs alzheimers + tab emulation
-      ;; core-eval          ; run code, run + REPL support
+      core-eval          ; run code, run + REPL support
 
       ;; ;;; Dev environments
       ;; module-asm         ; Assembly

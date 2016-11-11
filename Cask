@@ -89,39 +89,36 @@
 (depends-on "fancy-narrow")
 (depends-on "goto-last-change")
 (depends-on "imenu-list")
-(depends-on "pcre2el")
-(depends-on "rotate-text" :git "https://github.com/debug-ito/rotate-text.el")
 (depends-on "smart-forward")
 (depends-on "smartparens")
-(depends-on "swiper")
-(depends-on "wgrep")
+;(depends-on "swiper")
+;(depends-on "wgrep")
 
 ;; ;; Documentation --- core/core-docs.el
-;; (depends-on "dash-at-point")
+(depends-on "zeal-at-point")
 
 ;; ;; Completion --- core/core-company.el
-;; (depends-on "company")
-;; (depends-on "company-dict")
-;; (depends-on "company-quickhelp")
-;; (depends-on "company-statistics")
+(depends-on "company")
+(depends-on "company-dict")
+(depends-on "company-quickhelp")
+(depends-on "company-statistics")
 
 ;; ;; Yasnippet --- core/core-yasnippet.el
-;; (depends-on "auto-yasnippet")
-;; (depends-on "yasnippet")
+(depends-on "auto-yasnippet")
+(depends-on "yasnippet")
 
 ;; Flycheck --- core/core-flycheck.el
+(depends-on "pkg-info")
 (depends-on "flycheck")
-(depends-on "flycheck-pos-tip")
 (depends-on "flyspell")
 
 ;; ;; VCS --- core/core-vcs.el
-;; (depends-on "browse-at-remote")
-;; (depends-on "evil-magit")
-;; (depends-on "git-gutter-fringe")
-;; (depends-on "git-messenger")
-;; (depends-on "gitconfig-mode")
-;; (depends-on "gitignore-mode")
-;; (depends-on "magit")
+(depends-on "browse-at-remote")
+(depends-on "git-gutter-fringe")
+(depends-on "git-messenger")
+(depends-on "gitconfig-mode")
+(depends-on "gitignore-mode")
+(depends-on "magit")
 
 ;; ;; Ivy -- core/core-ivy.el
 ;; (depends-on "ivy")
@@ -139,8 +136,8 @@
 ;; ;;(depends-on "helm-swoop")
 
 ;; ;; Code evaluation/REPLs -- core/core-eval.el
-;; (depends-on "quickrun")
-;; (depends-on "repl-toggle")
+(depends-on "quickrun")
+(depends-on "repl-toggle")
 
 ;; ;; Sessions --- core/core-sessions.el
 ;; (depends-on "workgroups2")

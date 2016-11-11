@@ -142,20 +142,7 @@
                 avy-background t))
 
 (use-package ace-link
-  :commands (ace-link-help ace-link-info)
-  ;; :config
-  ;; (ace-link-setup-default)
-  ;; (require 'avy)
-  ;; (add-to-list 'avy-styles-alist
-  ;;              '(ace-link-info . at))
-  ;; (add-to-list 'avy-styles-alist
-  ;;              '(ace-link-help . post))
-  )
-
-
-(use-package command-log-mode
-  :commands (clm/command-log-buffer command-log-mode global-command-log-mode)
-  :config (setq command-log-mode-is-global t))
+  :commands (ace-link-help ace-link-info))
 
 (use-package dumb-jump
   :commands (dumb-jump-go dumb-jump-quick-look dumb-jump-back)
@@ -178,7 +165,6 @@
   :commands (hs-minor-mode hs-toggle-hiding hs-already-hidden-p)
   :config (setq hs-isearch-open t)
   :init
-  (advice-add 'evil-toggle-fold :before 'doom*load-hs-minor-mode)
   ;; Prettify code folding in emacs
   (define-fringe-bitmap 'hs-marker [16 48 112 240 112 48 16] nil nil 'center)
   (defface hs-face '((t (:background "#ff8")))
@@ -206,51 +192,28 @@
   :config
   (setq imenu-list-mode-line-format nil
         imenu-list-position 'right
-        imenu-list-size 32)
-  ;; (map! :map imenu-list-major-mode-map
-  ;;       :n [escape] 'doom/imenu-list-quit
-  ;;       :n "RET" 'imenu-list-goto-entry
-  ;;       :n "SPC" 'imenu-list-display-entry
-  ;;       :n [tab] 'hs-toggle-hiding)
-  )
+        imenu-list-size 32))
 
 (use-package re-builder
   :commands (re-builder reb-mode-buffer-p)
-  :init (add-hook 'reb-mode-hook 'doom|reb-cleanup)
   :config
-  (evil-set-initial-state 'reb-mode 'insert)
-  (setq reb-re-syntax 'string)
-  ;; (map! :map rxt-help-mode-map
-  ;;       :n [escape] 'kill-buffer-and-window
-  ;;       :map reb-mode-map
-  ;;       :n "C-g" 'reb-quit
-  ;;       :n [escape] 'reb-quit
-  ;;       :n [backtab] 'reb-change-syntax)
-  )
-
-(use-package pcre2el :commands (rxt-quote-pcre))
-
-(use-package rotate-text
-  :commands (rotate-text rotate-text-backward)
-  :config (push '("true" "false") rotate-text-words))
+  (setq reb-re-syntax 'string))
 
 (use-package smart-forward
-  :commands (smart-up smart-down smart-left smart-right))
+  :commands (smart-up smart-down smart-backward smart-right))
 
 (use-package smartparens
   :config
-  (setq sp-autowrap-region nil          ; let evil-surround handle this
-        sp-highlight-pair-overlay nil
+  (setq sp-autowrap-region t
+        sp-highlight-pair-overlay t
         sp-cancel-autoskip-on-backward-movement nil
         sp-show-pair-delay 0
         sp-max-pair-length 5)
 
   (smartparens-global-mode 1)
+  ; TODO: fix the font style of the line numbers when the first character is a parenthesis and is highlighted
+  (show-smartparens-global-mode t)
   (require 'smartparens-config)
-
-  ;; Smartparens interferes with Replace mode
-  (add-hook 'evil-replace-state-entry-hook 'turn-off-smartparens-mode)
-  (add-hook 'evil-replace-state-exit-hook  'turn-on-smartparens-mode)
 
   ;; Auto-close more conservatively
   (sp-pair "'" nil :unless '(sp-point-after-word-p))
@@ -269,108 +232,18 @@
   (sp-with-modes '(xml-mode nxml-mode php-mode)
     (sp-local-pair "<!--" "-->"   :post-handlers '(("| " "SPC")))))
 
-(use-package swiper :commands (swiper swiper-all))
-
-(use-package wgrep
-  :commands (wgrep-setup wgrep-change-to-wgrep-mode)
-  :config
-  (def-popup! "^\\*ivy-occur counsel-ag" :align below :size 25 :select t :regexp t)
-  (setq wgrep-auto-save-buffer t)
-  (advice-add 'wgrep-abort-changes :after 'doom/popup-close)
-  (advice-add 'wgrep-finish-edit :after 'doom/popup-close))
-
+;; TODO: Will I replace this with swiper-helm, maybe not.
+;; (use-package swiper :commands (swiper swiper-all))
 
 ;;
-;; Keybinding fixes
+;; Keybinding
 ;;
-
-;; This section is dedicated to bindings that "fix" certain keys so that they
-;; behave more like vim (or how I like it).
 
 ;; Line-wise mouse selection on margin
 (map! "<left-margin> <down-mouse-1>" 'doom/mouse-drag-line
       "<left-margin> <mouse-1>"      'doom/mouse-select-line
       "<left-margin> <drag-mouse-1>" 'doom/mouse-select-line)
 
-;; Restores "dumb" indentation to the tab key. This rustles a lot of peoples'
-;; jimmies, apparently, but it's how I like it.
-;; (map! :i "<tab>"     'doom/dumb-indent
-;;       :i "<backtab>" 'doom/dumb-dedent
-;;       :i "<C-tab>"   'indent-for-tab-command
-;;       :i "<A-tab>"   (λ! (insert "\t"))
-;;       ;; No dumb-tab for lisp
-;;       (:map lisp-mode-map        :i [remap doom/dumb-indent] 'indent-for-tab-command)
-;;       (:map emacs-lisp-mode-map  :i [remap doom/dumb-indent] 'indent-for-tab-command)
-;;       ;; Highjacks space/backspace to:
-;;       ;;   a) eat spaces on either side of the cursor, if present ( | ) -> (|)
-;;       ;;   b) allow backspace to delete space-indented blocks intelligently
-;;       ;;   c) but do none of this when inside a string
-;;       :i "SPC"                          'doom/inflate-space-maybe
-;;       :i [remap delete-backward-char]   'doom/deflate-space-maybe
-;;       :i [remap newline]                'doom/newline-and-indent
-;;       ;; Smarter move-to-beginning-of-line
-;;       :i [remap move-beginning-of-line] 'doom/move-to-bol
-;;       ;; Restore bash-esque keymaps in insert mode; C-w and C-a already exist
-;;       :i "C-e" 'doom/move-to-eol
-;;       :i "C-u" 'doom/backward-kill-to-bol-and-indent
-;;       ;; Fixes delete
-;;       :i "<kp-delete>" 'delete-char
-;;       ;; Fix osx keymappings and then some
-;;       :i "<M-left>"   'doom/move-to-bol
-;;       :i "<M-right>"  'doom/move-to-eol
-;;       :i "<M-up>"     'beginning-of-buffer
-;;       :i "<M-down>"   'end-of-buffer
-;;       :i "<C-up>"     'smart-up
-;;       :i "<C-down>"   'smart-down
-;;       ;; Fix emacs motion keys
-;;       :i "A-b"      'evil-backward-word-begin
-;;       :i "A-w"      'evil-forward-word-begin
-;;       :i "A-e"      'evil-forward-word-end
-;;       ;; Textmate-esque insert-line before/after
-;;       :i "<M-return>"    'evil-open-below
-;;       :i "<S-M-return>"  'evil-open-above
-;;       ;; insert lines in-place)
-;;       :n "<M-return>"    (λ! (save-excursion (evil-insert-newline-below)))
-;;       :n "<S-M-return>"  (λ! (save-excursion (evil-insert-newline-above)))
-;;       ;; Make ESC quit all the things
-;;       (:map (minibuffer-local-map
-;;              minibuffer-local-ns-map
-;;              minibuffer-local-completion-map
-;;              minibuffer-local-must-match-map
-;;              minibuffer-local-isearch-map)
-;;         [escape] 'abort-recursive-edit
-;;         "C-r" 'evil-paste-from-register)
-
-;;       (:map (evil-ex-search-keymap read-expression-map)
-;;         "C-w" 'backward-kill-word
-;;         "C-u" 'backward-kill-sentence
-;;         "C-b" 'backward-word)
-
-;;       (:map evil-ex-completion-map "C-a" 'move-beginning-of-line)
-
-;;       (:after view
-;;         (:map view-mode-map "<escape>" 'View-quit-all))
-
-;;       (:after help-mode
-;;         (:map help-map
-;;           ;; Remove slow/annoying help subsections
-;;           "h" nil
-;;           "g" nil)))
-
-;; Fix certain keys in the terminal
-(unless window-system
-  (map! :map key-translation-map
-        "TAB" [tab]))
-
-;; Common unicode characters
-(map! :map key-translation-map
-      "A-o" (kbd "ø")
-      "A-O" (kbd "Ø")
-      "A--" (kbd "–")
-      "A-_" (kbd "—")
-      "A-8" (kbd "•")
-      "A-*" (kbd "°")
-      "A-p" (kbd "π"))
 
 (provide 'core-editor)
 ;;; core-editor.el ends here

@@ -11,7 +11,50 @@
             '(call-interactively 'counsel-find-file))))))
 
 (map!
+ ; Editor related bindings
+ "C-a" 'doom/move-to-bol
+ ; Misc plugins
+ "<f9>" 'doom/neotree
  "C-x o" 'ace-window
+ "C-=" 'er/expand-region
+ "C-c ." 'goto-last-change
+ "C-'" 'imenu-list-minor-mode
+ ; Smart-forward
+ "M-<up>" 'smart-up
+ "M-<down>" 'smart-down
+ "M-<left>" 'smart-backward
+ "M-<right>" 'smart-forward
+ ; smartparens
+ "C-M-a" 'sp-beginning-of-sexp
+ "C-M-e" 'sp-end-of-sexp
+ ; Company mode
+ "<C-tab>" 'doom/company-complete
+ ; git-messenger
+ " C-x v p" 'git-messenger:popup-message
+ (:after company
+         (:map company-active-map
+          "C-o"        'company-search-kill-others
+          "C-n"        'company-select-next
+          "C-p"        'company-select-previous
+          "C-h"        'company-quickhelp-manual-begin
+          "C-S-h"      'company-show-doc-buffer
+          "C-S-s"      'company-search-candidates
+          "C-s"        'company-filter-candidates
+          "<C-tab>"    'company-complete-common-or-cycle
+          [tab]        'doom/company-complete-common-or-complete-full
+          [backtab]    'company-select-previous
+          "C-g"        (λ! (company-abort))
+          [C-return]   'counsel-company)
+        (:map company-search-map
+          "C-n"        'company-search-repeat-forward
+          "C-p"        'company-search-repeat-backward
+          "C-g"     'company-search-abort))
+ (:map prog-mode-map
+       "M-RET" 'emr-show-refactor-menu)
+ (:after re-builder
+         (:map reb-mode-map
+               "C-g" 'reb-quit
+               [backtab] 'reb-change-syntax))
  (:after help-mode
          (:map help-map
                "e" 'doom/popup-messages)
@@ -19,8 +62,39 @@
                "o" 'ace-link-help))
  (:after info
          (:map Info-mode-map
-               "o" 'ace-link-info)))
-
+               "o" 'ace-link-info))
+ ; Yasnippet
+ (:after yasnippet
+         ; keymap while editing an inserted snippet
+         (:map yas-keymap
+               "C-e"           'doom/yas-goto-end-of-field
+               "C-a"           'doom/yas-goto-start-of-field
+               "<S-tab>"       'yas-prev-field
+               "<M-backspace>" 'doom/yas-clear-to-sof
+               [backspace]     'doom/yas-backspace
+               "<delete>"      'doom/yas-delete)
+         ; keymap while yasnippet is active
+         (:map yas-minor-mode-map
+               "C-c TAB" 'doom/yas-expand-or-insert))
+ ; Flycheck
+ (:after flycheck
+         (:map flycheck-error-list-mode-map
+               "C-n" 'flycheck-error-list-next-error
+               "C-p" 'flycheck-error-list-previous-error
+               "RET" 'flycheck-error-list-goto-error))
+ ; git-messenger
+ (:after git-messenger
+         (:map git-messenger-map
+         "C-g"  'git-messenger:popup-close
+         "q"    'git-messenger:popup-close))
+ ; repl-toggle
+ (:after repl-toggle
+         (:map repl-toggle-mode-map
+               "C-n" 'comint-next-input
+               "C-p" 'comint-previous-input
+               "<down>" 'comint-next-input
+               "<up>"   'comint-previous-input))
+ )
 ;; (map! "<f9>" 'what-face
 ;;       ;; Essential
 ;;       "M-x"  'smex

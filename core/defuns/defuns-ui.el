@@ -1,28 +1,5 @@
 ;;; defuns-ui.el
 
-;; TODO: Will I remove this or not?
-;; ;;;###autoload (autoload 'doom:toggle-fullscreen "defuns-ui" nil t)
-;; ;;;###autoload (autoload 'doom:set-columns "defuns-ui" nil t)
-;; (after! evil
-;;   (evil-define-command doom:set-columns (&optional bang columns)
-;;     "Adjusts visual-fill-column-width on the fly."
-;;     (interactive "<!><a>")
-;;     (if (or (= (length columns) 0) bang)
-;;         (progn
-;;           (setq visual-fill-column-width 80)
-;;           (when visual-fill-column-mode
-;;             (visual-fill-column-mode -1)))
-;;       (setq columns (string-to-number columns))
-;;       (when (> columns 30)
-;;         (setq visual-fill-column-width columns)))
-;;     (if visual-fill-column-mode
-;;         (visual-fill-column--adjust-window)
-;;       (visual-fill-column-mode 1)))
-
-;;   (evil-define-command doom:toggle-fullscreen ()
-;;     (interactive)
-;;     (set-frame-parameter nil 'fullscreen (if (not (frame-parameter nil 'fullscreen)) 'fullboth))))
-
 ;;;###autoload
 (defun doom/reset-theme ()
   (interactive)

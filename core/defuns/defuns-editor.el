@@ -40,23 +40,13 @@
       (setq *linum-mdown-line* nil))))
 
 ;;;###autoload
-(defun doom*load-hs-minor-mode ()
-  (hs-minor-mode 1)
-  (advice-remove 'evil-toggle-fold 'doom-load-hs-minor-mode))
-
-;;;###autoload
-(defun doom/reselect-paste ()
+(defun doom/move-to-bol ()
+  "Move the cursor to the indentation point or, if already there,
+to the beginning of the line."
   (interactive)
-  (evil-goto-mark ?\[)
-  (evil-visual-state)
-  (evil-goto-mark ?\]))
+  (when (= (point) (progn (back-to-indentation) (point)))
+    (beginning-of-line)))
 
-;;;###autoload
-(defun doom/delete-forward-word ()
-  "Delete the word in front of the cursor."
-  (interactive)
-  (evil-forward-word)
-  (evil-delete-backward-word))
 
 (provide 'defuns-editor)
 ;;; defuns-editor.el ends here

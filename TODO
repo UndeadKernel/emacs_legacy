@@ -1,0 +1,32 @@
+* TODO Files [100%]
+- [X] core/core-yasnippet.el
+- [X] core/defuns/defuns-yasnippet.el
+- [X] core/defuns/macros-yasnippet.el
+- [X] core/core-autoinsert.el
+- [X] core/defuns/defuns-auto-insert.el
+- [X] core/defuns/defuns-flycheck.el
+- [X] core/core-flycheck.el
+- [X] core/core-vcs.el
+- [X] core/core-eval.el
+- [X] core/defuns/defuns-eval.el
+- [X] core/defuns/macros-eval.el
+
+* TODO Changes
+- [ ] defuns-docs.el - add lookup function
+- [ ] defuns-buffers.el - choose if some operators stay or not
+- [ ] defuns-eval.el - add keybindings for the build and eval commands
+
+* Test [50%]
+- [X] Yasnippet
+- [ ] Autocomplete
+- [ ] git-messenger
+
+* Enhancements [%]
+- [ ] Snippet selection with helm
+- [ ] Assign keybind to doom/flycheck-errors
+
+* Upstream bugs to report [%]
+- [ ] Flycheck needs to add (require 'pkg-info)
+- [ ] doom:eval-region-and-replace
+  + error in process sentinel: ad-Advice-select-window: Wrong type argument: window-live-p, nil
+  + error in process sentinel: Wrong type argument: window-live-p, nil
