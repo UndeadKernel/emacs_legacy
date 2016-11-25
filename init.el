@@ -49,8 +49,8 @@
       core-flycheck      ; get tazed for every semicolon you forget
       core-vcs           ; remember remember, that commit in November
       ;; core-ivy           ; a search engine for life and love
-      ;; core-workgroups    ; cure Emacs alzheimers + tab emulation
       core-eval          ; run code, run + REPL support
+      core-workgroups    ; cure Emacs alzheimers + tab emulation
 
       ;; ;;; Dev environments
       ;; module-asm         ; Assembly

@@ -57,26 +57,6 @@
 (depends-on "eldoc-eval")
 (depends-on "anzu")
 
-;; ;; Evil --- core/core-evil.el
-;; (depends-on "evil")
-;; (depends-on "evil-anzu")
-;; (depends-on "evil-args")
-;; (depends-on "evil-commentary")
-;; (depends-on "evil-easymotion")
-;; (depends-on "evil-embrace")
-;; (depends-on "evil-escape")
-;; (depends-on "evil-exchange")
-;; (depends-on "evil-indent-plus")
-;; (depends-on "evil-matchit")
-;; (depends-on "evil-multiedit")
-;; (depends-on "evil-numbers")
-;; (depends-on "evil-plugins" :git "https://github.com/tarao/evil-plugins")
-;; (depends-on "evil-search-highlight-persist")
-;; (depends-on "evil-snipe")
-;; (depends-on "evil-surround")
-;; (depends-on "evil-textobj-anyblock")
-;; (depends-on "evil-visualstar")
-
 ;; Editor --- core/core-editor.el
 (depends-on "ace-link")
 (depends-on "ace-window")
@@ -139,8 +119,8 @@
 (depends-on "quickrun")
 (depends-on "repl-toggle")
 
-;; ;; Sessions --- core/core-sessions.el
-;; (depends-on "workgroups2")
+;; Sessions --- core/core-workgroups.el
+(depends-on "workgroups2")
 
 
 ;; ;;;; MODULES ;;;;;;;;;;;;;;;;;;;;;;;;;;;

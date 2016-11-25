@@ -31,6 +31,32 @@
  "<C-tab>" 'doom/company-complete
  ; git-messenger
  " C-x v p" 'git-messenger:popup-message
+ ; Workgroups and stuff
+ "<pause>" (λ! (doom/workgroup-load doom-wg-perpetual))
+ (:prefix "C-c w"
+          "d" 'doom/tab-display
+          "r" 'doom/tab-rename
+          "c" 'doom/tab-create
+          "k" 'doom/tab-kill
+          "s" 'doom/tab-save
+          "l" 'doom/tab-load
+          "o" 'doom/tab-kill-others
+          "u" 'doom/undo-window-change
+          "U" 'doom/redo-window-change
+          "p" 'doom/tab-left
+          "n" 'doom/tab-right
+          "<left>" (λ! (wg-offset-workgroup-left) (doom/tab-display))
+          "<right>" (λ! (wg-offset-workgroup-right) (doom/tab-display))
+          "1" (λ! (doom/tab-switch-to 0))
+          "2" (λ! (doom/tab-switch-to 1))
+          "3" (λ! (doom/tab-switch-to 2))
+          "4" (λ! (doom/tab-switch-to 3))
+          "5" (λ! (doom/tab-switch-to 4))
+          "6" (λ! (doom/tab-switch-to 5))
+          "7" (λ! (doom/tab-switch-to 6))
+          "8" (λ! (doom/tab-switch-to 7))
+          "9" (λ! (doom/tab-switch-to 8)))
+ ; Company mode and the like
  (:after company
          (:map company-active-map
           "C-o"        'company-search-kill-others
