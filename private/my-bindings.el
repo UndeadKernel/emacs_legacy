@@ -75,6 +75,19 @@
           "C-n"        'company-search-repeat-forward
           "C-p"        'company-search-repeat-backward
           "C-g"     'company-search-abort))
+; NeoTree bindings
+ (:after neotree
+         (:map neotree-mode-map
+               "q"       'neotree-hide
+               [return]  'neotree-enter
+               "RET"     'neotree-enter
+               "v"       'neotree-enter-vertical-split
+               "s"       'neotree-enter-horizontal-split
+               "c"       'neotree-create-node
+               "D"       'neotree-delete-node
+               "g"       'neotree-refresh
+               "r"       'neotree-rename-node
+               "R"       'neotree-change-root))
  (:map prog-mode-map
        "M-RET" 'emr-show-refactor-menu)
  (:after re-builder

@@ -6,7 +6,6 @@
   "Toggle the neotree window"
   (interactive)
   (let ((in-neotree (and (neo-global--window-exists-p)
-                         (window-live-p neo-global--buffer)
                          (eq (current-buffer) neo-global--buffer)))
         (path buffer-file-name))
     (if in-neotree

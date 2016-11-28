@@ -49,6 +49,7 @@
         neo-mode-line-type 'none
         neo-persist-show nil
         neo-window-width 25
+        neo-window-position 'left
         neo-show-updir-line nil
         neo-theme 'nerd ; fallback
         neo-banner-message nil)
@@ -61,17 +62,12 @@
   ;; TODO: Make this work with my own window moving stuff
   ;; (advice-add 'doom/evil-window-move :around 'doom*save-neotree)
 
-  (map! :map neotree-mode-map
-        "q"       'neotree-hide
-        [return]  'neotree-enter
-        "RET"     'neotree-enter
-        "v"       'neotree-enter-vertical-split
-        "s"       'neotree-enter-horizontal-split
-        "c"       'neotree-create-node
-        "d"       'neotree-delete-node
-        "g"       'neotree-refresh
-        "r"       'neotree-rename-node
-        "R"       'neotree-change-root))
+  ;; Implement our own display function to avoid NeoTree being a side window.
+  ;; Side windows do not allow to make popups that use the entire bottom section of the screen
+  (defun doom-neotree-display (buffer _alist)
+    "Find the root window of the frame and create a window to the left or right."
+    (split-window (frame-root-window) neo-window-width neo-window-position))
+  (setf neo-display-action '(doom-neotree-display)))
 
 (use-package projectile
   :config
