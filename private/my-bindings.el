@@ -133,6 +133,10 @@
                "C-p" 'comint-previous-input
                "<down>" 'comint-next-input
                "<up>"   'comint-previous-input))
+; ivy stuff
+ (:after ivy
+         (:map ivy-minibuffer-map
+               "C-g" 'keyboard-escape-quit))
  )
 ;; (map! "<f9>" 'what-face
 ;;       ;; Essential

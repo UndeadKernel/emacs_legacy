@@ -100,10 +100,11 @@
 (depends-on "gitignore-mode")
 (depends-on "magit")
 
-;; ;; Ivy -- core/core-ivy.el
-;; (depends-on "ivy")
-;; (depends-on "counsel")
-;; (depends-on "counsel-projectile")
+;; Ivy -- core/core-ivy.el
+(depends-on "ivy")
+(depends-on "swiper")
+(depends-on "counsel")
+(depends-on "counsel-projectile")
 
 ;; ;; Helm -- core/core-helm.el
 ;; ;;(depends-on "helm")
