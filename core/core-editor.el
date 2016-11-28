@@ -232,17 +232,8 @@
   (sp-with-modes '(xml-mode nxml-mode php-mode)
     (sp-local-pair "<!--" "-->"   :post-handlers '(("| " "SPC")))))
 
-;; TODO: Will I replace this with swiper-helm, maybe not.
-;; (use-package swiper :commands (swiper swiper-all))
-
-;;
-;; Keybinding
-;;
-
-;; Line-wise mouse selection on margin
-(map! "<left-margin> <down-mouse-1>" 'doom/mouse-drag-line
-      "<left-margin> <mouse-1>"      'doom/mouse-select-line
-      "<left-margin> <drag-mouse-1>" 'doom/mouse-select-line)
+(use-package buffer-move
+  :commands (buf-move-up buf-move-down buf-move-left buf-move-right))
 
 
 (provide 'core-editor)

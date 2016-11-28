@@ -26,8 +26,27 @@
   (aif (assq (selected-frame) doom-wg-frames)
       (progn (wg-delete-workgroup (wg-get-workgroup (cdr it)))
              (delete-frame (car it)))
-    (delete-frame)))
+      (delete-frame)))
 
+;;;###autoload
+(defun doom/move-buffer (direction)
+  (interactive "SDirection: ")
+  (cl-case direction
+    ('left (doom/neotree-save (with-demoted-errors "Error: %S" (buf-move-left))))
+    ('right (doom/neotree-save (with-demoted-errors "Error: %S" (buf-move-right))))
+    ('up (doom/neotree-save (with-demoted-errors "Error: %S" (buf-move-up))))
+    ('down (doom/neotree-save (with-demoted-errors "Error: %S" (buf-move-down))))
+    (t (message "Unknown direction"))))
+
+;;;###autoload
+(defun doom/delete-window (&optional window)
+  (interactive)
+  (doom/neotree-save (delete-window window)))
+
+;;;###autoload
+(defun doom/delete-other-windows (&optional window)
+  (interactive)
+  (doom/neotree-save (delete-other-windows window)))
 
 (provide 'defuns-window)
 ;;; defuns-window.el ends here

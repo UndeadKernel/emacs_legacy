@@ -71,7 +71,7 @@
 (depends-on "imenu-list")
 (depends-on "smart-forward")
 (depends-on "smartparens")
-;(depends-on "swiper")
+(depends-on "buffer-move")
 ;(depends-on "wgrep")
 
 ;; ;; Documentation --- core/core-docs.el

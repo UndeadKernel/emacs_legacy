@@ -9,10 +9,11 @@
 ;;;###autoload
 (defun doom/wg-projectile-switch-project ()
   (let ((project-root (doom/project-root)))
-    (doom/workgroup-new nil (file-name-nondirectory (directory-file-name project-root)) t)
+    (doom/workgroup-new (file-name-nondirectory (directory-file-name project-root)) t)
     (doom|update-scratch-buffer project-root)
     (when (featurep 'neotree)
-      (neotree-projectile-action))))
+      (neotree-projectile-action)))
+  (doom/workgroup-display))
 
 ;;;###autoload
 (defun doom/workgroup-new (name &optional silent)
@@ -32,7 +33,6 @@
                              (format "Created %s" name)
                              'success)))
 
-; TODO: ask user if file exists and will overwrite session file
 ;;;###autoload
 (defun doom/workgroup-save (&optional session-name)
   (interactive (list (read-string (format "Save name (%s): " (f-filename wg-session-file)))))

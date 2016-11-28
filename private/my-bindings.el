@@ -13,6 +13,18 @@
 (map!
  ; Editor related bindings
  "C-a" 'doom/move-to-bol
+ "C-s" 'swiper
+ ; Line-wise mouse selection on margin
+ "<left-margin> <down-mouse-1>" 'doom/mouse-drag-line
+ "<left-margin> <mouse-1>"      'doom/mouse-select-line
+ "<left-margin> <drag-mouse-1>" 'doom/mouse-select-line
+ ; Buffer related bindings
+ "C-x 0" 'doom/delete-window
+ "C-x 1" 'doom/delete-other-windows
+ "C-S-<left>" (λ! (doom/move-buffer 'left))
+ "C-S-<right>" (λ! (doom/move-buffer 'right))
+ "C-S-<up>" (λ! (doom/move-buffer 'up))
+ "C-S-<down>" (λ! (doom/move-buffer 'down))
  ; Misc plugins
  "<f9>" 'doom/neotree
  "C-x o" 'ace-window
@@ -56,6 +68,13 @@
           "7" (λ! (doom/tab-switch-to 6))
           "8" (λ! (doom/tab-switch-to 7))
           "9" (λ! (doom/tab-switch-to 8)))
+; imenu stuff
+ (:after imenu-list
+         (:map imenu-list-major-mode-map
+               "C-g" 'doom/imenu-list-quit
+               "RET" 'imenu-list-goto-entry
+               "SPC" 'imenu-list-display-entry
+               [tab] 'hs-toggle-hiding))
  ; Company mode and the like
  (:after company
          (:map company-active-map
