@@ -10,23 +10,32 @@
 - [X] core/core-eval.el
 - [X] core/defuns/defuns-eval.el
 - [X] core/defuns/macros-eval.el
+- [X] core/core-ivy.el
+- [X] core/defuns/defuns-ivy.el
 
 * TODO Changes
+- [ ] core-editor.el - fix font of line numbers when first character is selected
 - [ ] defuns-docs.el - add lookup function
 - [ ] defuns-buffers.el - choose if some operators stay or not
 - [ ] defuns-eval.el - add keybindings for the build and eval commands
+- [ ] defuns-window.el - add keybindings for creating buffers and frames
+- [X] defuns-workgroup.el - keybindings for tabs and workgroups
+- [X] defuns-workgroup.el - ask user to overwrite saved workgroups sessions
 
 * Test [50%]
 - [X] Yasnippet
 - [ ] Autocomplete
 - [ ] git-messenger
+- [ ] Test if the workgroup tabs and the rename functionality with doom/project-root
 
 * Enhancements [%]
 - [ ] Snippet selection with helm
 - [ ] Assign keybind to doom/flycheck-errors
+- [ ] Change Workgroups2 for persp-mode
 
-* Upstream bugs to report [%]
+* Upstream bugs to report [0%]
 - [ ] Flycheck needs to add (require 'pkg-info)
 - [ ] doom:eval-region-and-replace
   + error in process sentinel: ad-Advice-select-window: Wrong type argument: window-live-p, nil
   + error in process sentinel: Wrong type argument: window-live-p, nil
+- [ ] doom|neotree-close-on-window-change is never used (in defuns-neotree.el)

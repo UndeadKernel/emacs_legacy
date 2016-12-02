@@ -27,7 +27,7 @@
  "C-S-<down>" (λ! (doom/move-buffer 'down))
  ; Misc plugins
  "<f9>" 'doom/neotree
- "C-x o" 'ace-window
+ "C-x o" 'switch-window
  "C-=" 'er/expand-region
  "C-c ." 'goto-last-change
  "C-'" 'imenu-list-minor-mode

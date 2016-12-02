@@ -125,16 +125,18 @@
 ;; Plugins
 ;;
 
-(use-package ace-window
-  :commands ace-window
-  :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-        aw-scope 'frame
-        aw-background t)
-  ;; Make the special window character bigger, blue and boxed.
-  (set-face-attribute 'aw-leading-char-face nil
-                      :foreground "deep sky blue" :weight 'bold :height 3.0
-                      :box t))
+;; (use-package ace-window
+;;   :commands ace-window
+;;   :config
+;;   (setq aw-scope 'frame
+;;         aw-background t)
+;;   ;; Make the special window character bigger, blue and boxed.
+;;   (set-face-attribute 'aw-leading-char-face nil
+;;                       :foreground "deep sky blue" :weight 'bold :height 3.0
+;;                       :box t))
+
+(use-package switch-window
+  :commands switch-window)
 
 (use-package avy
   :commands (avy-goto-char-2 avy-goto-line)
