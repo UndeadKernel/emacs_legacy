@@ -9,10 +9,12 @@
  ;; Formatting
  delete-trailing-lines nil
  fill-column 80
+ ;; Spaces, not tabs
  indent-tabs-mode nil
  require-final-newline t
  tab-always-indent t
  tab-width 4
+ ;; Wrapping
  truncate-lines t
  truncate-partial-width-windows 50
  visual-fill-column-center-text nil
@@ -65,7 +67,8 @@
 (setq recentf-save-file (concat doom-cache-dir "/recentf")
       recentf-exclude '("/tmp/" "/ssh:" "\\.?ido\\.last$" "\\.revive$" "/TAGS$"
                         "emacs\\.d/private/cache/.+" "emacs\\.d/workgroups/.+$"
-                        "wg-default" "/company-statistics-cache.el$")
+                        "wg-default" "/company-statistics-cache.el$"
+                        "^/var/folders/.+$" "^/tmp/.+")
       recentf-max-menu-items 0
       recentf-max-saved-items 250
       recentf-auto-cleanup 600
@@ -73,6 +76,7 @@
 (recentf-mode 1)
 
 ;; window config undo/redo
+(setq winner-dont-bind-my-keys t)
 (require 'winner)
 ;; Ignore all special buffers
 (advice-add 'winner-window-list :filter-return 'doom*winner-window-list)
@@ -105,7 +109,7 @@
     (buffer-disable-undo)
     (fundamental-mode)
     (visual-line-mode)))
-
+ 
 ;; Disable by default, please
 (electric-indent-mode -1)
 ;; Smarter, keyword-based electric-indent (see `def-electric!')
@@ -144,7 +148,7 @@
                 avy-background t))
 
 (use-package ace-link
-  :commands (ace-link-help ace-link-info))
+  :commands (ace-link-help ace-link-info ace-link-org))
 
 (use-package dumb-jump
   :commands (dumb-jump-go dumb-jump-quick-look dumb-jump-back)
@@ -178,16 +182,23 @@
   (setq hs-set-up-overlay
         (lambda (ov)
           (when (eq 'code (overlay-get ov 'hs))
-            (let ((marker-string "*")
-                  (display-string (format " ... " (count-lines (overlay-start ov)
-                                                               (overlay-end ov)))))
+            (let* ((marker-string "*")
+                   (display-string (concat " " (all-the-icons-octicon "ellipsis" :v-adjust 0) " "))
+                   (len (length display-string)))
               (put-text-property 0 1 'display
                                  (list 'right-fringe 'hs-marker 'hs-fringe-face)
                                  marker-string)
-              (put-text-property 0 (length display-string)
-                                 'face 'hs-face display-string)
+              (put-text-property 0 1 'face 'hs-face display-string)
+              (put-text-property (1- len) len 'face 'hs-face display-string)
+              (put-text-property 1 (1- len)
+                                 'face `(:inherit hs-face :family ,(all-the-icons-octicon-family) :height 1.1)
+                                 display-string)
               (overlay-put ov 'before-string marker-string)
               (overlay-put ov 'display display-string))))))
+ 
+(use-package help-fns+ ; Improved help commands
+  :commands (describe-buffer describe-command describe-file
+             describe-keymap describe-option describe-option-of-type))
 
 (use-package imenu-list
   :commands imenu-list-minor-mode
@@ -207,7 +218,7 @@
 (use-package smartparens
   :config
   (setq sp-autowrap-region t
-        sp-highlight-pair-overlay t
+        sp-highlight-pair-overlay nil
         sp-cancel-autoskip-on-backward-movement nil
         sp-show-pair-delay 0
         sp-max-pair-length 5)

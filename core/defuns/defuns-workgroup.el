@@ -2,36 +2,21 @@
 
 ;;;###autoload
 (defun doom|wg-cleanup ()
-  (doom/popup-close-all)
-  (when (and (featurep 'neotree) (neo-global--window-exists-p))
-    (neotree-hide)))
+  "Remove unsavable windows and buffers before we save the window
+configuration."
+  (let (doom-buffer-inhibit-refresh)
+    (doom/popup-close-all)
+    (when (and (featurep 'neotree) (neo-global--window-exists-p))
+      (neotree-hide))))
 
 ;;;###autoload
 (defun doom/wg-projectile-switch-project ()
   (let ((project-root (doom/project-root)))
-    (doom/workgroup-new (file-name-nondirectory (directory-file-name project-root)) t)
-    (doom|update-scratch-buffer project-root)
+    (doom:workgroup-new nil (file-name-nondirectory (directory-file-name project-root)) t)
+    (doom-reload-scratch-buffer project-root)
     (when (featurep 'neotree)
       (neotree-projectile-action)))
   (doom/workgroup-display))
-
-;;;###autoload
-(defun doom/workgroup-new (name &optional silent)
-  "Create a new workgroup. Ask to overwrite any workgroup named NAME."
-  (interactive (list (read-string "New Name: ")))
-  (when (or (s-blank? name) (s-contains? " " name))
-    (setq name (format "#%s" (1+ (length (wg-session-workgroup-list (wg-current-session t)))))))
-  (let ((new-wg (wg-get-workgroup name t)))
-    (when (and new-wg (y-or-n-p (format "'%s' already exists, overwrite?" name)))
-      (wg-delete-workgroup new-wg)
-      (setq new-wg nil))
-    (setq new-wg (or new-wg (wg-make-and-add-workgroup name t)))
-    (add-to-list 'doom-wg-names (wg-workgroup-uid new-wg))
-    (wg-switch-to-workgroup new-wg))
-  (unless silent
-    (doom--workgroup-display (wg-previous-workgroup t)
-                             (format "Created %s" name)
-                             'success)))
 
 ;;;###autoload
 (defun doom/workgroup-save (&optional session-name)
@@ -69,6 +54,24 @@
   (mapc 'delete-file (f-glob (expand-file-name "*" wg-workgroup-directory))))
 
 ;;;###autoload
+(defun doom/workgroup-new (name &optional silent)
+  "Create a new workgroup. Ask to overwrite any workgroup named NAME."
+  (interactive (list (read-string "New Name: ")))
+  (when (or (s-blank? name) (s-contains? " " name))
+    (setq name (format "#%s" (1+ (length (wg-session-workgroup-list (wg-current-session t)))))))
+  (let ((new-wg (wg-get-workgroup name t)))
+    (when (and new-wg (y-or-n-p (format "'%s' already exists, overwrite?" name)))
+      (wg-delete-workgroup new-wg)
+      (setq new-wg nil))
+    (setq new-wg (or new-wg (wg-make-and-add-workgroup name t)))
+    (add-to-list 'doom-wg-names (wg-workgroup-uid new-wg))
+    (wg-switch-to-workgroup new-wg))
+  (unless silent
+    (doom--workgroup-display (wg-previous-workgroup t)
+                             (format "Created %s" name)
+                             'success)))
+
+;;;###autoload
 (defun doom/workgroup-rename (&optional new-name)
   (interactive (list (read-string (format "New Name (%s): " (f-filename (doom/project-root)))
                                   nil nil (f-filename (doom/project-root)))))
@@ -95,7 +98,7 @@
       (doom--workgroup-display nil (format "Deleted %s" wg-name) 'success))))
 
 ;;;###autoload
-(defun doom/kill-other-workgroups ()
+(defun doom:kill-other-workgroups ()
   "Kill all other workgroups."
   (interactive)
   (let (workgroup (wg-current-workgroup))
@@ -137,7 +140,7 @@
             (wg-rename-workgroup new-name wg)))))))
 
 ;;;###autoload
-(defun doom/switch-to-workgroup-at-index (index)
+(defun doom:switch-to-workgroup-at-index (index)
   (interactive)
   (doom/workgroup-update-names)
   (let ((wg (nth index (wg-workgroup-list-or-error)))
@@ -169,6 +172,18 @@
   (interactive)
   (wg-switch-to-workgroup-right)
   (doom/workgroup-display t))
+
+(defun doom/close-window-or-workgroup ()
+  (interactive)
+  (if (doom/popup-p)
+      (doom/popup-close)
+    (when (doom/kill-real-buffer)
+      (if (and (one-window-p t)
+               (> (length (wg-workgroup-list)) 1))
+          (if (string= (wg-workgroup-name (wg-current-workgroup)) wg-first-wg-name)
+              (delete-window)
+            (doom:workgroup-delete))
+        (delete-window)))))
 
 (provide 'defuns-workgroup)
 ;;; defuns-workgroup.el ends here

@@ -1,17 +1,20 @@
 ;;; core-workgroups.el
 
 ;; I use workgroups to accomplish two things:
-;;   1. Vim-like tab emulation (type :tabs to see a list of tabs -- maybe I'll add some
-;;      code to make a permanent frame header to display these some day)
-;;   2. Session persistence (with :ss and :sl)
+;;   1. Vim-like tab emulation (type :tabs to see a list of tabs -- maybe I'll
+;;      add some code to make a permanent frame header to display these some
+;;      day)
+;;   2. Session persistence
+;;   3. Tab names reflect the project open in them, unless they've been
+;;      explicitly renamed
 
 (defvar doom-wg-frames '()
   "A list of all the frames opened as separate workgroups. See
-defuns/defuns-window.el.")
+defuns/defuns-workgroups.el.")
 
 (defvar doom-wg-names '()
-  "A list of fixed names for workgroups. If a name is set, workgroup names
-aren't automatically renamed to the project name.")
+"Keeps track of the fixed names for workgroups (set with :tabrename), so that
+these workgroups won't be auto-renamed.")
 
 (defconst doom-wg-perpetual "perpetual"
   "Name of the session that will be used to perpetually store a tab configuration")
@@ -73,10 +76,16 @@ aren't automatically renamed to the project name.")
   (defalias 'doom/tab-switch-to 'doom/switch-to-workgroup-at-index)
   (defalias 'doom/tab-left 'doom/switch-to-workgroup-left)
   (defalias 'doom/tab-right 'doom/switch-to-workgroup-right)
+  (defalias 'doom/tab-switch-last 'wg-switch-to-previous-workgroup)
 
   (add-hook! emacs-startup
     (workgroups-mode +1)
     (wg-create-workgroup wg-first-wg-name)))
+
+(unless window-system
+  (defalias 'wg-workgroup-associated-buffers 'ignore)
+  (defalias 'wg-current-workgroup 'ignore)
+  (defalias 'wg-save-session 'ignore))
 
 (provide 'core-workgroups)
 ;;; core-workgroups.el ends here

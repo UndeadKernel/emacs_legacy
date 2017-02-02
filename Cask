@@ -20,8 +20,8 @@
 (depends-on "help-fns+")
 (depends-on "s")
 (depends-on "use-package")
+(depends-on "persistent-soft")
 ;; (depends-on "smex")
-;; (depends-on "persistent-soft")
 ;; (depends-on "smex" :git "https://github.com/syl20bnr/smex")
 
 ;; ;; Popups --- core/core-popup.el

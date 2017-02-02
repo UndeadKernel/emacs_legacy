@@ -156,7 +156,13 @@
  (:after ivy
          (:map ivy-minibuffer-map
                "C-g" 'keyboard-escape-quit))
+; magit stuff
+(:after magit
+  (:map magit-mode-map
+    ;; Don't let Tab binding in my-bindings conflict with Tab in magit
+    "<tab>" 'magit-section-toggle))
  )
+
 ;; (map! "<f9>" 'what-face
 ;;       ;; Essential
 ;;       "M-x"  'smex

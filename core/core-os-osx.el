@@ -41,18 +41,6 @@
 ;; OSX-related plugins + hacks
 ;;
 
-(use-package applescript-mode
-  :mode "\\.applescript$"
-  :init (add-hook 'applescript-mode-hook 'nlinum-mode)
-  :config
-  (def-docset! applescript-mode "applescript")
-  (after! quickrundb
-    (quickrun-add-command
-     "applescript" `((:command . ,as-osascript-command)
-                     (:cmdopt . "-ss %s")
-                     (:description . "Run applescript"))
-     :mode 'applescript-mode)))
-
 (def-project-type! lb6 "lb6"
   :match "\\.lb\\(action\\|ext\\)/.+$"
   :build (lambda ()

@@ -1,27 +1,18 @@
 ;;; core-defuns.el
 
 ;; Bootstrap macro
-(defmacro doom (_ theme __ font &rest packages)
+(defmacro doom (&rest packages)
   "Bootstrap DOOM emacs and initialize PACKAGES"
   `(let (file-name-handler-alist)
      ;; Local settings
      (load "~/.emacs.local.el" t t)
-     ;; Global constants
-     (defconst doom-default-theme ,theme)
-     (defconst doom-default-font
-       (font-spec :family ,(nth 0 font)
-                  :size ,(nth 1 font)
-                  :antialias ,(not (nth 2 font))))
-
-     (defconst doom-current-theme doom-default-theme)
-     (defconst doom-current-font doom-default-font)
-
+     ;; Bootstrap
      (unless noninteractive
        ,@(mapcar (lambda (pkg)
                    (let ((lib-path (locate-library (symbol-name pkg))))
                      (unless lib-path
                        (error "Initfile not found: %s" pkg))
-                     `(require ',pkg ,(f-no-ext lib-path))))
+                     `(require ',pkg ,(file-name-sans-extension lib-path))))
                  packages)
        (when window-system
          (require 'server)
@@ -30,7 +21,6 @@
        ;; Prevent any auto-displayed text + benchmarking
        (advice-add 'display-startup-echo-area-message :override 'ignore)
        (message ""))
-
      (setq-default gc-cons-threshold 4388608
                    gc-cons-percentage 0.4)))
 
@@ -193,16 +183,36 @@ Examples:
 ;; Register keywords for proper indentation in `map!'
 (put ':prefix      'lisp-indent-function 'defun)
 (put ':map         'lisp-indent-function 'defun)
+(put ':map*        'lisp-indent-function 'defun)
 (put ':after       'lisp-indent-function 'defun)
 (put ':when        'lisp-indent-function 'defun)
 (put ':unless      'lisp-indent-function 'defun)
 
 ;; A lovely function to easily create key bindings
 (defmacro map! (&rest rest)
-  (let ((i 0)
-        (keymaps (if (boundp 'keymaps) keymaps))
+    "A nightmare of a key-binding macro that will use  `define-key' and 
+`global-set-key' depending on context and plist key flags. It was designed to 
+make binding multiple keys more concise, like in vim.
+
+Yes, it tries to do too much. Yes, I only did it to make the \"frontend\" config
+that little bit more concise. Yes, I could simply have used the above functions.
+But it takes a little insanity to custom write your own emacs.d, so what else
+were you expecting?
+
+Flags
+    :unset [KEY]               ; unset key
+    (:map [KEYMAP] [...])      ; apply inner keybinds to KEYMAP
+    (:map* [KEYMAP] [...])     ; apply inner keybinds to KEYMAP (deferred)
+    (:prefix [PREFIX] [...])   ; assign prefix to all inner keybindings
+    (:after [FEATURE] [...])   ; apply keybinds when [FEATURE] loads
+
+Conditional keybinds
+    (:when [CONDITION] [...])
+    (:unless [CONDITION] [...])"
+  (let ((keymaps (if (boundp 'keymaps) keymaps))
         (default-keymaps '((current-global-map)))
         (prefix (if (boundp 'prefix) prefix))
+        (defer (if (boundp 'defer) defer))
         key def forms)
     (unless keymaps
       (setq keymaps default-keymaps))
@@ -210,13 +220,17 @@ Examples:
       (setq key (pop rest))
       (push
        (reverse
-        (cond ((listp key) ; it's a sub exp
+        (cond 
+         ; it's a sub exp
+         ((listp key)
                `(,(macroexpand `(map! ,@key))))
 
+              ;; it's a flag
               ((keywordp key)
                (pcase key
                  (:prefix  (setq prefix (concat prefix (kbd (pop rest)))) nil)
                  (:map     (setq keymaps (-list (pop rest))) nil)
+                 (:map*    (setq defer t keymaps (-list (pop rest))) nil)
                  (:unset  `(,(macroexpand `(map! ,(kbd (pop rest)) nil))))
                  (:after   (prog1 `((after! ,(pop rest)   ,(macroexpand `(map! ,@rest)))) (setq rest '())))
                  (:when    (prog1 `((if ,(pop rest)       ,(macroexpand `(map! ,@rest)))) (setq rest '())))
@@ -241,42 +255,52 @@ Examples:
                        keymaps)
                  out-forms))
               (t (user-error "Invalid key %s" key))))
-       forms)
-      (setq i (1+ i)))
+       forms))
     `(progn ,@(apply #'nconc (delete nil (delete (list nil) (reverse forms)))))))
 
-;;
-(defun doom|update-scratch-buffer (&optional dir inhibit-doom)
-  "Make sure scratch buffer is always 'in a project', and looks good."
-  (let ((dir (or dir (doom/project-root))))
-    (with-current-buffer doom-buffer
-      ;; Reset scratch buffer if it wasn't visible
-      (when (and (get-buffer-window-list doom-buffer nil t)
-                 (not doom-buffer-edited)
-                 (not inhibit-doom))
-        (doom-mode-init t))
-      (setq default-directory dir)
-      (setq mode-line-format (doom-mode-line 'scratch)))))
 
 
 ;;
 ;; Global Defuns
 ;;
+ 
+(defsubst --subdirs (path &optional include-self)
+  "Get list of subdirectories in PATH, including PATH is INCLUDE-SELF is
+non-nil."
+  (let ((result (if include-self (list path) (list))))
+    (mapc (lambda (file)
+            (when (file-directory-p file)
+              (push file result)))
+          (ignore-errors (directory-files path t "^[^.]" t)))
+    result))
+
 
 (defun doom-reload ()
-  "Reload `load-path', in case you updated cask while emacs was open!"
+  "Reload `load-path' and `custom-theme-load-path', in case you updated cask
+while emacs was open!"
   (interactive)
-  (setq load-path (append (list doom-private-dir doom-core-dir doom-modules-dir doom-packages-dir)
-                          (f-directories doom-core-dir nil t)
-                          (f-directories doom-modules-dir nil t)
-                          (f-directories doom-packages-dir)
-                          (f-directories (f-expand "../bootstrap" doom-packages-dir))
-                          (f-directories doom-themes-dir nil t)
-                          doom--load-path))
-  (message "Reloaded!"))
+  (let* ((-packages-path (--subdirs doom-packages-dir))
+         (-load-path
+          (append (list doom-private-dir doom-core-dir doom-modules-dir doom-packages-dir)
+                  (--subdirs doom-core-dir t)
+                  (--subdirs doom-modules-dir t)
+                  -packages-path
+                  (--subdirs (expand-file-name (format "../../%s/bootstrap" emacs-version)
+                                               doom-packages-dir))
+                  doom--load-path))
+         (-custom-theme-load-path
+          (append (--subdirs doom-themes-dir t)
+                  custom-theme-load-path)))
+    (setq load-path -load-path
+          custom-theme-load-path -custom-theme-load-path)
+    (if (called-interactively-p 'interactive)
+        (message "Reloaded!")
+      (list -load-path
+            -custom-theme-load-path
+            (mapcar '--subdirs -packages-path)))))
 
 (defun doom-reload-autoloads ()
-  "Regenerate autoloads for DOOM emacs."
+  "Regenerate and reload autoloads.el."
   (interactive)
   (let ((generated-autoload-file (concat doom-core-dir "/autoloads.el")))
     (when (file-exists-p generated-autoload-file)
@@ -291,7 +315,9 @@ Examples:
     (message "Done!")))
 
 (defun doom-byte-compile (&optional minimal)
-  "Byte compile the core and library .el files in ~/.emacs.d"
+  "Byte compile the core and library .el files in ~/.emacs.d. If MINIMAL is nil,
+only byte compile a few important files. If t, compile all files too. If 'basic,
+only compile defun libraries."
   (interactive)
   (mapc (lambda (f) (byte-compile-file (concat doom-emacs-dir "/" f) t))
         '("init.el" "core/core.el" "core/core-defuns.el" "core/core-ui.el"
@@ -304,8 +330,8 @@ Examples:
       (byte-recompile-directory doom-modules-dir 0 t))
     (when minimal
       (byte-recompile-directory (concat doom-core-dir "/defuns") 0 t)
-      (byte-recompile-directory (concat doom-modules-dir "/defuns") 0 t))
-    (message "Compiled!")))
+      (byte-recompile-directory (concat doom-modules-dir "/defuns") 0 t)))
+  (message "Compiled!"))
 
 (provide 'core-defuns)
 ;;; core-defuns.el ends here

@@ -27,30 +27,25 @@
 ;;
 ;;; License: MIT
 
-(defconst emacs-start-time (current-time))
 (load (concat user-emacs-directory "core/core"))
 
-(doom :theme 'doom-one
-      :font ("Fira Mono" 12)
-
-      ;;; The heart of DOOM
+(doom
+      core-ui            ; draw me like one of your French editors
       core-popup         ; taming sudden and inevitable windows
       core-os            ; os-specific config
-      core-ui            ; draw me like one of your French editors
-      core-project       ; for project navigation aficionados
-      core-scratch       ; a perdier scratch buffer
       core-modeline      ; a self-contained mode-line config for masochists
-      ;; core-evil          ; come to the dark side, we have cookies
       core-editor        ; filling the editor-shaped hole in the emacs OS
       core-docs          ; getting to the documentation
       core-company       ; auto-completion, for the lazy typist
       core-yasnippet     ; snippets, for the lazier typist
       core-autoinsert    ; file templates, for the laziest typist
       core-flycheck      ; get tazed for every semicolon you forget
+      core-project       ; for project navigation aficionados
       core-vcs           ; remember remember, that commit in November
       core-ivy           ; a search engine for life and love
-      core-eval          ; run code, run + REPL support
       core-workgroups    ; cure Emacs alzheimers + tab emulation
+      core-eval          ; run code, run + REPL support
+      core-scratch       ; a perdier scratch buffer
 
       ;; ;;; Dev environments
       ;; module-asm         ; Assembly
