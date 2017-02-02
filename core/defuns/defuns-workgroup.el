@@ -12,7 +12,7 @@ configuration."
 ;;;###autoload
 (defun doom/wg-projectile-switch-project ()
   (let ((project-root (doom/project-root)))
-    (doom:workgroup-new nil (file-name-nondirectory (directory-file-name project-root)) t)
+    (doom/workgroup-new nil (file-name-nondirectory (directory-file-name project-root)) t)
     (doom-reload-scratch-buffer project-root)
     (when (featurep 'neotree)
       (neotree-projectile-action)))
@@ -98,7 +98,7 @@ configuration."
       (doom--workgroup-display nil (format "Deleted %s" wg-name) 'success))))
 
 ;;;###autoload
-(defun doom:kill-other-workgroups ()
+(defun doom/kill-other-workgroups ()
   "Kill all other workgroups."
   (interactive)
   (let (workgroup (wg-current-workgroup))
@@ -140,7 +140,7 @@ configuration."
             (wg-rename-workgroup new-name wg)))))))
 
 ;;;###autoload
-(defun doom:switch-to-workgroup-at-index (index)
+(defun doom/switch-to-workgroup-at-index (index)
   (interactive)
   (doom/workgroup-update-names)
   (let ((wg (nth index (wg-workgroup-list-or-error)))
@@ -182,7 +182,7 @@ configuration."
                (> (length (wg-workgroup-list)) 1))
           (if (string= (wg-workgroup-name (wg-current-workgroup)) wg-first-wg-name)
               (delete-window)
-            (doom:workgroup-delete))
+            (doom/workgroup-delete))
         (delete-window)))))
 
 (provide 'defuns-workgroup)
