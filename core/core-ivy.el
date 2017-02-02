@@ -6,16 +6,18 @@
   (setq projectile-completion-system 'ivy
         ivy-height 15
         ivy-do-completion-in-region nil
-        ivy-wrap t)
+        ivy-wrap t
+        ;; fontify until EOL
+        ivy-format-function 'ivy-format-function-line)
 
   :config
-  (after! magit
-    (setq magit-completing-read-function 'ivy-completing-read))
-
   (ivy-mode +1)
-  ;; Fix display glitches
-  (advice-add 'ivy-done :after 'redraw-display)
 
+  (after! magit     (setq magit-completing-read-function 'ivy-completing-read))
+  (after! smex      (setq smex-completion-method 'ivy))
+  (after! yasnippet (push 'doom/yas-ivy-prompt yas-prompt-functions))
+
+  ;;
   (require 'counsel)
 
   (add-hook! doom-popup-mode

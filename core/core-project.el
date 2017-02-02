@@ -61,6 +61,7 @@
   ;; Prevents messing up the neotree buffer on window changes
   ;; TODO: Make this work with my own window moving stuff
   ;; (advice-add 'doom/evil-window-move :around 'doom*save-neotree)
+  (advice-add 'doom/popup-buffer :around 'doom*save-neotree)
 
   ;; Implement our own display function to avoid NeoTree being a side window.
   ;; Side windows do not allow to make popups that use the entire bottom section of the screen

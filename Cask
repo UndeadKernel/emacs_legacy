@@ -21,8 +21,8 @@
 (depends-on "s")
 (depends-on "use-package")
 (depends-on "persistent-soft")
+(depends-on "smex" :git "https://github.com/syl20bnr/smex")
 ;; (depends-on "smex")
-;; (depends-on "smex" :git "https://github.com/syl20bnr/smex")
 
 ;; ;; Popups --- core/core-popup.el
 (depends-on "shackle")
@@ -47,9 +47,8 @@
 
 ;; Project --- core/core-project.el
 (depends-on "dired-k")
-;; (depends-on "flx-ido")
-;; ;; (depends-on "ido-ubiquitous")
-;; (depends-on "ido-vertical-mode")
+(depends-on "flx-ido")
+ (depends-on "ido-vertical-mode")
 (depends-on "neotree")
 (depends-on "projectile")
 
@@ -91,6 +90,7 @@
 ;; Flycheck --- core/core-flycheck.el
 (depends-on "pkg-info")
 (depends-on "flycheck")
+(depends-on "flycheck-pos-tip")
 (depends-on "flyspell")
 
 ;; ;; VCS --- core/core-vcs.el

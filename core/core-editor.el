@@ -245,6 +245,12 @@
   (sp-with-modes '(xml-mode nxml-mode php-mode)
     (sp-local-pair "<!--" "-->"   :post-handlers '(("| " "SPC")))))
 
+(use-package smex
+  :commands (smex smex-major-mode-commands)
+  :config
+  (setq smex-save-file (concat doom-cache-dir "/smex-items"))
+  (smex-initialize))
+
 (use-package swiper :commands (swiper swiper-all))
 
 (use-package buffer-move

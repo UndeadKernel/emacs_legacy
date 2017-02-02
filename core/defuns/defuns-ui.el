@@ -1,25 +1,26 @@
 ;;; defuns-ui.el
 
 ;;;###autoload
+(defun doom/toggle-fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen (if (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+
+;;;###autoload
 (defun doom/reset-theme ()
   (interactive)
-  (doom/load-theme (or doom-current-theme doom-default-theme)))
+  (doom/load-theme doom-ui-theme))
 
 ;;;###autoload
 (defun doom/load-font (font)
   (interactive)
-  (set-frame-font font t)
-  (setq doom-current-font font))
+  (set-frame-font font t))
 
 ;;;###autoload
-(defun doom/load-theme (theme &optional suppress-font)
+(defun doom/load-theme (theme)
   (interactive)
-  (when doom-current-theme
-    (disable-theme doom-current-theme))
-  (load-theme theme t)
-  (unless suppress-font
-    (doom/load-font doom-current-font))
-  (setq doom-current-theme theme))
+  (when doom-ui-theme
+    (disable-theme doom-ui-theme))
+  (load-theme theme t))
 
 ;;;###autoload
 (defun doom/show-as (how &optional pred)

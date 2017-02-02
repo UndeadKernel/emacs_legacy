@@ -2,7 +2,7 @@
 
 ;; I use a slew of hackery to get Emacs to treat 'pop-ups' consistently. It goes
 ;; through great lengths to tame helm, flycheck, help buffers--*even* the beast
-;; that is org-mode.
+;; that is org-mode, with the help of `display-buffer-alist' and shackle.
 ;;
 ;; Be warned, an update could break any of this.
 
@@ -34,9 +34,9 @@
           ("*vc-change-log*"   :align below :size 15  :select t)
           (vc-annotate-mode    :same t)))
 
-  ;; Emacs 25.1+ already shows the completion window at the bottom of the
+  ;; Emacs 25.1+ properly shows the completion window at the bottom of the
   ;; current frame.
-  (unless (and (>= emacs-major-version 25) (= emacs-minor-version 1))
+  (unless (version< emacs-version "25.1")
     (push '("*Completions*"     :align below :size 30  :noselect t) shackle-rules))
 
   ;; :noesc    = Can't be closed with a single ESC
@@ -44,6 +44,7 @@
   (defvar doom-popup-rules
     '(("^\\*doom\\(:scratch\\)?\\*$" :noesc :nokill)
       ("^\\*doom.*\\*$"       :noesc :nokill)
+      (ivy-occur-grep-mode    :noesc)
       (compilation-mode       :noesc)
       (comint-mode            :noesc :nokill)
       (eshell-mode            :noesc :nokill)
@@ -54,6 +55,7 @@
   ;; There is no shackle-popup hook, so I hacked one in
   (advice-add 'shackle-display-buffer :around 'doom*popup-init)
   ;; Don't mess with popups
+  (advice-add 'balance-windows        :around 'doom*save-neotree)
   (advice-add 'balance-windows        :around 'doom*save-popup)
   ;; TODO: deal with this evil command
   ;; (advice-add 'doom/evil-window-move  :around 'doom*save-popup)
@@ -105,6 +107,36 @@
                        (if (cdr location)
                            (goto-char (cdr location))
                          (message "Unable to find location in file"))))))
+
+(add-hook! org-load
+  ;; Ensures org-src-edit yields control of its buffer to shackle.
+  (defun org-src-switch-to-buffer (buffer context)
+    (pop-to-buffer buffer))
+
+  ;; And these for org-todo, org-link and org-agenda
+  (defun org-pop-to-buffer-same-window (&optional buffer-or-name norecord label)
+    "Pop to buffer specified by BUFFER-OR-NAME in the selected window."
+    (display-buffer buffer-or-name))
+
+  (defun org-switch-to-buffer-other-window (&rest args)
+    (car-safe
+     (mapc (lambda (b)
+             (let ((buf (if (stringp b) (get-buffer-create b) b)))
+               (pop-to-buffer buf t t)))
+           args)))
+
+  (defun doom/org-agenda-quit ()
+    "Necessary to finagle org-agenda into shackle popups and behave properly on quit."
+    (interactive)
+    (if org-agenda-columns-active
+        (org-columns-quit)
+      (let ((buf (current-buffer)))
+        (and (not (eq org-agenda-window-setup 'current-window))
+             (not (one-window-p))
+             (delete-window))
+        (kill-buffer buf)
+        (setq org-agenda-archives-mode nil
+              org-agenda-buffer nil)))))
 
 (provide 'core-popup)
 ;;; core-popup.el ends here

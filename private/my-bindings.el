@@ -31,6 +31,9 @@
  "C-=" 'er/expand-region
  "C-c ." 'goto-last-change
  "C-'" 'imenu-list-minor-mode
+ ; smex plugin
+ "M-x"  'smex
+ "M-X"  'smex-major-mode-commands
  ; Smart-forward
  "M-<up>" 'smart-up
  "M-<down>" 'smart-down
@@ -161,6 +164,10 @@
   (:map magit-mode-map
     ;; Don't let Tab binding in my-bindings conflict with Tab in magit
     "<tab>" 'magit-section-toggle))
+(:after org-agenda
+  (:map org-agenda-mode-map
+    "C-g" 'doom/org-agenda-quit
+    "q" 'doom/org-agenda-quit))
  )
 
 ;; (map! "<f9>" 'what-face
