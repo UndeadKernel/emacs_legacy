@@ -245,6 +245,8 @@
   (sp-with-modes '(xml-mode nxml-mode php-mode)
     (sp-local-pair "<!--" "-->"   :post-handlers '(("| " "SPC")))))
 
+(use-package swiper :commands (swiper swiper-all))
+
 (use-package buffer-move
   :commands (buf-move-up buf-move-down buf-move-left buf-move-right))
 

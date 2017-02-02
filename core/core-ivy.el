@@ -22,11 +22,12 @@
     (when (eq major-mode 'ivy-occur-grep-mode)
       (ivy-wgrep-change-to-wgrep-mode)))
 
+  (advice-add 'counsel-ag-function :override 'doom*counsel-ag-function)
+  (define-key counsel-ag-map [backtab] 'doom/counsel-ag-occur)
+
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"))
 
 (use-package counsel-projectile :after projectile)
-
-(use-package swiper :commands (swiper swiper-all))
 
 (provide 'core-ivy)
 ;;; core-ivy.el ends here
