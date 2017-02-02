@@ -1,5 +1,11 @@
 ;;; core-os-linux.el --- Linux-specific settings
 
+(setq
+ mouse-wheel-scroll-amount '(2 ((shift) . 1))  ; scroll two lines at a time
+ mouse-wheel-progressive-speed nil             ; don't accelerate scrolling
+ mouse-wheel-follow-mouse t                    ;
+ )
+
 (defun doom-open-with (command &rest args)
   "Open PATH in APP-NAME, using xdg-open."
   (interactive)

@@ -1,6 +1,7 @@
+HOSTNAME=`emacs --batch --eval '(message "%s" (system-name))' 2>&1`
 EMACS=emacs
-CACHE_DIR="private/cache/`hostname`/"
-REPO_URL="https://github.com/hlissner"
+CACHE_DIR="private/cache/$(HOSTNAME)/"
+REPO_URL="https://github.com/UndeadKernel"
 
 all: install
 
@@ -9,10 +10,10 @@ install: _install core/core.elc init.elc autoloads
 update: _update core/core.elc init.elc autoloads
 
 autoloads:
-	$(EMACS) --batch -l init.el --eval '(doom-reload-autoloads)' 2>&1
+	@$(EMACS) --batch -l init.el --eval '(doom-reload-autoloads)' 2>&1
 
 compile: clean
-	$(EMACS) --batch -l init.el --eval '(doom-byte-compile t)' 2>&1
+	@$(EMACS) --batch -l init.el --eval '(doom-byte-compile t)' 2>&1
 
 snippets:
 	@[ -d private/snippets ] || git clone $(REPO_URL)/emacs-snippets private/snippets

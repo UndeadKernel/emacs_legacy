@@ -51,7 +51,8 @@
 (use-package magit
   :commands (magit-status)
   :config
-  (def-popup! "^\\*magit.+" :align below :regexp t)
+  (def-popup! "^\\*magit:.+" :align right :regexp t)
+  ;(def-popup! "^\\*magit-.+-popup\\*" :align below :regexp t)
 
   (setq magit-display-file-buffer-function 'doom/magit-pop-to-buffer))
 
