@@ -48,13 +48,13 @@
       core-scratch       ; a perdier scratch buffer
 
       ;; ;;; Dev environments
+      module-elisp       ; drowning in parentheses
       ;; module-asm         ; Assembly
       ;; module-cc          ; C/C++/Obj-C madness
       ;; module-crystal     ; ruby at the speed of c
       ;; module-csharp      ; unity, .NET, and mono shenanigans
       ;; module-css         ; #big-bang::before { content: ""; }
       ;; module-data        ; config/data formats
-      ;; module-elisp       ; drowning in parentheses
       ;; module-eshell      ; so I can have a sane shell, even in Windows
       ;; module-go          ; the hipster dialect
       ;; module-haskell     ; a language that's lazier than I am

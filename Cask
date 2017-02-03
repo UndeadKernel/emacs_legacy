@@ -48,7 +48,7 @@
 ;; Project --- core/core-project.el
 (depends-on "dired-k")
 (depends-on "flx-ido")
- (depends-on "ido-vertical-mode")
+(depends-on "ido-vertical-mode")
 (depends-on "neotree")
 (depends-on "projectile")
 
@@ -126,6 +126,11 @@
 
 
 ;; ;;;; MODULES ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Lisp -- modules/module-lisp.el
+(depends-on "auto-compile")
+(depends-on "highlight-quoted")
+(depends-on "slime")
+
 ;; ;; Assembly -- modules/module-asm.el
 ;; (depends-on "mips-mode")
 ;; (depends-on "haxor-mode")
@@ -196,11 +201,6 @@
 
 ;; ;; Julia -- modules/module-julia.el
 ;; (depends-on "julia-mode")
-
-;; ;; Lisp -- modules/module-lisp.el
-;; (depends-on "auto-compile")
-;; (depends-on "highlight-quoted")
-;; (depends-on "slime")
 
 ;; ;; Lua -- modules/module-lua.el
 ;; (depends-on "company-lua")
