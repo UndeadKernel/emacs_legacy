@@ -47,7 +47,7 @@
  ; git-messenger
  " C-x v p" 'git-messenger:popup-message
  ; Workgroups and stuff
- "<pause>" (λ! (doom/workgroup-load doom-wg-perpetual))
+ "<pause>" (λ! (doom/workgroup-load (concat wg-workgroup-directory doom-wg-perpetual)))
  (:prefix "C-c w"
           "d" 'doom/tab-display
           "r" 'doom/tab-rename
@@ -71,6 +71,14 @@
           "7" (λ! (doom/tab-switch-to 6))
           "8" (λ! (doom/tab-switch-to 7))
           "9" (λ! (doom/tab-switch-to 8)))
+(:map doom-mode-map
+  "C-c C-c" 'doom-scratch-clear
+  "C-c C-k" 'doom/kill-real-buffer
+  "C-x k" 'doom/kill-real-buffer
+  "C-c C-r" (λ! (call-interactively 'counsel-recentf))
+  "C-c C-e" (λ! (find-file (f-expand "init.el" doom-emacs-dir)))
+  "C-c C-h" (λ! (browse-url "https://github.com/UndeadKernel/.emacs.d"))
+  "C-c C-l" (λ! (doom/workgroup-load (concat wg-workgroup-directory "last") t)))
 ; imenu stuff
  (:after imenu-list
          (:map imenu-list-major-mode-map

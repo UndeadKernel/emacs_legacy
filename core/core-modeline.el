@@ -158,6 +158,14 @@ project root). Excludes the file basename. See `doom-buffer-name' for that."
           buffer-path)))
     "%b"))
 
+(defun doom-column-at-point (&optional pos)
+  "Return the horizontal position of POS.
+POS defaults to point."
+  (save-excursion
+    (when pos
+      (goto-char pos))
+    (current-column)))
+
 (defsubst active () (eq (selected-window) powerline-selected-window))
 
 ;; Memoize for optimization
@@ -332,8 +340,8 @@ lines are selected, or the NxM dimensions of a block selection."
             (reg-end (region-end)))
         (let ((lines (count-lines reg-beg (min (1+ reg-end) (point-max))))
               (chars (- (1+ reg-end) reg-beg))
-              (cols (1+ (abs (- (column-at-point reg-end)
-                                (column-at-point reg-beg))))))
+              (cols (1+ (abs (- (doom-column-at-point reg-end)
+                                (doom-column-at-point reg-beg))))))
           (cond
            ;; rectangle selection
            ((bound-and-true-p rectangle-mark-mode)

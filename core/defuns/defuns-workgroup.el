@@ -20,31 +20,27 @@ configuration."
 
 ;;;###autoload
 (defun doom/workgroup-save (&optional session-name)
+  "Save the current workgroup session into a file."
   (interactive (list (read-string (format "Save name (%s): " (f-filename wg-session-file)))))
+  (doom|wg-cleanup)
   (let ((session-file (if (not (s-blank? session-name))
                           (concat wg-workgroup-directory session-name)
                         wg-session-file)))
     (when (or (not (f-exists? session-file))
-              (y-or-n-p (format "Session '%s' exists, overwrite?" session-name)))
+              (y-or-n-p (format "Session '%s' exists, overwrite?" (f-filename session-file))))
       (unless (wg-workgroup-list)
         (wg-create-workgroup wg-first-wg-name))
-      (doom|wg-cleanup)
       (wg-save-session-as session-file))))
 
 ;;;###autoload
-(defun doom/workgroup-load (&optional session-name)
-  (interactive (list (read-string "Load Workgroup File (last): " nil nil "last")))
-  (let ((session-file (if (not (s-blank? session-name))
-                          (concat wg-workgroup-directory session-name)
-                        wg-session-file)))
-    (unless session-file
-      (user-error "No Workgroup session provided"))
-    (if (s-equals? session-file (wg-session-file-name (wg-current-session)))
-        (when (y-or-n-p (format "The session '%s' is already loaded, reload it and lose changes?" session-name))
-          (wg-open-session session-file))
-      (doom|wg-cleanup)
-      (wg-save-session)
-      (wg-open-session session-file)))
+(defun doom/workgroup-load (session-file &optional skip-save)
+  (interactive (list (read-file-name "Load Workgroup File: " wg-workgroup-directory "last" t)))
+  (doom|wg-cleanup)
+  (if (s-equals? session-file (wg-session-file-name (wg-current-session)))
+      (when (y-or-n-p (format "The session '%s' is already loaded, reload it and lose changes?" (f-filename session-file)))
+        (wg-open-session session-file))
+    (unless skip-save (wg-save-session))
+    (wg-open-session session-file))
   (doom/workgroup-display t))
 
 ;;;###autoload

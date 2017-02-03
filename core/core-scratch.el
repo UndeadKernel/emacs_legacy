@@ -23,6 +23,7 @@
   (concat "v" doom-version)
   "Major mode for special DOOM buffers.")
 
+
 (defvar doom-scratch--width 0)
 (defvar doom-scratch--height 0)
 
@@ -63,12 +64,13 @@
   (setq doom-scratch-edited nil)
   (doom-scratch-reload))
 
-(defun doom|scratch-clear-on-insert ()
+(defun doom-scratch-clear ()
+  (interactive)
   "Erase the buffer and prepare it to be used like a normal buffer."
   (erase-buffer)
   (setq doom-scratch-edited t
-        mode-line-format (doom-modeline))
-  (remove-hook 'pre-command-hook 'doom|scratch-clear-on-insert t))
+        mode-line-format (doom-modeline)))
+  ;(remove-hook 'pre-command-hook 'doom|scratch-clear-on-insert t))
 
 (defun doom-scratch-reload (&optional dir)
   "Update the DOOM scratch buffer (or create it, if it doesn't exist)."
@@ -79,8 +81,8 @@
     (let ((old-pwd (or dir default-directory)))
       (with-current-buffer (doom-scratch-buffer)
         (doom-mode)
-        (add-hook 'pre-command-hook 'doom|scratch-clear-on-insert nil t)
-        (add-hook 'after-change-major-mode-hook 'doom|scratch-clear-on-insert nil t)
+        ;(add-hook 'pre-command-hook 'doom|scratch-clear-on-insert nil t)
+        (add-hook 'after-change-major-mode-hook 'doom-scratch-clear nil t)
         (setq doom-scratch-edited nil)
 
         (erase-buffer)
@@ -148,7 +150,7 @@
                   (concat (all-the-icons-octicon
                            "mark-github"
                            :face 'font-lock-keyword-face)
-                          (propertize " Homepage" 'face 'font-lock-keyword-face))
+                          (propertize " Homepage (C-c C-h)" 'face 'font-lock-keyword-face))
                   'action '(lambda (_) (browse-url "https://github.com/UndeadKernel/.emacs.d"))
                   'follow-link t)
 
@@ -158,7 +160,7 @@
                   (concat (all-the-icons-octicon
                            "file-text"
                            :face 'font-lock-keyword-face)
-                          (propertize " Recent files" 'face 'font-lock-keyword-face))
+                          (propertize " Recent files (C-c C-r)" 'face 'font-lock-keyword-face))
                   'action '(lambda (_) (call-interactively 'counsel-recentf))
                   'follow-link t)
 
@@ -168,7 +170,7 @@
                   (concat (all-the-icons-octicon
                            "tools"
                            :face 'font-lock-keyword-face)
-                          (propertize " Edit emacs.d" 'face 'font-lock-keyword-face))
+                          (propertize " Edit emacs.d (C-c c-e)" 'face 'font-lock-keyword-face))
                   'action '(lambda (_) (find-file (f-expand "init.el" doom-emacs-dir)))
                   'follow-link t)
 
@@ -179,8 +181,8 @@
                     (concat (all-the-icons-octicon
                              "history"
                              :face 'font-lock-keyword-face)
-                            (propertize " Reload last session" 'face 'font-lock-keyword-face))
-                    'action '(lambda (_) (doom:workgroup-load))
+                            (propertize " Reload last session (C-c C-l)" 'face 'font-lock-keyword-face))
+                    'action '(lambda (_) (doom/workgroup-load (concat wg-workgroup-directory "last") t))
                     'follow-link t))
 
                  (setq end (point))
