@@ -107,16 +107,6 @@
 (depends-on "counsel")
 (depends-on "counsel-projectile")
 
-;; ;; Helm -- core/core-helm.el
-;; ;;(depends-on "helm")
-;; ;;(depends-on "helm-ag")
-;; ;;(depends-on "helm-c-yasnippet")
-;; ;;(depends-on "helm-company")
-;; ;;(depends-on "helm-css-scss")
-;; ;;(depends-on "helm-describe-modes" :git "https://github.com/emacs-helm/helm-describe-modes")
-;; ;;(depends-on "helm-projectile")
-;; ;;(depends-on "helm-swoop")
-
 ;; ;; Code evaluation/REPLs -- core/core-eval.el
 (depends-on "quickrun")
 (depends-on "repl-toggle")
@@ -136,6 +126,9 @@
 (depends-on "company-anaconda")
 (depends-on "nose")
 (depends-on "pip-requirements")
+
+;; Latex -- modules/module-latex.el
+(depends-on "ivy-bibtex")
 
 ;; ;; Assembly -- modules/module-asm.el
 ;; (depends-on "mips-mode")
@@ -223,12 +216,6 @@
 
 ;; ;; Processing -- modules/module-processing.el
 ;; (depends-on "processing-mode")
-
-;; ;; Python -- modules/module-python.el
-;; (depends-on "anaconda-mode")
-;; (depends-on "company-anaconda")
-;; (depends-on "nose")
-;; (depends-on "pip-requirements")
 
 ;; ;; REST -- modules/module-rest.el
 ;; (depends-on "restclient")
