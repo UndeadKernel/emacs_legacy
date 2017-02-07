@@ -1,0 +1,52 @@
+# -*- mode: snippet -*-
+# name: LaTeX template
+# --
+
+\documentclass[conference]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{ulem}
+\normalem
+\usepackage{todonotes}
+\usepackage{blindtext}
+\usepackage[printonlyused,nolist]{acronym}
+\usepackage{subfig}
+\usepackage{algorithmicx}
+
+% comment commands
+\newcommand{\cgci}[1]{\todo[inline,color=blue!40,size=\scriptsize]{\textbf{cgc:} #1 \color{black}}}
+\newcommand{\cgc}[1]{\todo[fancyline,color=blue!40,size=\scriptsize]{\textbf{cgc:} #1 \color{black}}}
+
+% replace commands
+\newcommand{\rcgc}[2]{\sout{#1} \color{blue!80!black} #2 \color{black}}
+
+\begin{acronym}
+  \acro{PCA}{Principal Components Analysis}
+  \acro{ML}{Machine Learning}
+\end{acronym}
+
+\hyphenation{me-tho-do-logy me-thod}
+
+\begin{document}
+\title{Stochastic Similarity Dissemination using Sketches}
+
+\author{
+\IEEEauthorblockN{Carlos Garc\'ia Cordero,Max Mühlhäuser}
+
+\IEEEauthorblockA{
+Telecooperation Lab, Technische Universit\"at Darmstadt, Germany\\
+Email: \{garcia,hauke,max\}@tk.tu-darmstadt.de}
+
+}
+
+\maketitle
+
+\begin{abstract}
+This is the abstract.
+\end{abstract}
+
+\section{Section 1}
+
+\end{document}
+

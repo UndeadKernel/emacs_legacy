@@ -85,11 +85,15 @@
   (use-package latex
     :commands (LaTeX-mode TeX-mode texinfo-mode)
     :config
+    ;; Do not prompt for the Master file, this allows auto-insert to add templates to .tex files
+    (add-hook 'LaTeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
+    (add-hook 'TeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
+    ;; Adding our standard latex mode hooks
     (add-hook! LaTeX-mode (LaTeX-math-mode) (flyspell-mode) (turn-on-reftex) (LaTeX-preview-setup))
     (TeX-global-PDF-mode t)
     (TeX-PDF-mode t)
     (setq ispell-dictionary "english")
-    ;; Configure Okular as viewer
+    ;; Configure Okular as viewer. Fix a bug (https://bugs.kde.org/show_bug.cgi?id=373855)
     (setq TeX-view-program-list '(("Okular-fix" ("okular --unique file:%o" (mode-io-correlate "#src:%n%a"))))
           TeX-view-program-selection '((output-pdf "Okular-fix"))
           TeX-source-correlate-mode t
@@ -121,8 +125,7 @@
           (?s . "\\smartcite[]{%l}")
           (?f . "\\footcite[]{%l}")
           (?n . "\\nocite{%l}")
-          (?b . "\\blockcquote[]{%l}{}")))
-  (add-hook! (LaTeX-mode latex-mode) 'turn-on-reftex))
+          (?b . "\\blockcquote[]{%l}{}"))))
 
 (use-package bibtex
   :defer t

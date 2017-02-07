@@ -80,6 +80,8 @@
           ("/\\(index\\|main\\)\\.slim$"     "__"               slim-mode)
           ;; Shell scripts
           ("\\.z?sh$"                        "__"               sh-mode)
+          ;; Latex files
+          ("\\.tex$"                         "__")
           )))
 
 (provide 'core-autoinsert)
