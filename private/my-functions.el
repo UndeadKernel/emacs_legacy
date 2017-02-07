@@ -1,6 +1,57 @@
-;;; my-commands.el
+;;; my-functions.el
 
 (eval-when-compile (require 'core-defuns))
+
+;; Smooth scroll down
+(defun my-down-scroll ()
+  "Scroll down and center the screen"
+  (interactive)
+  (forward-line)
+  (recenter))
+
+;; Smooth scroll up
+(defun my-up-scroll ()
+  "Scroll up and center the screen"
+  (interactive)
+  (previous-line 1 1)
+  (recenter))
+
+;; Copy a paragraph and remove all extra spaces and line ends
+(defun my-copy-paragraph (&optional beg end)
+  "Save the current region (or line) to the `kill-ring' after stripping extra whitespace and new lines"
+  (interactive
+   (if (region-active-p)
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position) (line-end-position))))
+  (let ((my-text (buffer-substring-no-properties beg end)))
+    (with-temp-buffer
+      (insert my-text)
+      (goto-char 1)
+      (while (looking-at "[ \t\n]")
+        (delete-char 1))
+      (let ((fill-column 9333999))
+        (fill-region (point-min) (point-max)))
+      (kill-region (point-min) (point-max)))))
+
+;; Delete a word forward without pasting in the kill-region
+(defun my-delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times.
+This command does not push text to `kill-ring'."
+  (interactive "p")
+  (delete-region
+   (point)
+   (progn
+     (forward-word arg)
+     (point))))
+
+;; Delete a word backwards without modifying the kill-region
+(defun my-backward-delete-word (arg)
+  "Delete characters backward until encountering the beginning of a word.
+With argument, do this that many times.
+This command does not push text to `kill-ring'."
+  (interactive "p")
+  (my-delete-word (- arg)))
 
 ;; ;;; Rewritten commands
 ;; (ex! "g[lobal]"    'doom:evil-ex-global)
@@ -108,5 +159,5 @@
 ;;   (ex-local! "link"     'doom:org-link)
 ;;   (ex-local! "vlc"      'doom-org-insert-vlc))
 
-(provide 'my-commands)
-;;; my-commands.el ends here
+(provide 'my-functions)
+;;; my-functions.el ends here

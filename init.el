@@ -92,6 +92,6 @@
       ;; custom-write       ; Emacs as a word processor
 
       ;; ;;; Personal
-      ;; my-commands
+      my-functions
       my-bindings
       )

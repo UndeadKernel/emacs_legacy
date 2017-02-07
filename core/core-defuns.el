@@ -190,8 +190,8 @@ Examples:
 
 ;; A lovely function to easily create key bindings
 (defmacro map! (&rest rest)
-    "A nightmare of a key-binding macro that will use  `define-key' and 
-`global-set-key' depending on context and plist key flags. It was designed to 
+    "A nightmare of a key-binding macro that will use  `define-key' and
+`global-set-key' depending on context and plist key flags. It was designed to
 make binding multiple keys more concise, like in vim.
 
 Yes, it tries to do too much. Yes, I only did it to make the \"frontend\" config
@@ -220,7 +220,7 @@ Conditional keybinds
       (setq key (pop rest))
       (push
        (reverse
-        (cond 
+        (cond
          ; it's a sub exp
          ((listp key)
                `(,(macroexpand `(map! ,@key))))
@@ -263,7 +263,7 @@ Conditional keybinds
 ;;
 ;; Global Defuns
 ;;
- 
+
 (defsubst --subdirs (path &optional include-self)
   "Get list of subdirectories in PATH, including PATH is INCLUDE-SELF is
 non-nil."
@@ -323,7 +323,7 @@ only compile defun libraries."
         '("init.el" "core/core.el" "core/core-defuns.el" "core/core-ui.el"
           "core/core-modeline.el" "core/core-os.el" "core/core-os-osx.el"
           "core/core-os-win32.el" "core/core-os-linux.el"
-          "private/my-commands.el" "private/my-bindings.el"))
+          "private/my-functions.el" "private/my-bindings.el"))
   (unless (eq minimal 'basic)
     (unless minimal
       (byte-recompile-directory doom-core-dir 0 t)
