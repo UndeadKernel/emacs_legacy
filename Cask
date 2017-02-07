@@ -131,6 +131,12 @@
 (depends-on "highlight-quoted")
 (depends-on "slime")
 
+;; Python -- modules/module-python.el
+(depends-on "anaconda-mode")
+(depends-on "company-anaconda")
+(depends-on "nose")
+(depends-on "pip-requirements")
+
 ;; ;; Assembly -- modules/module-asm.el
 ;; (depends-on "mips-mode")
 ;; (depends-on "haxor-mode")
