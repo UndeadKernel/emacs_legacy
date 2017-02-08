@@ -5,7 +5,6 @@
 ;;   doom-...     A public variable/constant or function
 ;;   doom--...    An internal variable or function (non-interactive)
 ;;   doom/...     An autoloaded function
-;;   doom:...     An ex command
 ;;   doom|...     A hook
 ;;   doom*...     An advising function
 ;;   ...!         Macro, shortcut alias or subst defun

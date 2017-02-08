@@ -130,6 +130,9 @@
 ;; Latex -- modules/module-latex.el
 (depends-on "ivy-bibtex")
 
+;; EIN -- modules/module-ein.el
+(depends-on "ein")
+
 ;; ;; Assembly -- modules/module-asm.el
 ;; (depends-on "mips-mode")
 ;; (depends-on "haxor-mode")

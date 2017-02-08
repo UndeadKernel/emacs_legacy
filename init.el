@@ -50,7 +50,8 @@
       ;; ;;; Dev environments
       module-elisp       ; drowning in parentheses
       module-python      ; beautiful is better than ugly
-      module-latex
+      module-latex       ; the emacs paper publishing machine
+      module-ein         ; interact with juyter/ipython notebooks
       ;; module-asm         ; Assembly
       ;; module-cc          ; C/C++/Obj-C madness
       ;; module-crystal     ; ruby at the speed of c
