@@ -51,10 +51,11 @@
 (use-package magit
   :commands (magit-status)
   :config
-  (def-popup! "^\\*magit:.+" :align right :regexp t)
+  (def-popup! "^\\*magit:.+" :align right :size 70 :regexp t)
   ;(def-popup! "^\\*magit-.+-popup\\*" :align below :regexp t)
-
-  (setq magit-display-file-buffer-function 'doom/magit-pop-to-buffer))
+  (setq magit-display-file-buffer-function 'doom/magit-pop-to-buffer
+        ;; Show word differences in diff hunks. Good for Latex documents and git.
+        magit-diff-refine-hunk t))
 
 (use-package browse-at-remote
   :commands (browse-at-remote/browse browse-at-remote/get-url))
