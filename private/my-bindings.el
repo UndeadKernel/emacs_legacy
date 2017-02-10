@@ -199,6 +199,9 @@
  (:after latex
    (:when (s-present? doom-synonyms-key)
      ("C-c s" 'www-synonyms-insert-synonym)))
+ ;; (:after ein-notebooklist
+ ;;   (:map ein:notebooklist-mode-map
+ ;;     "o" 'doom/ace-link-ein))
  )
 
 ;; (map! "<f9>" 'what-face

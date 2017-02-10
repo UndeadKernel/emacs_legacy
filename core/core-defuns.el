@@ -320,11 +320,10 @@ only byte compile a few important files. If t, compile all files too. If 'basic,
 only compile defun libraries."
   (interactive)
   (mapc (lambda (f) (byte-compile-file (concat doom-emacs-dir "/" f) t))
-        '("init.el" "core/core.el" "core/core-defuns.el" "core/core-ui.el"
-          "core/core-modeline.el" "core/core-os.el" "core/core-os-osx.el"
-          "core/core-os-win32.el" "core/core-os-linux.el"
-          "private/my-functions.el" "private/my-bindings.el"
-          "private/my-variables.el"))
+        '("private/my-variables.el" "init.el" "core/core.el" "core/core-defuns.el"
+          "core/core-ui.el" "core/core-modeline.el" "core/core-os.el"
+          "core/core-os-osx.el" "core/core-os-win32.el" "core/core-os-linux.el"
+          "private/my-functions.el" "private/my-bindings.el"))
   (unless (eq minimal 'basic)
     (unless minimal
       (byte-recompile-directory doom-core-dir 0 t)
