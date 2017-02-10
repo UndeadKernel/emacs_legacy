@@ -323,7 +323,8 @@ only compile defun libraries."
         '("init.el" "core/core.el" "core/core-defuns.el" "core/core-ui.el"
           "core/core-modeline.el" "core/core-os.el" "core/core-os-osx.el"
           "core/core-os-win32.el" "core/core-os-linux.el"
-          "private/my-functions.el" "private/my-bindings.el"))
+          "private/my-functions.el" "private/my-bindings.el"
+          "private/my-variables.el"))
   (unless (eq minimal 'basic)
     (unless minimal
       (byte-recompile-directory doom-core-dir 0 t)

@@ -196,6 +196,9 @@
        "pa" 'nosetests-pdb-all
        "p." 'nosetests-pdb-one
        "pm" 'nosetests-pdb-module)))
+ (:after latex
+   (:when (s-present? doom-synonyms-key)
+     ("C-c s" 'www-synonyms-insert-synonym)))
  )
 
 ;; (map! "<f9>" 'what-face

@@ -1,13 +1,11 @@
 ;;; module-latex.el
 
-(defvar doom-bibtex-dir "~/Documents/CASED/Papers/bib/")
-(defvar doom-bibtex-pdf "~/Papers")
-
-(load "auctex.el" nil t t)
-
 (use-package tex-site
-  :mode ("\\.tex\\'" . LaTeX-mode)
+  :defer t
   :init
+  ;; Manually load the AUCTEX autoloads. This is normally done by packagie-initialize
+  ;; ... which we do not use.
+  (load "auctex-autoloads.el" nil t t)
   (setq font-latex-match-reference-keywords
         '(
           ;; biblatex
@@ -82,16 +80,21 @@
         font-latex-fontify-sectioning 1.15)
   (setq-default TeX-master nil)
   ;; Load the AUCTEX thing now
+  (use-package tex-style
+    :defer t)
+  (use-package tex-fold                   ; TeX folding
+    :defer t
+    :init (add-hook! 'TeX-mode-hook 'TeX-fold-mode))
   (use-package latex
-    :commands (LaTeX-mode TeX-mode texinfo-mode)
+    :defer t
+    :init
     :config
     ;; Do not prompt for the Master file, this allows auto-insert to add templates to .tex files
     (add-hook 'LaTeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
     (add-hook 'TeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
     ;; Adding our standard latex mode hooks
-    (add-hook! LaTeX-mode (LaTeX-math-mode) (flyspell-mode) (turn-on-reftex) (LaTeX-preview-setup))
-    (TeX-global-PDF-mode t)
-    (TeX-PDF-mode t)
+    (add-hook! LaTeX-mode (LaTeX-math-mode) (flyspell-mode) (turn-on-reftex) (LaTeX-preview-setup)
+      (TeX-global-PDF-mode t) (TeX-PDF-mode t) (auctex-latexmk-setup) (company-auctex-init))
     (setq ispell-dictionary "english")
     ;; Configure Okular as viewer. Fix a bug (https://bugs.kde.org/show_bug.cgi?id=373855)
     (setq TeX-view-program-list '(("Okular-fix" ("okular --unique file:%o" (mode-io-correlate "#src:%n%a"))))
@@ -99,8 +102,8 @@
           TeX-source-correlate-mode t
           TeX-source-correlate-method 'synctex
           TeX-source-correlate-start-server nil)
-                                        ; Automatically activate TeX-fold-mode.
-    (TeX-fold-mode 1)))
+    ;; Use chktex to search for errors in a latex file.
+    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")))
 
 (use-package preview
   :commands LaTeX-preview-setup
@@ -115,7 +118,7 @@
   (setq reftex-plug-into-AUCTeX t
         reftex-ref-style-default-list '("Cleveref" "Hyperref" "Fancyref")
         reftex-default-bibliography
-          `(,(expand-file-name "CASED.bib" doom-bibtex-dir)))
+          `(,(expand-file-name doom-bibtex-file)))
   ; Get ReTeX with biblatex
   ; http://tex.stackexchange.com/questions/31966/setting-up-reftex-with-biblatex-citation-commands/31992#31992
   (setq reftex-cite-format
@@ -137,12 +140,29 @@
 (use-package ivy-bibtex
   :commands ivy-bibtex
   :config
-  (setq bibtex-completion-bibliography (list (f-expand "CASED.bib" doom-bibtex-dir))
+  (setq bibtex-completion-bibliography (list (expand-file-name doom-bibtex-file))
         bibtex-completion-library-path (list doom-bibtex-pdf)
         bibtex-completion-pdf-field "file"
         bibtex-completion-notes-path (f-expand "notes.org" doom-bibtex-pdf)
         bibtex-completion-pdf-open-function
             (lambda (fpath) (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath))))
+
+(use-package auctex-latexmk
+  :commands (auctex-latexmk-setup)
+  :init
+  ;; Pass the -pdf flag when TeX-PDF-mode is active
+  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
+  :config
+  (setq-local TeX-command-default "LatexMK"))
+
+(use-package company-auctex
+  :commands (company-auctex-init))
+
+(use-package www-synonyms
+  :if (s-present? doom-synonyms-key)
+  :commands (www-synonyms-insert-synonym www-synonyms-change-language)
+  :config
+  (setq www-synonyms-key doom-synonyms-key))
 
 (provide 'module-latex)
 ;;; module-latex.el ends here

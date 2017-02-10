@@ -30,6 +30,8 @@
 (load (concat user-emacs-directory "core/core"))
 
 (doom
+      my-variables       ; user-defined variables
+
       core-ui            ; draw me like one of your French editors
       core-popup         ; taming sudden and inevitable windows
       core-os            ; os-specific config
@@ -92,7 +94,8 @@
       ;; custom-tmux        ; close the rift between GUI & terminal
       ;; custom-write       ; Emacs as a word processor
 
-      ;; ;;; Personal
+      ;; User defined functions and variables
       my-functions
       my-bindings
       )
+

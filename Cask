@@ -128,7 +128,11 @@
 (depends-on "pip-requirements")
 
 ;; Latex -- modules/module-latex.el
+(depends-on "auctex")
 (depends-on "ivy-bibtex")
+(depends-on "auctex-latexmk")
+(depends-on "company-auctex")
+(depends-on "www-synonyms")
 
 ;; EIN -- modules/module-ein.el
 (depends-on "ein")
