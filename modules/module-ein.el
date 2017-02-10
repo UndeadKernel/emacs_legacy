@@ -20,8 +20,7 @@
         ;; Enable undo even after modifying cells
         ein:worksheet-enable-undo 'full
         ein:notebook-modes
-            '(ein:notebook-multilang-mode ein:notebook-python-mode ein:notebook-plain-mode))
-)
+            '(ein:notebook-multilang-mode ein:notebook-python-mode ein:notebook-plain-mode)))
 
 
 (provide 'module-ein)

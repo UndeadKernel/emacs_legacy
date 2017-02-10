@@ -4,7 +4,7 @@
 (use-package ivy
   :init
   (setq projectile-completion-system 'ivy
-        ivy-height 15
+        ivy-height 14
         ivy-do-completion-in-region nil
         ivy-wrap t
         ;; fontify until EOL
@@ -12,6 +12,8 @@
 
   :config
   (ivy-mode +1)
+  ;; Add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+  (setq ivy-use-virtual-buffers t)
 
   (after! magit     (setq magit-completing-read-function 'ivy-completing-read))
   (after! smex      (setq smex-completion-method 'ivy))

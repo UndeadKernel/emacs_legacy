@@ -26,7 +26,7 @@ clean:
 
 clean-cache:
 	@find $(CACHE_DIR) -type f -maxdepth 1 -delete
-	@rm -f $(CACHE_DIR)/{workgroups,pcache,ltxpng,backup}/*
+	@rm -f $(CACHE_DIR)/{pcache,ltxpng,backup}/*
 
 clean-lite:
 	@rm -f init.elc core/core.elc

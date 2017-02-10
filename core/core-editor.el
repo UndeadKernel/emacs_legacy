@@ -224,7 +224,6 @@
         sp-max-pair-length 5)
 
   (smartparens-global-mode 1)
-  ; TODO: fix the font style of the line numbers when the first character is a parenthesis and is highlighted
   (show-smartparens-global-mode t)
   (require 'smartparens-config)
 
