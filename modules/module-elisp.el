@@ -18,9 +18,9 @@
   (def-popup! "*ert*" :align below :size 20 :noselect t)
 
   ;; Don't affect lisp indentation (only `tab-width')
-  (setq editorconfig-indentation-alist
-        (delq (assq 'emacs-lisp-mode editorconfig-indentation-alist)
-              editorconfig-indentation-alist))
+  ;; (setq editorconfig-indentation-alist
+  ;;       (delq (assq 'emacs-lisp-mode editorconfig-indentation-alist)
+  ;;             editorconfig-indentation-alist))
 
   (remove-hook 'emacs-lisp-mode-hook 'doom/elisp-init))
 

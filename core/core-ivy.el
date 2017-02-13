@@ -12,8 +12,8 @@
 
   :config
   (ivy-mode +1)
-  ;; Add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
-  (setq ivy-use-virtual-buffers t)
+  ;; Do not add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+  (setq ivy-use-virtual-buffers nil)
 
   (after! magit     (setq magit-completing-read-function 'ivy-completing-read))
   (after! smex      (setq smex-completion-method 'ivy))

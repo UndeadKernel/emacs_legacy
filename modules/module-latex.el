@@ -94,7 +94,8 @@
     (add-hook 'TeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
     ;; Adding our standard latex mode hooks
     (add-hook! LaTeX-mode (LaTeX-math-mode) (flyspell-mode) (turn-on-reftex) (LaTeX-preview-setup)
-      (TeX-global-PDF-mode t) (TeX-PDF-mode t) (auctex-latexmk-setup) (company-auctex-init))
+      (TeX-global-PDF-mode t) (TeX-PDF-mode t) (auctex-latexmk-setup) (company-auctex-init)
+      (visual-line-mode +1))
     (setq ispell-dictionary "english")
     ;; Configure Okular as viewer. Fix a bug (https://bugs.kde.org/show_bug.cgi?id=373855)
     (setq TeX-view-program-list '(("Okular-fix" ("okular --unique file:%o" (mode-io-correlate "#src:%n%a"))))
