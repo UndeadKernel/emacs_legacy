@@ -120,10 +120,13 @@ configuration."
                         workgroup
                         (format " [%d] %s " (1+ index) (wg-workgroup-name workgroup))
                         'wg-current-workgroup-p)))
-                   (wg-session-workgroup-list it))))
+                   (wg-session-workgroup-list it)))
+          (session-file-name  (wg-session-file-name (wg-current-session))))
       (if return-p
           output
-        (message "%s%s" output (or message ""))))))
+        (if session-file-name
+            (message "%s: %s%s" (f-filename session-file-name) output (or message ""))
+          (message "%s%s" output (or message "")))))))
 
 ;;;###autoload
 (defun doom/workgroup-update-names (&optional wg)
