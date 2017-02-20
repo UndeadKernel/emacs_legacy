@@ -17,7 +17,7 @@
         ;; Slide images into rows so that we can navigate buffers with images more easily
         ein:slice-image t
         ;; Enable undo even after modifying cells
-        ein:worksheet-enable-undo 'full
+        ;ein:worksheet-enable-undo 'full
         ein:notebook-modes
             '(ein:notebook-multilang-mode ein:notebook-python-mode ein:notebook-plain-mode))
   ;; Enable something like ace-link in the notebooklist buffer
