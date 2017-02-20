@@ -28,7 +28,7 @@ configuration."
                         wg-session-file)))
     (when (or (not (f-exists? session-file))
               (y-or-n-p (format "Session '%s' exists, overwrite?" (f-filename session-file))))
-      (unless (wg-workgroup-list)
+      (unless (wg-session-workgroup-list (wg-current-session))
         (wg-create-workgroup wg-first-wg-name))
       (wg-save-session-as session-file))))
 
@@ -178,7 +178,7 @@ configuration."
       (doom/popup-close)
     (when (doom/kill-real-buffer)
       (if (and (one-window-p t)
-               (> (length (wg-workgroup-list)) 1))
+               (> (length (wg-session-workgroup-list (wg-current-session))) 1))
           (if (string= (wg-workgroup-name (wg-current-workgroup)) wg-first-wg-name)
               (delete-window)
             (doom/workgroup-delete))
