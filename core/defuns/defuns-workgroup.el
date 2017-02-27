@@ -12,8 +12,10 @@ configuration."
 ;;;###autoload
 (defun doom/wg-projectile-switch-project ()
   (let ((project-root (doom/project-root)))
-    (doom/workgroup-new nil (file-name-nondirectory (directory-file-name project-root)) t)
-    (doom-reload-scratch-buffer project-root)
+    ;; TODO: check if there is another project with the same directory-file-name and if so
+    ;; ... change the name of the new workgroup to something unique.
+    (doom/workgroup-new (file-name-nondirectory (directory-file-name project-root)) t)
+    (doom-scratch-reload project-root)
     (when (featurep 'neotree)
       (neotree-projectile-action)))
   (doom/workgroup-display))
@@ -56,7 +58,7 @@ configuration."
   (when (or (s-blank? name) (s-contains? " " name))
     (setq name (format "#%s" (1+ (length (wg-session-workgroup-list (wg-current-session t)))))))
   (let ((new-wg (wg-get-workgroup name t)))
-    (when (and new-wg (y-or-n-p (format "'%s' already exists, overwrite?" name)))
+    (when (and new-wg (y-or-n-p (format "'%s' already exists, replace?" name)))
       (wg-delete-workgroup new-wg)
       (setq new-wg nil))
     (setq new-wg (or new-wg (wg-make-and-add-workgroup name t)))

@@ -19,7 +19,7 @@
 (defvar doom-scratch-widgets '(banner shortmenu loaded)
   "List of widgets to display in a blank scratch buffer.")
 
-(define-derived-mode doom-mode fundamental-mode 
+(define-derived-mode doom-mode fundamental-mode
   (concat "v" doom-version)
   "Major mode for special DOOM buffers.")
 
@@ -69,8 +69,8 @@
   "Erase the buffer and prepare it to be used like a normal buffer."
   (erase-buffer)
   (setq doom-scratch-edited t
-        mode-line-format (doom-modeline)))
-  ;(remove-hook 'pre-command-hook 'doom|scratch-clear-on-insert t))
+        mode-line-format (doom-modeline))
+  (remove-hook 'after-change-major-mode-hook 'doom-scratch-clear t))
 
 (defun doom-scratch-reload (&optional dir)
   "Update the DOOM scratch buffer (or create it, if it doesn't exist)."

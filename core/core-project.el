@@ -42,7 +42,8 @@
              neotree-dir
              neotree-find
              neo-global--with-buffer
-             neo-global--window-exists-p)
+             neo-global--window-exists-p
+             neotree-projectile-action)
   :init
   (setq neo-create-file-auto-open t
         neo-auto-indent-point nil
@@ -71,15 +72,15 @@
   (setf neo-display-action '(doom-neotree-display)))
 
 (use-package projectile
-  :config
-  (setq projectile-require-project-root nil
+  :init
+  (setq projectile-require-project-root t
         projectile-enable-caching t
         projectile-cache-file (concat doom-cache-dir "/projectile.cache")
         projectile-known-projects-file (concat doom-cache-dir "/projectile.projects")
         projectile-indexing-method 'alien
         projectile-file-exists-remote-cache-expire nil
         projectile-project-root-files '(".git" ".hg" ".svn" ".project"))
-
+  :config
   ;; Don't cache ignored files!
   (defun doom*projectile-cache-current-file (orig-fun &rest args)
     (unless (--any (f-descendant-of? buffer-file-name it) (projectile-ignored-directories))
