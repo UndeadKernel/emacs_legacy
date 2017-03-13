@@ -3,6 +3,7 @@
 (setq ;; Always copy/delete recursively
       dired-recursive-copies  'always
       dired-recursive-deletes 'top
+      dired-listing-switches "-lah"
       ;; Auto refresh dired, but be quiet about it
       global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
@@ -22,6 +23,9 @@
 
 (use-package dired-k
   :after dired
+  :init
+  (setq dired-k-human-readable t
+        dired-k-padding 2)
   :config
   (setq dired-k-style 'git)
   (add-hook 'dired-initial-position-hook 'dired-k)

@@ -30,10 +30,12 @@
 
 ;;
 (add-hook 'emacs-startup-hook 'doom-scratch)
+(add-hook 'after-make-frame-functions 'doom-scratch-deferred-reload)
 (add-hook! 'kill-buffer-query-functions (not (doom-scratch-buffer-p)))
-(add-hook! window-setup
+(add-hook! 'window-setup-hook
   (add-hook 'window-configuration-change-hook 'doom-scratch-reload)
-  (doom-scratch-reload))
+  ;; (doom-scratch-reload)
+  )
 
 
 ;;
@@ -71,6 +73,11 @@
   (setq doom-scratch-edited t
         mode-line-format (doom-modeline))
   (remove-hook 'after-change-major-mode-hook 'doom-scratch-clear t))
+
+(defun doom-scratch-deferred-reload (&rest _)
+  "Reload the dashboard after a brief pause. This is necessary for new frames,
+whose dimensions may not be fully initialized by the time this is run."
+  (run-with-timer 0.1 nil 'doom-scratch-reload))
 
 (defun doom-scratch-reload (&optional dir)
   "Update the DOOM scratch buffer (or create it, if it doesn't exist)."

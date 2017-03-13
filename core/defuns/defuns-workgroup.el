@@ -15,7 +15,7 @@ configuration."
     ;; TODO: check if there is another project with the same directory-file-name and if so
     ;; ... change the name of the new workgroup to something unique.
     (doom/workgroup-new (file-name-nondirectory (directory-file-name project-root)) t)
-    (doom-scratch-reload project-root)
+    (dired project-root)
     (when (featurep 'neotree)
       (neotree-projectile-action)))
   (doom/workgroup-display))
