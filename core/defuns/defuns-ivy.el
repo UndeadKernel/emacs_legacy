@@ -16,7 +16,7 @@
                  (let ((buffer-name (buffer-name b))
                        (mode-name (symbol-name major-mode)))
                    (when (> (length buffer-name) min-name)
-                     (setq min-name (+ (length buffer-name) 10)))
+                     (setq min-name (+ (length buffer-name) 15)))
                    (when (> (length mode-name) min-mode)
                      (setq min-mode (+ (length mode-name) 3)))
                    (list
@@ -45,8 +45,8 @@
 (defun doom/ivy-switch-project-buffer (&optional all-p)
   "Displays open buffers in current project and workspace. If ALL-P, then show
 all open buffers."
-  (interactive)
-  (ivy-read (format "%s buffers: " (if all-p "All" "Project"))
+  (interactive "P")
+  (ivy-read (format "%s buffers: " (if all-p "Global" "Workspace"))
             (doom-ivy-get-buffers (if all-p (buffer-list)))
             :matcher #'ivy--switch-buffer-matcher
             :action #'doom--ivy-select-buffer-action

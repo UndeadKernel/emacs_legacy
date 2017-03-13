@@ -30,6 +30,7 @@
  "C-S-<right>" (λ! (doom/move-buffer 'right))
  "C-S-<up>" (λ! (doom/move-buffer 'up))
  "C-S-<down>" (λ! (doom/move-buffer 'down))
+ "C-x b" 'doom/ivy-switch-project-buffer
  ;; Misc plugins
  "<f9>" 'doom/neotree
  "C-x o" 'switch-window
