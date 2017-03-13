@@ -26,6 +26,16 @@
     (sorted t)))
 
 ;;;###autoload
+(defun doom--collect-ein-buffer-links ()
+  (let ((end (window-end))
+        points)
+    (save-excursion
+      (goto-char (window-start))
+      (while (re-search-forward "~?/.+\\|\s\\[" end t)
+        (push (+ (match-beginning 0) 1) points))
+      (nreverse points))))
+
+;;;###autoload
 (defun doom/ace-link-ein ()
   "Ace jump to links in ein notebooklist."
   (interactive)
@@ -36,16 +46,6 @@
     (when (numberp res)
       (goto-char (1+ res))
       (widget-button-press (point)))))
-
-;;;###autoload
-(defun doom--collect-ein-buffer-links ()
-  (let ((end (window-end))
-        points)
-    (save-excursion
-      (goto-char (window-start))
-      (while (re-search-forward "~?/.+\\|\s\\[" end t)
-        (push (+ (match-beginning 0) 1) points))
-      (nreverse points))))
 
 (provide 'defuns-ein)
 ;;; defuns-ein.el ends here

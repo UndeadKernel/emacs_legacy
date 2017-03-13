@@ -9,5 +9,8 @@
 (defvar doom-synonyms-key ""
   "API key from http://thesaurus.altervista.org that gives us synonyms.")
 
+(defvar doom-jupyter-dir "~/Documents/CASED/Development"
+  "Default directory where the Jupyter notebook server starts.")
+
 (provide 'my-variables)
 ;;; my-variables.el ends here
