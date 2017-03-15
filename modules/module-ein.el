@@ -8,6 +8,8 @@
     (define-key ein:notebook-mode-map (kbd "<C-tab>") 'doom/company-ein-backend)
     (define-key ein:notebook-mode-map [remap ein:completer-complete] 'doom/company-ein-backend)
     (define-key ein:notebook-mode-map (kbd "C-M-i") 'doom/company-ein-backend)
+    (define-key ein:notebook-mode-map (kbd "M-n") 'my-down-scroll)
+    (define-key ein:notebook-mode-map (kbd "M-p") 'my-up-scroll)
     (anaconda-mode))
   (setq
    ;; Slide images into rows so that we can navigate buffers with images more easily
