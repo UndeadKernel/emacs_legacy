@@ -17,7 +17,8 @@ configuration."
     (doom/workgroup-new (file-name-nondirectory (directory-file-name project-root)) t)
     (dired project-root)
     (when (featurep 'neotree)
-      (neotree-projectile-action)))
+      ;; If neotree is loaded, switch its root to the project root.
+      (neotree-dir (project-root))))
   (doom/workgroup-display))
 
 ;;;###autoload
