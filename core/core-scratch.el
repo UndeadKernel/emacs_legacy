@@ -29,14 +29,16 @@
 
 
 ;;
-(add-hook 'emacs-startup-hook 'doom-scratch)
 (add-hook 'after-make-frame-functions 'doom-scratch-deferred-reload)
-(add-hook! 'kill-buffer-query-functions (not (doom-scratch-buffer-p)))
 (add-hook! 'window-setup-hook
+  (add-hook! 'kill-buffer-query-functions
+    (or (not (doom-scratch-buffer-p))
+        (ignore (ignore-errors (doom-scratch-force-reload))
+                (bury-buffer))))
   (add-hook 'window-configuration-change-hook 'doom-scratch-reload)
-  ;; (doom-scratch-reload)
-  )
-
+  (doom-scratch-reload)
+  (when (equal (buffer-name) doom-scratch-name)
+    (switch-to-buffer doom-buffer)))
 
 ;;
 (defun doom-scratch-buffer-p (&optional buffer)

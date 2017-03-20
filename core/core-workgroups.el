@@ -80,7 +80,10 @@ these workgroups won't be auto-renamed.")
 
   (add-hook! emacs-startup
     (workgroups-mode +1)
-    (wg-create-workgroup wg-first-wg-name)))
+    (wg-create-workgroup wg-first-wg-name)
+    ;; If a file was opened when emacs was started, add the file to the workgroup.
+    (unless (equal (buffer-name) doom-scratch-name)
+      (wg-associate-visible-buffers-with-workgroup (wg-current-workgroup)))))
 
 (unless window-system
   (defalias 'wg-workgroup-associated-buffers 'ignore)
