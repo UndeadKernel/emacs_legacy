@@ -21,7 +21,7 @@
   (interactive)
   (when (neo-global--window-exists-p)
     (with-selected-window neo-global--window
-      (evil-window-delete))))
+      (delete-window))))
 
 ;;;###autoload
 (defmacro doom/neotree-save (&rest body)
