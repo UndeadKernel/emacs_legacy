@@ -22,7 +22,7 @@
  ;; Scrolling
  hscroll-margin 1
  hscroll-step 1
- scroll-conservatively 1001
+ scroll-conservatively 8
  scroll-margin 0
  scroll-preserve-screen-position t
  ;; Regions
@@ -109,7 +109,7 @@
     (buffer-disable-undo)
     (fundamental-mode)
     (visual-line-mode)))
- 
+
 ;; Disable by default, please
 (electric-indent-mode -1)
 ;; Smarter, keyword-based electric-indent (see `def-electric!')
@@ -195,7 +195,7 @@
                                  display-string)
               (overlay-put ov 'before-string marker-string)
               (overlay-put ov 'display display-string))))))
- 
+
 (use-package help-fns+ ; Improved help commands
   :commands (describe-buffer describe-command describe-file
              describe-keymap describe-option describe-option-of-type))
