@@ -15,7 +15,7 @@
         flycheck-display-errors-delay 0.5)
 
   :config
-  (def-popup! " ?\\*Flycheck.+\\*" :align below :size 14 :noselect t :regexp t)
+  (def-popup! " ?\\*Flycheck.+\\*" :align below :size 14 :regexp t)
 
   (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
     [0 0 0 0 0 4 12 28 60 124 252 124 60 28 12 4 0 0 0 0]))
