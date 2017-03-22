@@ -48,6 +48,8 @@
  ;; smartparens
  "C-M-a" 'sp-beginning-of-sexp
  "C-M-e" 'sp-end-of-sexp
+ "C-M-f" 'sp-forward-sexp
+ "C-M-b" 'sp-backward-sexp
  ;; Company mode
  "<C-tab>" 'doom/company-complete
  ;; git-messenger

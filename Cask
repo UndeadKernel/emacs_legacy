@@ -51,6 +51,7 @@
 (depends-on "ido-vertical-mode")
 (depends-on "neotree")
 (depends-on "projectile")
+(depends-on "ag")
 
 ;; Modeline --- core/core-modeline.el
 (depends-on "eldoc-eval")

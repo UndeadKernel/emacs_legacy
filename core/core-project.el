@@ -101,5 +101,11 @@
 
   (projectile-global-mode +1))
 
+(use-package ag
+  :commands (ag ag-regexp)
+  :init
+  (setq ag-highlight-search t
+        ag-reuse-window 'nil))
+
 (provide 'core-project)
 ;;; core-project.el ends here

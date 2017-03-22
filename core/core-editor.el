@@ -221,7 +221,9 @@
         sp-highlight-pair-overlay nil
         sp-cancel-autoskip-on-backward-movement nil
         sp-show-pair-delay 0
-        sp-max-pair-length 5)
+        sp-max-pair-length 5
+        sp-escape-quotes-after-insert t
+        sp-show-pair-from-inside t)
 
   (smartparens-global-mode 1)
   (show-smartparens-global-mode t)
@@ -242,7 +244,13 @@
   (sp-local-pair '(sh-mode markdown-mode) "`" nil
    :unless '(sp-point-before-word-p sp-point-before-same-p))
   (sp-with-modes '(xml-mode nxml-mode php-mode)
-    (sp-local-pair "<!--" "-->"   :post-handlers '(("| " "SPC")))))
+    (sp-local-pair "<!--" "-->"   :post-handlers '(("| " "SPC"))))
+
+  ;; Color of matching pairs
+  (set-face-attribute 'sp-show-pair-match-face nil
+                      :background "purple2"
+                      :foreground "deep sky blue"
+                      :inherit 'unspecified))
 
 (use-package smex
   :commands (smex smex-major-mode-commands)

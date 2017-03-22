@@ -1,6 +1,6 @@
 ;;; core-ui.el
 
-(defconst doom-ui-fringe-size '4 
+(defconst doom-ui-fringe-size '4
   "Default fringe width")
 
 (defvar doom-ui-theme 'doom-one
@@ -118,7 +118,11 @@
   (add-hook 'find-file-hook 'doom-buffer-mode)
   ;; Custom neotree theme
   (when window-system
-    (require 'doom-neotree)))
+    (require 'doom-neotree))
+  ;; Set the linum highlight face so that it does not clash with sp-show-matched-pairs
+  (set-face-attribute 'doom-nlinum-highlight nil
+                      :background "#282c34"
+                      :weight 'medium))
 
 (use-package beacon
   :config
@@ -190,7 +194,7 @@
 
 (use-package rainbow-delimiters
   :commands rainbow-delimiters-mode
-  :config (setq rainbow-delimiters-max-face-count 3)
+  :config (setq rainbow-delimiters-max-face-count 4)
   :init
   (add-hook! (emacs-lisp-mode lisp-mode js-mode css-mode c-mode-common)
     'rainbow-delimiters-mode))
