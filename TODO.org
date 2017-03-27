@@ -1,19 +1,14 @@
-* TODO Files [100%]
-- [X] core/core-yasnippet.el
-- [X] core/defuns/defuns-yasnippet.el
-- [X] core/defuns/macros-yasnippet.el
-- [X] core/core-autoinsert.el
-- [X] core/defuns/defuns-auto-insert.el
-- [X] core/defuns/defuns-flycheck.el
-- [X] core/core-flycheck.el
-- [X] core/core-vcs.el
-- [X] core/core-eval.el
-- [X] core/defuns/defuns-eval.el
-- [X] core/defuns/macros-eval.el
-- [X] core/core-ivy.el
-- [X] core/defuns/defuns-ivy.el
+#+TITLE:How can CDoom be improved?
 
-* TODO Changes
+* Enhancements
++ [ ] Benchamark shows that core-ui is slow. Figure out why.
++ [ ] In EIN, doom/ace-link-ein, not all links are recognised. Change the link finding regexp.
++ [ ] Add flycheck with python to the EIN python cells.
++ [ ] Remove M-n and M-p from ein notebooks so as to not overshadow my awesome movement bindings.
+- [ ] Assign keybind to doom/flycheck-errors
+- [ ] Change Workgroups2 for persp-mode
+ 
+* Changes
 - [ ] core-editor.el - fix font of line numbers when first character is selected
 - [ ] defuns-docs.el - add lookup function
 - [ ] defuns-buffers.el - choose if some operators stay or not
@@ -22,16 +17,8 @@
 - [X] defuns-workgroup.el - keybindings for tabs and workgroups
 - [X] defuns-workgroup.el - ask user to overwrite saved workgroups sessions
 
-* Test [50%]
-- [X] Yasnippet
-- [ ] Autocomplete
-- [ ] git-messenger
-- [ ] Test if the workgroup tabs and the rename functionality with doom/project-root
-
-* Enhancements [%]
-- [ ] Snippet selection with helm
-- [ ] Assign keybind to doom/flycheck-errors
-- [ ] Change Workgroups2 for persp-mode
+* Bug Fixes
++ [ ] Zeal-at-point does not work, fix it.
 
 * Upstream bugs to report [0%]
 - [ ] Flycheck needs to add (require 'pkg-info)
@@ -39,3 +26,8 @@
   + error in process sentinel: ad-Advice-select-window: Wrong type argument: window-live-p, nil
   + error in process sentinel: Wrong type argument: window-live-p, nil
 - [ ] doom|neotree-close-on-window-change is never used (in defuns-neotree.el)
+
+* Test [33%]
+- [X] Yasnippet
+- [ ] Autocomplete
+- [ ] git-messenger
