@@ -248,8 +248,8 @@
 
   ;; Color of matching pairs
   (set-face-attribute 'sp-show-pair-match-face nil
-                      :background "purple2"
-                      :foreground "deep sky blue"
+                      :background "grey14"
+                      :foreground "firebrick"
                       :inherit 'unspecified))
 
 (use-package smex
