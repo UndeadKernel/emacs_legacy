@@ -26,11 +26,16 @@
   (add-hook 'quickrun-after-run-hook 'doom|quickrun-after-run))
 
 (use-package repl-toggle
-  :commands (rtog/toggle-repl rtog/add-repl)
-  :preface (defvar rtog/mode-repl-alist nil)
+  :commands (rtog/toggle-repl rtog/add-repl repl-toggle-mode)
+  :preface
+  (defvar rtog/mode-repl-alist nil)
   :init
-  (defvar doom-repl-buffer nil "The current REPL buffer.")
+  (defvar-local doom-repl-buffer nil "The current REPL buffer.")
+  (defvar-local doom-repl-calling-buffer nil "The Buffer owning a REPL.")
   :config
+  ;; Replace the default toggle keybinding added by the repl map
+  (map! :map repl-toggle-mode-map
+        "C-c C-z" 'doom/repl)
   (def-popup!
     (:custom (lambda (b &rest _)
                (when (and (featurep 'repl-toggle)

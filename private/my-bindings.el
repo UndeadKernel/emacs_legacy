@@ -54,6 +54,14 @@
  "<C-tab>" 'doom/company-complete
  ;; git-messenger
  " C-x v p" 'git-messenger:popup-message
+;; Repl Toggle
+ "C-c C-z" 'doom/repl
+ (:after nodejs-repl
+   (:map nodejs-repl-mode-map
+     "C-g" 'doom/popup-close))
+ (:after ielm
+   (:map ielm-map
+     "C-g" 'doom/popup-close))
  ;; Workgroups and stuff
  "<pause>" (λ! (doom/workgroup-load (concat wg-workgroup-directory doom-wg-perpetual)))
  (:prefix "C-c w"
@@ -165,13 +173,6 @@
    (:map git-messenger-map
      "C-g"  'git-messenger:popup-close
      "q"    'git-messenger:popup-close))
- ;; repl-toggle
- (:after repl-toggle
-   (:map repl-toggle-mode-map
-     "C-n" 'comint-next-input
-     "C-p" 'comint-previous-input
-     "<down>" 'comint-next-input
-     "<up>"   'comint-previous-input))
  ;; ivy stuff
  (:after ivy
    (:map ivy-minibuffer-map
