@@ -19,6 +19,7 @@
  ;; Editor related bindings
  "C-a" 'doom/move-to-bol
  "C-s" 'swiper
+ "C-r" 'swiper
  ;; Line-wise mouse selection on margin
  "<left-margin> <down-mouse-1>" 'doom/mouse-drag-line
  "<left-margin> <mouse-1>"      'doom/mouse-select-line
@@ -57,6 +58,8 @@
  "<C-tab>" 'doom/company-complete
  ;; git-messenger
  " C-x v p" 'git-messenger:popup-message
+ ;; Counsel Bindings
+ "C-h b" 'counsel-descbinds
 ;; Repl Toggle
  "C-c C-z" 'doom/repl
  (:after nodejs-repl
