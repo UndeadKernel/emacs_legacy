@@ -59,7 +59,6 @@
 
 ;; Editor --- core/core-editor.el
 (depends-on "ace-link")
-;(depends-on "ace-window")
 (depends-on "switch-window")
 (depends-on "avy")
 (depends-on "command-log-mode")

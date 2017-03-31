@@ -129,16 +129,6 @@
 ;; Plugins
 ;;
 
-;; (use-package ace-window
-;;   :commands ace-window
-;;   :config
-;;   (setq aw-scope 'frame
-;;         aw-background t)
-;;   ;; Make the special window character bigger, blue and boxed.
-;;   (set-face-attribute 'aw-leading-char-face nil
-;;                       :foreground "deep sky blue" :weight 'bold :height 3.0
-;;                       :box t))
-
 (use-package switch-window
   :commands switch-window)
 

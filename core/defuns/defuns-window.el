@@ -49,5 +49,16 @@
   (interactive)
   (doom/neotree-save (delete-other-windows window)))
 
+;;;###autoload
+(defun doom/switch-to-last-window ()
+  "Switch to the previously selected window, skipping any other window in between."
+  (interactive)
+  (let ((win (get-mru-window t t t)))
+    (unless win (error "Last window not found."))
+    (let ((frame (window-frame win)))
+      (raise-frame frame)
+      (select-frame frame)
+      (select-window win))))
+
 (provide 'defuns-window)
 ;;; defuns-window.el ends here
