@@ -6,12 +6,6 @@
 (make-variable-buffer-local 'doom--build-command)
 
 ;;;###autoload
-(defun doom/set-build-command (command &optional file)
-  (when (or (null file)
-            (doom/project-has-files file))
-    (setq doom--build-command `(,command . ,file))))
-
-;;;###autoload
 (defun doom/build (arg)
   "Call a build command in the current directory. If ARG is nil this function calls
 `recompile', otherwise it calls `compile' passing ARG as build command."

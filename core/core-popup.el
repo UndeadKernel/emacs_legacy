@@ -26,7 +26,7 @@
           ("*Help*"            :align below :size 16  :select t)
           ("*Messages*"        :align below :size 15  :select t)
           ("*Warnings*"        :align below :size 10  :noselect t)
-          (compilation-mode    :align below :size 15  :noselect t)
+          (compilation-mode    :align below :size 15  :select t)
           (eww-mode            :align below :size 30  :select t)
           ("*command-log*"     :align right :size 28  :noselect t)
           ;; vcs

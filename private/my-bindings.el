@@ -138,8 +138,18 @@
      "g"       'neotree-refresh
      "r"       'neotree-rename-node
      "R"       'neotree-change-root))
+ ;; Refactoring and compilation
  (:map prog-mode-map
    "M-RET" 'emr-show-refactor-menu)
+ (:after cc-mode
+   ;; Compile
+   "<f10>" 'doom/build
+   ;; Recompile
+   "C-<f10>" (λ! (doom/build nil))
+   (:map c++-mode-map
+     "M-RET" 'srefactor-refactor-at-point)
+   (:map c-mode-map
+     "M-RET" 'srefactor-refactor-at-point))
  (:after re-builder
    (:map reb-mode-map
      "C-g" 'reb-quit
