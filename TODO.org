@@ -7,6 +7,9 @@
 + [ ] Remove M-n and M-p from ein notebooks so as to not overshadow my awesome movement bindings.
 - [ ] Assign keybind to doom/flycheck-errors
 - [ ] Change Workgroups2 for persp-mode
+
+* Missing
++ [ ] Yas expand with a selected region.
  
 * Changes
 - [ ] core-editor.el - fix font of line numbers when first character is selected
@@ -19,6 +22,10 @@
 
 * Bug Fixes
 + [ ] Zeal-at-point does not work, fix it.
++ [ ] Automatic saving of workgroup sessions
+  - [ ] Remove neotree window
+  - [ ] Remove I-Menu window
+  - [ ] Remove Magit window
 
 * Upstream bugs to report [0%]
 - [ ] Flycheck needs to add (require 'pkg-info)
