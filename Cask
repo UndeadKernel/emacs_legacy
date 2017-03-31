@@ -142,19 +142,20 @@
 ;; (depends-on "haxor-mode")
 ;; (depends-on "nasm-mode")
 
-;; ;; C/C++ -- modules/module-cc.el
-;; (depends-on "cmake-mode")
-;; (depends-on "company-irony")
-;; (depends-on "company-irony-c-headers")
-;; (depends-on "cuda-mode")
-;; (depends-on "demangle-mode")
-;; (depends-on "disaster")
-;; (depends-on "flycheck-irony")
-;; (depends-on "glsl-mode")
-;; (depends-on "irony")
-;; (depends-on "irony-eldoc")
-;; (depends-on "opencl-mode")
-;; (depends-on "modern-cpp-font-lock")
+;; C/C++ -- modules/module-cc.el
+(depends-on "cmake-mode")
+(depends-on "company-irony")
+(depends-on "company-irony-c-headers")
+(depends-on "cuda-mode")
+(depends-on "demangle-mode")
+(depends-on "disaster")
+(depends-on "flycheck-irony")
+(depends-on "glsl-mode")
+(depends-on "irony")
+(depends-on "irony-eldoc")
+(depends-on "opencl-mode")
+(depends-on "modern-cpp-font-lock")
+(depends-on "srefactor")
 
 ;; ;; Crystal -- modules/module-crystal.el
 ;; (depends-on "crystal-mode" :git "https://github.com/jpellerin/emacs-crystal-mode")

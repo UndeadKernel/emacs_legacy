@@ -26,7 +26,7 @@
           ("/win32_\\.\\(cc\\|cpp\\)$"       "__winmain.cpp"    c++-mode)
           ("\\.h\\(h\\|pp|xx\\)$"            "__hpp"            c++-mode)
           ("\\.\\(cc\\|cpp\\)$"              "__cpp"            c++-mode)
-          ("\\.h$"                           "__h"              c-mode)
+          ("\\.h$"                           "__hpp"            c++-mode)
           ("\\.c$"                           "__c"              c-mode)
           ;; Elisp
           ("-test\\.el$"                     "__"               emacs-ert-mode)

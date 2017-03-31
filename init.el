@@ -50,12 +50,13 @@
       core-eval          ; run code, run + REPL support
 
       ;; ;;; Dev environments
+      module-semantic    ; enable others to parse files
       module-elisp       ; drowning in parentheses
       module-python      ; beautiful is better than ugly
       module-latex       ; the emacs paper publishing machine
       module-ein         ; interact with juyter/ipython notebooks
+      module-cc          ; C/C++/Obj-C madness
       ;; module-asm         ; Assembly
-      ;; module-cc          ; C/C++/Obj-C madness
       ;; module-crystal     ; ruby at the speed of c
       ;; module-csharp      ; unity, .NET, and mono shenanigans
       ;; module-css         ; #big-bang::before { content: ""; }

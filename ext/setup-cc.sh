@@ -12,7 +12,7 @@ case "$OSTYPE" in
         ;;
     linux*)
         if is-arch; then
-            sudo pacman --noconfirm -S cmake clang
+            sudo pacman -S cmake clang
         elif is-deb; then
             echo "Not implemented"
             exit 1
@@ -21,14 +21,16 @@ case "$OSTYPE" in
 esac
 
 # Build irony-server
+
+ORIG_PWD="$(pwd)"
+DEST="$(pwd)/irony/"
+
 git-repo "https://github.com/Sarcasm/irony-mode" "irony-mode"
 
 # Reset build directory
 cd irony-mode/server
 [ -d build ] && rm -rf build
 mkdir build && cd build
-
-DEST="$(pwd)/irony-mode/server/build/irony/"
 
 # Compile
 if is-mac
@@ -46,3 +48,7 @@ then
         /usr/local/opt/llvm/lib/libclang.dylib \
         $DEST/bin/irony-server
 fi
+
+# Delete the irony-mode repo
+cd $ORIG_PWD
+rm -rf irony-mode
