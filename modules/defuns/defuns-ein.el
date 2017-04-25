@@ -26,6 +26,21 @@
     (sorted t)))
 
 ;;;###autoload
+(defun doom/ace-link-ein ()
+  "Ace jump to links in ein notebooklist."
+  (interactive)
+  (let ((res (avy-with doom/ace-link-ein
+               (avy--process
+                (doom--collect-ein-buffer-links)
+                ;#'avy--overlay-pre
+                (avy--style-fn avy-style)))))
+    (when (numberp res)
+      (goto-char (1+ res))
+      (widget-button-press (point)))))
+
+;(avy--style-fn avy-style)
+
+;;;###autoload
 (defun doom--collect-ein-buffer-links ()
   (let ((end (window-end))
         points)
@@ -34,18 +49,6 @@
       (while (re-search-forward "~?/.+\\|\s\\[" end t)
         (push (+ (match-beginning 0) 1) points))
       (nreverse points))))
-
-;;;###autoload
-(defun doom/ace-link-ein ()
-  "Ace jump to links in ein notebooklist."
-  (interactive)
-  (let ((res (avy-with doom/ace-link-ein
-               (avy--process
-                (doom--collect-ein-buffer-links)
-                #'avy--overlay-pre))))
-    (when (numberp res)
-      (goto-char (1+ res))
-      (widget-button-press (point)))))
 
 (provide 'defuns-ein)
 ;;; defuns-ein.el ends here
