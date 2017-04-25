@@ -31,7 +31,10 @@
 
   (setq counsel-find-file-ignore-regexp "\\(?:^[#.]\\)\\|\\(?:[#~]$\\)\\|\\(?:^Icon?\\)"))
 
-(use-package counsel-projectile :after projectile)
+(use-package counsel-projectile
+  :after projectile
+  :config
+  (counsel-projectile-on))
 
 (provide 'core-ivy)
 ;;; core-ivy.el ends here
