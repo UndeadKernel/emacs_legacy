@@ -133,6 +133,7 @@
 (depends-on "auctex-latexmk")
 (depends-on "company-auctex")
 (depends-on "www-synonyms")
+(depends-on "latex-preview-pane")
 
 ;; EIN -- modules/module-ein.el
 (depends-on "ein")

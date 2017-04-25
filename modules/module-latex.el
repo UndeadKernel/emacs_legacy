@@ -88,6 +88,8 @@
   (use-package latex
     :defer t
     :init
+    ;; Custom indentation level for items in enumeration-type environments
+    (setq doom-indent-level-item-continuation 8)
     :config
     ;; Do not prompt for the Master file, this allows auto-insert to add templates to .tex files
     (add-hook 'LaTeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
@@ -104,7 +106,14 @@
           TeX-source-correlate-method 'synctex
           TeX-source-correlate-start-server nil)
     ;; Use chktex to search for errors in a latex file.
-    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")))
+    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
+    ;; Set a custom item indentation
+    (setq LaTeX-indent-environment-list
+          (nconc '(("itemize" doom/LaTeX-indent-item)
+                   ("enumerate" doom/LaTeX-indent-item)
+                   ("description" doom/LaTeX-indent-item))
+                 LaTeX-indent-environment-list))
+))
 
 (use-package preview
   :commands LaTeX-preview-setup
@@ -112,6 +121,9 @@
   (progn
     (setq-default preview-scale 1.4
                   preview-scale-function '(lambda () (* (/ 10.0 (preview-document-pt)) preview-scale)))))
+
+(use-package latex-preview-pane
+  :commands latex-preview-pane-mode)
 
 (use-package reftex
   :commands turn-on-reftex
