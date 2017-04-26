@@ -40,12 +40,30 @@
       (setq *linum-mdown-line* nil))))
 
 ;;;###autoload
+(defun doom/back-to-indentation ()
+  "Move to indentation respecting `visual-line-mode'."
+  (if visual-line-mode
+      (flet ((beginning-of-line (arg) (beginning-of-visual-line arg)))
+        (back-to-indentation))
+    (back-to-indentation)))
+
+;;;###autoload
+(defun doom/beginning-of-line (&optional arg)
+  "Move to beginning of line respecting `visual-line-mode'."
+  (cond
+   ((eq major-mode 'org-mode)
+    (org-beginning-of-line arg))
+   (visual-line-mode
+    (beginning-of-visual-line arg))
+   (t (beginning-of-line arg))))
+
+;;;###autoload
 (defun doom/move-to-bol ()
   "Move the cursor to the indentation point or, if already there,
-to the beginning of the line."
+to the beginning of the line respecting `visual-line-mode'."
   (interactive)
-  (when (= (point) (progn (back-to-indentation) (point)))
-    (beginning-of-line)))
+  (when (= (point) (progn (doom/back-to-indentation) (point)))
+    (doom/beginning-of-line)))
 
 
 (provide 'defuns-editor)
