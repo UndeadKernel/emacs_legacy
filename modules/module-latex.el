@@ -126,7 +126,7 @@
   :commands turn-on-reftex
   :init
   (setq reftex-plug-into-AUCTeX t
-        reftex-ref-style-default-list '("Cleveref" "Hyperref" "Fancyref")
+        ;reftex-ref-style-default-list '("Cleveref" "Hyperref" "Fancyref")
         reftex-default-bibliography
           `(,(expand-file-name doom-bibtex-file)))
   ; Get ReTeX with biblatex
@@ -162,8 +162,8 @@
   :init
   ;; Pass the -pdf flag when TeX-PDF-mode is active
   (setq auctex-latexmk-inherit-TeX-PDF-mode t)
-  :config
-  (setq-local TeX-command-default "LatexMK"))
+  ;; Set LatexMk as the default
+  (add-hook 'LaTeX-mode-hook '(lambda () (setq TeX-command-default "LatexMk"))))
 
 (use-package company-auctex
   :commands (company-auctex-init))
