@@ -122,9 +122,6 @@
     (setq-default preview-scale 1.4
                   preview-scale-function '(lambda () (* (/ 10.0 (preview-document-pt)) preview-scale)))))
 
-(use-package latex-preview-pane
-  :commands latex-preview-pane-mode)
-
 (use-package reftex
   :commands turn-on-reftex
   :init
