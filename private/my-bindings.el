@@ -202,10 +202,10 @@
    (:map org-agenda-mode-map
      "C-g" 'doom/org-agenda-quit
      "q" 'doom/org-agenda-quit))
- ;; python + anaconda mode
- (:after anaconda-mode
-   (:map anaconda-mode-map
-     "M-." 'anaconda-mode-find-definitions))
+ ;; pythony + anaconda mode
+ ;; (:after anaconda-mode
+ ;;   (:map anaconda-mode-map
+ ;;     "M-." 'anaconda-mode-find-definitions))
  (:after nose
    (:map nose-mode-map
      (:prefix "C-c"
