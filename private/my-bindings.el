@@ -68,7 +68,7 @@
  (:after ielm
    (:map ielm-map
      "C-g" 'doom/popup-close))
- ;; Workgroups and stuff
+ ;; Working with windows, workgroups and stuff.
  "<pause>" (λ! (doom/workgroup-load (concat wg-workgroup-directory doom-wg-perpetual)))
  (:prefix "C-c w"
    "d" 'doom/tab-display
@@ -82,6 +82,7 @@
    "U" 'doom/redo-window-change
    "p" 'doom/tab-left
    "n" 'doom/tab-right
+   "h" 'resize-window
    "<left>" (λ! (wg-offset-workgroup-left) (doom/tab-display))
    "<right>" (λ! (wg-offset-workgroup-right) (doom/tab-display))
    "1" (λ! (doom/tab-switch-to 0))

@@ -4,13 +4,13 @@
 + [ ] Benchamark shows that core-ui is slow. Figure out why.
 + [ ] In EIN, doom/ace-link-ein, not all links are recognised. Change the link finding regexp.
 + [ ] Add flycheck with python to the EIN python cells.
-+ [ ] Remove M-n and M-p from ein notebooks so as to not overshadow my awesome movement bindings.
-- [ ] Assign keybind to doom/flycheck-errors
-- [ ] Change Workgroups2 for persp-mode
++ [X] Remove M-n and M-p from ein notebooks so as to not overshadow my awesome movement bindings.
++ [ ] Assign keybind to doom/flycheck-errors
++ [ ] Change Workgroups2 for persp-mode
 
 * Missing
 + [ ] Yas expand with a selected region.
- 
+
 * Changes
 - [ ] core-editor.el - fix font of line numbers when first character is selected
 - [ ] defuns-docs.el - add lookup function

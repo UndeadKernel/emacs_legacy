@@ -253,6 +253,8 @@
 (use-package buffer-move
   :commands (buf-move-up buf-move-down buf-move-left buf-move-right))
 
+(use-package resize-window
+  :commands (resize-window))
 
 (provide 'core-editor)
 ;;; core-editor.el ends here
