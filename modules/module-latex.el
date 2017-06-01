@@ -96,7 +96,7 @@
     (add-hook 'TeX-mode-hook '(lambda () (remove-hook 'find-file-hooks (car find-file-hooks) 'local)))
     ;; Adding our standard latex mode hooks
     (add-hook! LaTeX-mode (LaTeX-math-mode) (flyspell-mode) (turn-on-reftex) (LaTeX-preview-setup)
-      (TeX-global-PDF-mode t) (TeX-PDF-mode t) (auctex-latexmk-setup) (company-auctex-init)
+      (TeX-global-PDF-mode t) (TeX-PDF-mode t) (company-auctex-init)
       (visual-line-mode +1))
     (setq ispell-dictionary "english")
     ;; Configure Okular as viewer. Fix a bug (https://bugs.kde.org/show_bug.cgi?id=373855)
@@ -158,12 +158,14 @@
             (lambda (fpath) (async-start-process "open-pdf" "/usr/bin/xdg-open" nil fpath))))
 
 (use-package auctex-latexmk
-  :commands (auctex-latexmk-setup)
   :init
   ;; Pass the -pdf flag when TeX-PDF-mode is active
   (setq auctex-latexmk-inherit-TeX-PDF-mode t)
   ;; Set LatexMk as the default
-  (add-hook 'LaTeX-mode-hook '(lambda () (setq TeX-command-default "LatexMk"))))
+  (add-hook 'LaTeX-mode-hook '(lambda () (setq TeX-command-default "LatexMk")))
+  :config
+  ;; Add latexmk as a TeX target
+  (auctex-latexmk-setup))
 
 (use-package company-auctex
   :commands (company-auctex-init))
