@@ -31,7 +31,7 @@
  "C-S-<right>" (λ! (doom/move-buffer 'right))
  "C-S-<up>" (λ! (doom/move-buffer 'up))
  "C-S-<down>" (λ! (doom/move-buffer 'down))
- "C-x b" 'doom/ivy-switch-project-buffer
+ "C-x b" 'doom/ivy-switch-buffer
  ;; Window realted bindings
  "C-x o" 'switch-window
  "C-x C-o" 'doom/switch-to-last-window

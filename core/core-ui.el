@@ -99,8 +99,8 @@
 ;; NOTE Only available on Emacs 25.1+
 (when (boundp 'window-divider-mode)
   (setq window-divider-default-places t
-        window-divider-default-bottom-width 1
-        window-divider-default-right-width 1)
+        window-divider-default-bottom-width 3
+        window-divider-default-right-width 3)
   (window-divider-mode +1))
 
 
@@ -118,9 +118,9 @@
   (add-hook 'find-file-hook 'doom-buffer-mode)
   ;; Custom neotree theme
   (when window-system
-    (require 'doom-neotree))
+    (doom-themes-neotree-config))
   ;; Set the linum highlight face so that it does not clash with sp-show-matched-pairs
-  (set-face-attribute 'doom-nlinum-highlight nil
+  (set-face-attribute 'doom-linum-highlight nil
                       :background "#282c34"
                       :weight 'medium))
 
