@@ -62,6 +62,11 @@
  "C-h b" 'counsel-descbinds
 ;; Repl Toggle
  "C-c C-z" 'doom/repl
+;; Magit/git bindings
+ (:prefix "C-c m"
+   "s" 'doom/git-magit
+   "i" 'doom/git-issues
+   "b" 'browse-at-remote)
  (:after nodejs-repl
    (:map nodejs-repl-mode-map
      "C-g" 'doom/popup-close))
