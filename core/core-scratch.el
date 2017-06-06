@@ -104,7 +104,8 @@ whose dimensions may not be fully initialized by the time this is run."
                 doom-scratch-widgets))
 
         (setq default-directory old-pwd)
-        (setq mode-line-format (doom-modeline 'scratch)))))
+        (setq mode-line-format (doom-modeline 'scratch))
+        (buffer-enable-undo))))
   t)
 
 (defun doom-scratch-widget-banner ()
