@@ -78,6 +78,19 @@
         LaTeX-item-indent 0
         ;; Fonts for section, subsection, etc
         font-latex-fontify-sectioning 1.15)
+  ;; Change some fonts from the doom theme for the sectioning.
+  (custom-theme-set-faces 'doom-one
+      '(font-latex-sectioning-1-face ((t (:background "#23272e" :foreground "#a9a1e1" :weight bold
+                                          :bold bold :height 1.6))))
+      '(font-latex-sectioning-2-face ((t (:inherit 'font-latex-sectioning-1-face
+                                          :foreground "#51afef" :height 0.9))))
+      '(font-latex-sectioning-3-face ((t (:inherit 'font-latex-sectioning-2-face
+                                          :foreground "#a9a1e1" :height 0.9))))
+      '(font-latex-sectioning-4-face ((t (:inherit 'font-latex-sectioning-3-face
+                                         :foreground "violet" :height 0.9))))
+      '(font-latex-sectioning-5-face ((t (:inherit 'font-latex-sectioning-4-face
+                                         :foreground "white" :height 1.0)))))
+
   (setq-default TeX-master nil)
   ;; Load the AUCTEX thing now
   (use-package tex-style
