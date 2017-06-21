@@ -54,6 +54,7 @@
  "C-M-e" 'sp-end-of-sexp
  "C-M-f" 'sp-forward-sexp
  "C-M-b" 'sp-backward-sexp
+ "C-M-d" 'sp-splice-sexp
  ;; Company mode
  "<C-tab>" 'doom/company-complete
  ;; git-messenger
