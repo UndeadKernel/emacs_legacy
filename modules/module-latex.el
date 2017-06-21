@@ -84,7 +84,12 @@
     :defer t)
   (use-package tex-fold                   ; TeX folding
     :defer t
-    :init (add-hook! 'TeX-mode-hook 'TeX-fold-mode))
+    :init
+    (add-hook! 'TeX-mode-hook 'TeX-fold-mode)
+    :config
+    ;; Set custom folds for Acronyms
+    (add-to-list 'TeX-fold-macro-spec-list '("{1}" ("ac" "acf")))
+    (add-to-list 'TeX-fold-macro-spec-list '("{1}s" ("acp" "acpf"))))
   (use-package latex
     :defer t
     :init
@@ -112,8 +117,7 @@
           (nconc '(("itemize" doom/LaTeX-indent-item)
                    ("enumerate" doom/LaTeX-indent-item)
                    ("description" doom/LaTeX-indent-item))
-                 LaTeX-indent-environment-list))
-))
+                 LaTeX-indent-environment-list))))
 
 (use-package preview
   :commands LaTeX-preview-setup
