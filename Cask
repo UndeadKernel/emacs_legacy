@@ -73,6 +73,7 @@
 (depends-on "smartparens")
 (depends-on "buffer-move")
 (depends-on "resize-window")
+(depends-on "adaptive-wrap")
 ;(depends-on "wgrep")
 
 ;; ;; Documentation --- core/core-docs.el

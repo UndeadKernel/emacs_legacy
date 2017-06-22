@@ -12,7 +12,8 @@
 + [ ] Yas expand with a selected region.
 
 * Changes
-- [ ] core-editor.el - fix font of line numbers when first character is selected
+- [ ] core-ui.el - Adaptive wrap should apply only to \item elements
+- [X] core-editor.el - fix font of line numbers when first character is selected
 - [ ] defuns-docs.el - add lookup function
 - [ ] defuns-buffers.el - choose if some operators stay or not
 - [ ] defuns-eval.el - add keybindings for the build and eval commands

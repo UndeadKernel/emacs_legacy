@@ -214,6 +214,11 @@
                 visual-fill-column-width fill-column
                 split-window-preferred-function 'visual-line-mode-split-window-sensibly))
 
+(use-package adaptive-wrap
+  :commands (adaptive-wrap-prefix-mode)
+  :init
+  (add-hook! visual-line-mode 'adaptive-wrap-prefix-mode)
+  (setq-default adaptive-wrap-extra-indent 0))
 
 ;;
 ;; Bootstrap
