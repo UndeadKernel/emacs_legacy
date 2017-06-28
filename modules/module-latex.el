@@ -102,7 +102,10 @@
     :config
     ;; Set custom folds for Acronyms
     (add-to-list 'TeX-fold-macro-spec-list '("{1}" ("ac" "acf")))
-    (add-to-list 'TeX-fold-macro-spec-list '("{1}s" ("acp" "acpf"))))
+    (add-to-list 'TeX-fold-macro-spec-list '("{1}s" ("acp" "acpf")))
+    ;; Custom folds for Environments
+    (add-to-list 'TeX-fold-env-spec-list '("[figure]" ("figure")))
+    (add-to-list 'TeX-fold-env-spec-list '("[table]" ("table"))))
   (use-package latex
     :defer t
     :init
