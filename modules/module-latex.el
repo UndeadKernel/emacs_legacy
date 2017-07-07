@@ -100,12 +100,16 @@
     :init
     (add-hook! 'TeX-mode-hook 'TeX-fold-mode)
     :config
-    ;; Set custom folds for Acronyms
-    (add-to-list 'TeX-fold-macro-spec-list '("{1}" ("ac" "acf")))
+    ;; Set custom folds for Macros
+    (add-to-list 'TeX-fold-macro-spec-list '("{1}" ("ac" "acf" "title")))
     (add-to-list 'TeX-fold-macro-spec-list '("{1}s" ("acp" "acpf")))
+    (add-to-list 'TeX-fold-macro-spec-list '("[authors]" ("author")))
+    (add-to-list 'TeX-fold-macro-spec-list '("[command {1}]" ("newcommand")))
+    (add-to-list 'TeX-fold-macro-spec-list '("[hyphenations]" ("hyphenation")))
     ;; Custom folds for Environments
     (add-to-list 'TeX-fold-env-spec-list '("[figure]" ("figure")))
-    (add-to-list 'TeX-fold-env-spec-list '("[table]" ("table"))))
+    (add-to-list 'TeX-fold-env-spec-list '("[table]" ("table")))
+    (add-to-list 'TeX-fold-env-spec-list '("[acronyms]" ("acronym"))))
   (use-package latex
     :defer t
     :init
