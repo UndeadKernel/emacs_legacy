@@ -11,7 +11,7 @@ case "$OSTYPE" in
         ;;
     linux*)
         if is-arch; then
-            sudo pacman --needed --noconfirm -S nodejs npm
+            sudo pacman --needed --noconfirm -S nodejs npm the_silver_searcher
         else
             echo "..."
             exit 1
@@ -19,4 +19,4 @@ case "$OSTYPE" in
         ;;
 esac
 
-npm -g install trepanjs tern
+sudo npm -g install trepanjs tern

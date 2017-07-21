@@ -139,6 +139,15 @@
 ;; EIN -- modules/module-ein.el
 (depends-on "ein")
 
+;; JS -- modules/module-js.el
+(depends-on "company-tern")
+(depends-on "js2-mode")
+(depends-on "js2-refactor")
+(depends-on "nodejs-repl")
+(depends-on "tern")
+(depends-on "tide")
+(depends-on "typescript-mode")
+
 ;; ;; Assembly -- modules/module-asm.el
 ;; (depends-on "mips-mode")
 ;; (depends-on "haxor-mode")
@@ -195,18 +204,6 @@
 ;; (depends-on "eclim")
 ;; (depends-on "company-emacs-eclim")
 ;; (depends-on "groovy-mode")
-
-;; ;; JS -- modules/module-js.el
-;; (depends-on "coffee-mode")
-;; (depends-on "company-tern")
-;; (depends-on "js2-mode")
-;; (depends-on "js2-refactor")
-;; (depends-on "jsx-mode")
-;; (depends-on "nodejs-repl")
-;; (depends-on "tern")
-;; (depends-on "tide")
-;; (depends-on "typescript-mode")
-;; (depends-on "unityjs-mode" :git "https://github.com/naruse/EmacsUnityScript")
 
 ;; ;; Julia -- modules/module-julia.el
 ;; (depends-on "julia-mode")

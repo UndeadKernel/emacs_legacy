@@ -56,6 +56,7 @@
       module-latex       ; the emacs paper publishing machine
       module-ein         ; interact with juyter/ipython notebooks
       module-cc          ; C/C++/Obj-C madness
+      module-js          ; all(hope(abandon(ye(who(enter(here))))))
       ;; module-asm         ; Assembly
       ;; module-crystal     ; ruby at the speed of c
       ;; module-csharp      ; unity, .NET, and mono shenanigans
@@ -65,7 +66,6 @@
       ;; module-go          ; the hipster dialect
       ;; module-haskell     ; a language that's lazier than I am
       ;; module-java        ; the poster child for carpal tunnel syndrome
-      ;; module-js          ; all(hope(abandon(ye(who(enter(here))))))
       ;; module-julia       ; A better, faster MATLAB
       ;; module-latex       ; for writing papers in Emacs
       ;; module-lua         ; one-based indices? one-based indices
